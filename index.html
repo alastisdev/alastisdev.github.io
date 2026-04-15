@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alastis Dev | Shadow Blocks</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --text: #ededed;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .game-title {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .game-subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .cta-button {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+        .cta-button:hover {
+            background-color: #d13d56;
+        }
+        footer {
+            background-color: var(--secondary);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Alastis Dev</h1>
+    </header>
+
+    <main>
+        <h2 class="game-title">Shadow Blocks</h2>
+        <p class="game-subtitle">Dive into the ultimate Match-3 puzzle experience. Challenge your mind, master the shadows, and unlock new levels. Available now on Android.</p>
+        
+        <a href="#" class="cta-button">GET IT ON GOOGLE PLAY</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Alastis Dev (Marek Banaś). All rights reserved.</p>
+        <p><a href="privacy-policy.html">Privacy Policy</a> | Contact: alastisdev@gmail.com</p>
+    </footer>
+
+</body>
+</html>
