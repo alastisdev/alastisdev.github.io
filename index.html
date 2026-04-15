@@ -6,78 +6,115 @@
     <title>Alastis Dev | Shadow Blocks</title>
     <style>
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #e94560;
-            --text: #ededed;
+            /* System Obsidian / Silk */
+            --primary: #050505;       /* Głęboka czerń */
+            --secondary: #121212;     /* Ciemnoszary dla sekcji/nagłówka */
+            --accent: #9d00ff;        /* Neonowy fiolet */
+            --text-main: #f0f0f0;     /* Główny tekst */
+            --text-muted: #888888;    /* Podtytuły */
         }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--primary);
-            color: var(--text);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+        
         header {
             background-color: var(--secondary);
             padding: 1.5rem;
             text-align: center;
             border-bottom: 2px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(157, 0, 255, 0.1);
         }
+        
         header h1 {
             margin: 0;
             font-size: 2rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            color: var(--text-main);
         }
+        
         main {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 3rem 1rem;
             text-align: center;
         }
-        .game-title {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
+        
+        /* Hero Section */
+        .game-section {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: var(--secondary);
+            border-radius: 12px;
+            border: 1px solid rgba(157, 0, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0, 0.5);
         }
+
+        .game-title {
+            font-size: 3.5rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(157, 0, 255, 0.3);
+        }
+        
         .game-subtitle {
             font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 2rem;
-            max-width: 600px;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
+        
         .cta-button {
+            display: inline-block;
             background-color: var(--accent);
             color: #fff;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             font-size: 1.2rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 50px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        
         .cta-button:hover {
-            background-color: #d13d56;
+            background-color: #b336ff;
+            box-shadow: 0 0 30px rgba(157, 0, 255, 0.7);
+            transform: translateY(-2px);
         }
+        
         footer {
             background-color: var(--secondary);
             text-align: center;
             padding: 1.5rem;
             font-size: 0.9rem;
+            border-top: 1px solid #222;
         }
+        
         footer a {
             color: var(--accent);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+        
         footer a:hover {
+            color: #b336ff;
             text-decoration: underline;
+            text-shadow: 0 0 8px rgba(157, 0, 255, 0.5);
         }
     </style>
 </head>
@@ -88,15 +125,17 @@
     </header>
 
     <main>
-        <h2 class="game-title">Shadow Blocks</h2>
-        <p class="game-subtitle">Dive into the ultimate Match-3 puzzle experience. Challenge your mind, master the shadows, and unlock new levels. Available now on Android.</p>
-        
-        <a href="#" class="cta-button">GET IT ON GOOGLE PLAY</a>
+        <section class="game-section">
+            <h2 class="game-title">Shadow Blocks</h2>
+            <p class="game-subtitle">Zanurz się w ostatecznym doświadczeniu zagadek Match-3. Rzuć wyzwanie swojemu umysłowi, zapanuj nad cieniem i odblokuj nowe poziomy. Dostępne teraz na Androida.</p>
+            
+            <a href="#" class="cta-button">Pobierz z Google Play</a>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Alastis Dev (Marek Banaś). All rights reserved.</p>
-        <p><a href="privacy-policy.html">Privacy Policy</a> | Contact: alastisdev@gmail.com</p>
+        <p>&copy; 2026 Alastis Dev (Marek Banaś). Wszelkie prawa zastrzeżone.</p>
+        <p><a href="privacy-policy.html">Polityka Prywatności</a> | Kontakt: alastisdev@gmail.com</p>
     </footer>
 
 </body>
