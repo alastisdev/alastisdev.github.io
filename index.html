@@ -5,76 +5,76 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Alastis Dev | Industrial Game Systems</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Manrope:wght@400;600;800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Manrope:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error-container": "#ffdad6",
-                    "on-secondary-fixed": "#002022",
-                    "inverse-on-surface": "#303030",
-                    "on-primary-fixed": "#2d004f",
-                    "surface-container": "#1f1f1f",
-                    "inverse-surface": "#e2e2e2",
-                    "primary-container": "#9d00ff",
-                    "on-secondary-container": "#006a70",
-                    "surface": "#131313",
-                    "on-primary-container": "#f7e5ff",
-                    "surface-dim": "#131313",
-                    "surface-bright": "#393939",
-                    "on-surface-variant": "#d1c1d9",
-                    "on-tertiary": "#4e2500",
-                    "primary": "#dfb7ff",
-                    "tertiary-fixed-dim": "#ffb781",
-                    "on-primary-fixed-variant": "#6b00b0",
-                    "secondary-container": "#00f1fe",
-                    "on-tertiary-fixed": "#2f1400",
-                    "surface-variant": "#353535",
-                    "secondary-fixed": "#74f5ff",
-                    "error-container": "#93000a",
-                    "surface-container-lowest": "#0e0e0e",
-                    "outline": "#9a8ca2",
-                    "surface-tint": "#dfb7ff",
-                    "on-surface": "#e2e2e2",
-                    "primary-fixed-dim": "#dfb7ff",
-                    "on-tertiary-fixed-variant": "#703800",
-                    "tertiary": "#ffb781",
-                    "surface-container-high": "#2a2a2a",
-                    "secondary-fixed-dim": "#00dbe7",
-                    "on-error": "#690005",
-                    "on-secondary-fixed-variant": "#004f54",
-                    "surface-container-highest": "#353535",
-                    "secondary": "#ddfcff",
-                    "background": "#131313",
-                    "primary-fixed": "#f1daff",
-                    "on-secondary": "#00363a",
-                    "tertiary-container": "#a45500",
-                    "inverse-primary": "#8c00e5",
-                    "surface-container-low": "#1b1b1b",
-                    "on-background": "#e2e2e2",
-                    "on-primary": "#4b007e",
-                    "error": "#ffb4ab",
-                    "outline-variant": "#4e4356",
-                    "on-tertiary-container": "#ffe7d8",
-                    "tertiary-fixed": "#ffdcc4"
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002022",
+                        "inverse-on-surface": "#303030",
+                        "on-primary-fixed": "#2d004f",
+                        "surface-container": "#1f1f1f",
+                        "inverse-surface": "#e2e2e2",
+                        "primary-container": "#9d00ff",
+                        "on-secondary-container": "#006a70",
+                        "surface": "#131313",
+                        "on-primary-container": "#f7e5ff",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#393939",
+                        "on-surface-variant": "#d1c1d9",
+                        "on-tertiary": "#4e2500",
+                        "primary": "#dfb7ff",
+                        "tertiary-fixed-dim": "#ffb781",
+                        "on-primary-fixed-variant": "#6b00b0",
+                        "secondary-container": "#00f1fe",
+                        "on-tertiary-fixed": "#2f1400",
+                        "surface-variant": "#353535",
+                        "secondary-fixed": "#74f5ff",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#9a8ca2",
+                        "surface-tint": "#dfb7ff",
+                        "on-surface": "#e2e2e2",
+                        "primary-fixed-dim": "#dfb7ff",
+                        "on-tertiary-fixed-variant": "#703800",
+                        "tertiary": "#ffb781",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed-dim": "#00dbe7",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "surface-container-highest": "#353535",
+                        "secondary": "#ddfcff",
+                        "background": "#131313",
+                        "primary-fixed": "#f1daff",
+                        "on-secondary": "#00363a",
+                        "tertiary-container": "#a45500",
+                        "inverse-primary": "#8c00e5",
+                        "surface-container-low": "#1b1b1b",
+                        "on-background": "#e2e2e2",
+                        "on-primary": "#4b007e",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#4e4356",
+                        "on-tertiary-container": "#ffe7d8",
+                        "tertiary-fixed": "#ffdcc4"
+                },
+                "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                },
+                "fontFamily": {
+                        "headline": ["Roboto Mono"],
+                        "body": ["Manrope"],
+                        "label": ["Roboto Mono"]
+                }
+              },
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "fontFamily": {
-                    "headline": ["Roboto Mono"],
-                    "body": ["Manrope"],
-                    "label": ["Roboto Mono"]
-            }
-          },
-        },
-      }
+          }
     </script>
 <style>
         body {
@@ -95,7 +95,6 @@
             background-size: 100% 4px;
         }
         
-        /* Active Navigation Styles */
         .nav-link {
             transition: all 150ms ease-in;
             border-bottom: 2px solid transparent;
@@ -116,10 +115,10 @@
         }
     </style>
 </head>
-<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container" id="top">
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4 max-w-full">
-<div class="text-xl font-black tracking-widest text-[#dfb7ff] uppercase font-headline">Alastis Dev</div>
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4">
+<a class="text-xl font-black tracking-widest text-[#dfb7ff] uppercase font-headline" href="index.html#top">ALASTIS DEV // INDUSTRIAL SYSTEMS</a>
 <div class="hidden md:flex gap-8 font-label uppercase tracking-tighter text-sm" id="desktop-nav">
 <a class="nav-link active" href="#" id="nav-home">Home</a>
 <a class="nav-link" href="#games" id="nav-games">Games</a>
@@ -137,30 +136,20 @@
 <div class="lg:col-span-7 space-y-8">
 <div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 text-secondary-container font-label text-xs uppercase tracking-widest">
 <span class="w-2 h-2 bg-secondary-container rounded-full animate-pulse"></span>
-                    System Online: v4.0.2
+                    System Online: v1.1.0
                 </div>
-<h1 class="text-6xl md:text-8xl font-headline font-bold leading-tight tracking-tighter uppercase">
-                    Dieselpunk <br/>
-<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Minimalism</span>
-</h1>
-<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                    Forging digital experiences at the intersection of raw industrial aesthetics and high-performance engineering. We build tools and games designed for the deep dark.
-                </p>
-<div class="flex flex-wrap gap-4 pt-4">
-<button class="px-8 py-4 bg-primary-container text-on-primary font-label font-bold uppercase text-sm rounded-lg glow-primary transition-all active:scale-95">
-                        Initiate Protocol
-                    </button>
-<button class="px-8 py-4 border border-secondary/30 text-secondary font-label font-bold uppercase text-sm rounded-lg hover:bg-secondary/10 transition-all active:scale-95">
-                        View Logs
-                    </button>
-</div>
+<h1 class="text-5xl md:text-7xl font-headline font-bold leading-tight tracking-tighter uppercase">ALASTIS DEV // <br/>INDUSTRIAL SYSTEMS</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed font-body">Precision-coded mobile mechanics. Play Shadow Blocks today.</p>
+<div class="flex flex-wrap gap-4 pt-4"><a class="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary font-label font-bold uppercase text-lg rounded-lg glow-primary transition-all active:scale-95 inline-flex items-center justify-center gap-4 group" href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">shop</span> <span>Play Shadow Blocks</span></a></div>
 </div>
 <div class="lg:col-span-5 relative">
-<div class="aspect-square bg-surface-container-low border border-primary/10 rounded-xl overflow-hidden relative group">
-<img alt="Abstract dieselpunk core" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a futuristic glowing purple fusion reactor core with intricate metal piping and cinematic steam effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7j0uPSFtufkX6vsI_N9tpoRtNasANqWv5Ii8tK6shRzBgtKYAumzsNgzEkG7vORvXOjlMyduhgH_FaJZXmWRXHh0yk_1tudPLDZHNfgacMsjS2bpxyYTx_v7umfdsCMoIlHETXICyUk3wjsdGHfQHxLryOwFg74TIOSsXkM0rOpMUVJoTKdOfcnOUG7gpOxMudmpL5aYMT9S2ts7wHlExjUpze-oj0fGJMLmtRYrZ8YO9TQ3C8fpaK0vhZ8ghC9hprfU3eb_THMU"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6 font-label text-xs text-primary/80">
-                        COORD: 52.5200° N, 13.4050° E
+<div class="aspect-video bg-surface-container-low border border-primary/10 rounded-xl overflow-hidden relative group flex items-center justify-center">
+<div class="font-label text-sm text-primary/40 uppercase tracking-widest text-center px-4">
+                        [ALASTIS_DEV // CORE_TERMINAL]
+                    </div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 font-label text-[10px] text-primary/60">
+                        LATENCY: 0.04ms // UPTIME: 99.9%
                     </div>
 </div>
 <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-secondary/40"></div>
@@ -168,11 +157,11 @@
 </div>
 </div>
 </section>
-<!-- Portfolio (Gry) Section -->
+<!-- Portfolio Section -->
 <section class="px-6 max-w-7xl mx-auto scroll-mt-[100px]" id="games">
 <div class="flex items-end justify-between mb-16 border-b border-surface-container-highest pb-8">
 <div>
-<h2 class="text-xs font-label text-secondary uppercase tracking-[0.5em] mb-4">Project Portfolio</h2>
+<h2 class="text-xs font-label text-secondary uppercase tracking-[0.5em] mb-4 font-headline">Project Portfolio</h2>
 <h3 class="text-4xl md:text-5xl font-headline font-black uppercase">Active Deployments</h3>
 </div>
 <div class="hidden md:block font-label text-xs text-on-surface-variant/40">
@@ -182,8 +171,10 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <!-- Shadow Blocks Card -->
 <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10 group">
-<div class="aspect-video relative overflow-hidden">
-<img alt="Shadow Blocks Game" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Sleek neon purple 3D puzzle blocks arranged in a dark void with sharp shadows and electric blue highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjJ-wwwTqqc8w-ePhCn_weqcdYf6coGF-kLeLhb8DI08sN3ABK1ol2FIcyP7t8TJlSENUaAKEKNmovcTrfvTZHwcRTq-D-b7pVRbx5r2TjDFuqt303yNmeGNc3y6_Z1D_dcG8JSHQwbXSUKfa3U_Wwazy8VzkEQxbq_hx_Nb6T3ZNvWCQ3Xtb6yv4dRwYKe0bvr2VwIw-NWvDDDwOCHzk79M8RCwnHx00W3SVYwjg_1OgZ2dikn4Np34cElvkyj4NlgwGkrCR43gg"/>
+<div class="aspect-video relative overflow-hidden bg-surface-container-low flex items-center justify-center border-b border-outline-variant/10">
+<div class="font-label text-xs text-secondary-container/50 uppercase tracking-[0.2em] text-center px-4">
+                        [SHADOW_BLOCKS // TELEMETRY_ACTIVE]
+                    </div>
 <div class="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-md border border-secondary-container/50 text-secondary-container font-label text-[10px] uppercase">
                         Status: Finished
                     </div>
@@ -194,8 +185,8 @@
 <p class="text-on-surface-variant font-body">Minimalist Match-3 puzzle engine built for rapid tactile feedback and low-latency interaction. Designed for OLED efficiency.</p>
 </div>
 <div class="flex flex-col sm:flex-row gap-4">
-<a class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-label font-bold text-xs uppercase rounded hover:bg-secondary-fixed transition-colors" href="#">
-<span class="material-symbols-outlined text-sm">shop</span>
+<a class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-label font-bold text-xs uppercase rounded hover:bg-secondary-fixed transition-colors" href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 20.5v-17l14.4 8.5L3 20.5zM4 5.3v13.4l11.4-6.7L4 5.3zM21 12l-5.6-3.3-1 0.6 4.6 2.7-4.6 2.7 1 0.6L21 12z"></path></svg>
                             Google Play
                         </a>
 <a class="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-primary/40 text-primary font-label font-bold text-xs uppercase rounded hover:bg-primary/5 transition-colors" href="#">
@@ -206,9 +197,10 @@
 </div>
 <!-- Shadow Raid Card -->
 <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10 group">
-<div class="aspect-video relative overflow-hidden">
-<img alt="Shadow Raid Game" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80" data-alt="Vertical futuristic spaceship silhouette firing cyan laser beams through a dark cosmic storm with industrial debris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAflfz8lN0AYUMBkWR-LvcGLhAkruBYjgVSY3YVE7nJBPsKq-C0PrBZZ3GxR59Orpp89sN2MSiI4sXa01m9cFoV5xPjGRAyS2E7ocbePgqi1h8smR45ZhwQhJ_pEpjPZlxu3Xs9ezjn_Y4RD8JyJOPomDj7QMMjKFSzqo1XYZwE3-OeYMJetsP3lK9vpw4lT5mL705wReyPYPSNmBOzI2ZoNulnVtmzDyQROPTdWaxmctnp1tq0RsV8cznF65SWccn8b5jcTdho9_8"/>
-<div class="absolute inset-0 bg-black/40"></div>
+<div class="aspect-video relative overflow-hidden bg-surface-container-low flex items-center justify-center border-b border-outline-variant/10">
+<div class="font-label text-xs text-on-surface-variant/30 uppercase tracking-[0.2em] text-center px-4">
+                        [SHADOW_RAID // ANTIGRAVITY_PROTOCOL_LOADING]
+                    </div>
 <div class="absolute top-4 right-4 px-3 py-1 bg-primary-container text-on-primary-container font-label text-[10px] uppercase">
                         In Development
                     </div>
@@ -224,7 +216,7 @@
 </div>
 <div class="pt-4 flex items-center gap-4">
 <div class="flex-1 h-[2px] bg-surface-container-highest overflow-hidden">
-<div class="w-2/3 h-full bg-primary-container glow-primary"></div>
+<div class="w-2/3 h-full bg-primary-container glow-primary animate-pulse"></div>
 </div>
 <span class="font-label text-xs text-primary">65% Compiled</span>
 </div>
@@ -238,7 +230,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="space-y-12">
 <div>
-<h2 class="text-xs font-label text-primary uppercase tracking-[0.5em] mb-4">Engineering Specs</h2>
+<h2 class="text-xs font-label text-primary uppercase tracking-[0.5em] mb-4 font-headline">Engineering Specs</h2>
 <h3 class="text-4xl md:text-5xl font-headline font-black uppercase leading-none">The Machine <br/> Under the Hood</h3>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -295,7 +287,7 @@
 </div>
 </div>
 </section>
-<!-- Newsletter / Contact Ticker -->
+<!-- Ticker Section -->
 <section class="overflow-hidden py-12 bg-black border-y border-primary/5">
 <div class="flex whitespace-nowrap gap-12 font-headline font-black text-4xl opacity-10 uppercase tracking-tighter">
 <span>Shadow Core System</span>
@@ -344,7 +336,6 @@
 </a>
 </nav>
 <script>
-    // Navigation active state logic using Intersection Observer
     const sections = ['home', 'games', 'technology'];
     const navLinks = {
         'home': [document.getElementById('nav-home'), document.getElementById('m-nav-home')],
@@ -354,7 +345,7 @@
 
     const observerOptions = {
         root: null,
-        rootMargin: '-20% 0px -70% 0px', // Adjust trigger point
+        rootMargin: '-20% 0px -70% 0px',
         threshold: 0
     };
 
@@ -373,14 +364,12 @@
     });
 
     function updateActiveLink(activeId) {
-        // Remove active class from all links
         Object.values(navLinks).forEach(links => {
             links.forEach(link => {
                 if(link) link.classList.remove('active');
             });
         });
 
-        // Add active class to links for current section
         if (navLinks[activeId]) {
             navLinks[activeId].forEach(link => {
                 if(link) link.classList.add('active');
@@ -388,7 +377,6 @@
         }
     }
 
-    // Special case for top of page if no section is active enough
     window.addEventListener('scroll', () => {
         if (window.scrollY < 100) {
             updateActiveLink('home');
