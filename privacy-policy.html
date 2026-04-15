@@ -3,61 +3,136 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Privacy Policy | Alastis Dev</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Manrope:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Roboto+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#9d00ff",
+                        "on-primary-container": "#f7e5ff",
+                        "secondary-container": "#00f1fe",
+                        "surface": "#131313",
+                        "background": "#131313",
+                        "primary": "#dfb7ff",
+                        "on-background": "#e2e2e2",
+                        "on-surface": "#e2e2e2",
+                        "on-surface-variant": "#d1c1d9",
+                        "surface-container-low": "#1b1b1b",
+                        "outline-variant": "#4e4356",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a"
+                    },
+                    "fontFamily": {
+                        "headline": ["Roboto Mono"],
+                        "body": ["Manrope"],
+                        "mono": ["Roboto Mono"]
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body { background-color: #000000; color: #e2e2e2; }
-        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(223, 183, 255, 0.01) 50%); background-size: 100% 4px; }
+        .glow-text { text-shadow: 0 0 12px rgba(223, 183, 255, 0.4); }
+        .subtractive-bg { background: linear-gradient(135deg, rgba(223, 183, 255, 0.05) 0%, rgba(157, 0, 255, 0.02) 100%); }
     </style>
 </head>
-<body class="font-body scanline">
-    <nav class="p-6 border-b border-[#dfb7ff]/10">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black tracking-widest text-[#dfb7ff] uppercase font-headline">Alastis Dev</a>
-            <a href="index.html" class="text-xs font-label text-secondary-container uppercase tracking-widest hover:text-white transition-colors">← Back</a>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4">
+        <a href="index.html" class="text-2xl font-black italic tracking-tighter text-[#dfb7ff] glow-text hover:opacity-80 transition-opacity">
+            ALASTIS_DEV
+        </a>
+        <div class="hidden md:flex items-center space-x-8 font-mono uppercase tracking-tighter text-sm">
+            <a class="text-zinc-500 hover:text-[#dfb7ff] transition-colors" href="index.html">GAMES</a>
+            <a class="text-zinc-500 hover:text-[#dfb7ff] transition-colors" href="index.html">TECHNOLOGY</a>
+            <a class="text-[#dfb7ff] border-b-2 border-[#9d00ff] pb-1" href="#">PRIVACY</a>
+        </div>
+        <div class="flex items-center">
+            <span class="material-symbols-outlined text-[#dfb7ff]">security</span>
         </div>
     </nav>
 
-    <main class="py-16 px-6 max-w-4xl mx-auto space-y-10">
-        <header>
-            <h1 class="text-4xl font-headline font-bold uppercase tracking-tight text-white">Privacy Policy</h1>
-            <p class="text-primary font-label text-sm mt-2 uppercase">Last updated: April 2026</p>
+    <main class="relative pt-32 pb-24 px-6 min-h-screen max-w-4xl mx-auto overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] subtractive-bg rounded-full -z-10 blur-[120px] opacity-20"></div>
+        
+        <header class="mb-16">
+            <div class="font-mono text-xs text-primary mb-2 uppercase tracking-[0.3em] opacity-80">Legal Telemetry // v1.0.5</div>
+            <h1 class="font-mono text-4xl md:text-6xl font-bold tracking-tighter text-on-background uppercase glow-text">
+                Privacy Policy
+            </h1>
+            <div class="h-1 w-24 bg-primary-container mt-6"></div>
         </header>
 
-        <section class="space-y-8 text-on-surface-variant leading-relaxed">
-            <p>This Privacy Policy applies to all mobile games and applications ("Services") developed and published by <strong>Marek Banaś</strong> under the studio name <strong>Alastis Dev</strong> (including but not limited to <em>Shadow Blocks, Shadow Raid, Code name: Shadow, Reign of Shadow</em>).</p>
-
-            <div class="space-y-4">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">1. Information Collection and Use</h2>
-                <p>As a core principle, Alastis Dev aims to collect as little user data as possible. For most of our games, game progress and settings are saved purely locally on your device. We do not require you to create an account to play our games.</p>
-            </div>
-
-            <div class="space-y-4">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">2. Third-Party Services and Advertising</h2>
-                <p>Our free games may incorporate third-party advertising networks (such as <strong>Google AdMob</strong>). These third parties may use cookies, device identifiers (such as Android Advertising ID), and similar technologies to collect non-personal data to provide tailored advertisements and perform analytics. This data processing is governed by the respective privacy policies of these providers.</p>
-            </div>
-
-            <div class="space-y-4">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">3. In-App Purchases</h2>
-                <p>Some of our games offer optional In-App Purchases. All payment processing and financial data management are handled securely and exclusively by <strong>Google Play Services</strong>. Alastis Dev never has access to your credit card or billing information.</p>
-            </div>
-
-            <div class="space-y-4">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">4. Children's Privacy and Age Limits</h2>
-                <p>The target audience and age rating vary depending on the specific game (please refer to the official age rating on the Google Play Store for each title). However, our Services are not designed to knowingly collect personally identifiable information from children under the age of 13. If you are a parent or guardian and believe your child has provided us with personal data, please contact us.</p>
-            </div>
-
-            <div class="space-y-4">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">5. Changes to This Policy</h2>
-                <p>We may update our Privacy Policy from time to time. We advise you to review this page periodically for any changes. These changes are effective immediately after they are posted on this page.</p>
-            </div>
-
-            <div class="space-y-4 pt-8 border-t border-outline-variant/10">
-                <h2 class="text-xl font-headline font-bold text-secondary uppercase">6. Contact Us</h2>
-                <p>If you have any questions or suggestions about this Privacy Policy, do not hesitate to contact the Developer at: <a href="mailto:alastisdev@gmail.com" class="text-primary hover:underline">alastisdev@gmail.com</a></p>
-            </div>
+        <section class="mb-16 p-8 bg-surface-container-low border-outline-variant/10 border-l-4 border-l-primary-container">
+            <p class="text-on-surface text-lg leading-relaxed">
+                This Privacy Policy applies to all mobile games and applications ("Services") developed and published by <strong>Marek Banaś</strong> under the studio name <strong>Alastis Dev</strong> (including but not limited to <em>Shadow Blocks, Shadow Raid, Code name: Shadow, Reign of Shadow</em>).
+            </p>
         </section>
+
+        <div class="space-y-16">
+            <article>
+                <h2 class="font-mono text-xl font-bold uppercase text-primary mb-4">01 // Information Collection</h2>
+                <div class="pl-8 border-l border-outline-variant/20">
+                    <p class="text-on-surface-variant leading-relaxed">
+                        As a core principle, Alastis Dev aims to collect as little user data as possible. For most of our games, progress and settings are saved purely locally on your device. We do not require account creation to access our Services.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h2 class="font-mono text-xl font-bold uppercase text-primary mb-4">02 // Third-Party Services</h2>
+                <div class="pl-8 border-l border-outline-variant/20">
+                    <p class="text-on-surface-variant leading-relaxed mb-4">
+                        Our free games may incorporate third-party advertising networks (such as <strong>Google AdMob</strong>). These providers may use device identifiers (Android Advertising ID) for analytics and tailored advertisements.
+                    </p>
+                    <p class="text-sm font-mono text-secondary-container">This data processing is governed by the respective privacy policies of these providers.</p>
+                </div>
+            </article>
+
+            <article>
+                <h2 class="font-mono text-xl font-bold uppercase text-primary mb-4">03 // In-App Purchases</h2>
+                <div class="pl-8 border-l border-outline-variant/20">
+                    <p class="text-on-surface-variant leading-relaxed mb-4">
+                        Payment processing for optional In-App Purchases is handled securely and exclusively by <strong>Google Play Services</strong>.
+                    </p>
+                    <p class="font-mono text-sm uppercase text-error px-3 py-1 border border-error/20 inline-block bg-error-container/5">
+                        Alastis Dev never has access to your credit card or billing information.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h2 class="font-mono text-xl font-bold uppercase text-primary mb-4">04 // Contact</h2>
+                <div class="pl-8 border-l border-outline-variant/20">
+                    <p class="text-on-surface-variant mb-4">Questions regarding this policy should be directed to the developer at:</p>
+                    <a class="font-mono text-primary text-lg font-bold hover:underline" href="mailto:alastisdev@gmail.com">
+                        alastisdev@gmail.com
+                    </a>
+                </div>
+            </article>
+        </div>
     </main>
+
+    <footer class="w-full py-12 px-6 border-t border-outline-variant/10 bg-black">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-mono text-[10px] uppercase tracking-widest text-zinc-600">
+                © 2026 ALASTIS_DEV // ALL_RIGHTS_RESERVED
+            </div>
+            <div class="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-zinc-600">
+                <a class="hover:text-[#00f1fe]" href="index.html">TERMINAL</a>
+                <a class="hover:text-[#00f1fe]" href="index.html">SUPPORT</a>
+                <a class="hover:text-[#00f1fe]" href="#">LEGAL</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_#00f1fe]"></div>
+                <span class="font-mono text-[10px] text-secondary-container tracking-widest">SYSTEM ONLINE</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
