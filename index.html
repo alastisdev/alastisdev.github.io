@@ -102,8 +102,8 @@
 <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4 max-w-full">
 <div class="text-xl font-black tracking-widest text-[#dfb7ff] uppercase font-headline">Alastis Dev</div>
 <div class="hidden md:flex gap-8 font-label uppercase tracking-tighter text-sm">
-<a class="text-[#dfb7ff] border-b-2 border-[#dfb7ff] pb-1 transition-all duration-150 ease-in active:scale-95" href="#">Games</a>
-<a class="text-[#dfb7ff]/60 hover:text-[#dfb7ff] transition-colors transition-all duration-150 ease-in active:scale-95" href="#">Technology</a>
+<a class="text-[#dfb7ff] border-b-2 border-[#dfb7ff] pb-1 transition-all duration-150 ease-in active:scale-95" href="#games">Games</a>
+<a class="text-[#dfb7ff]/60 hover:text-[#dfb7ff] transition-colors transition-all duration-150 ease-in active:scale-95" href="#technology">Technology</a>
 <a class="text-[#dfb7ff]/60 hover:text-[#dfb7ff] transition-colors transition-all duration-150 ease-in active:scale-95" href="#">Privacy</a>
 </div>
 <div class="flex items-center gap-4 text-[#dfb7ff]">
@@ -139,7 +139,9 @@
 <div class="aspect-square bg-surface-container-low border border-primary/10 rounded-xl overflow-hidden relative group">
 <img alt="Abstract dieselpunk core" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a futuristic glowing purple fusion reactor core with intricate metal piping and cinematic steam effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7j0uPSFtufkX6vsI_N9tpoRtNasANqWv5Ii8tK6shRzBgtKYAumzsNgzEkG7vORvXOjlMyduhgH_FaJZXmWRXHh0yk_1tudPLDZHNfgacMsjS2bpxyYTx_v7umfdsCMoIlHETXICyUk3wjsdGHfQHxLryOwFg74TIOSsXkM0rOpMUVJoTKdOfcnOUG7gpOxMudmpL5aYMT9S2ts7wHlExjUpze-oj0fGJMLmtRYrZ8YO9TQ3C8fpaK0vhZ8ghC9hprfU3eb_THMU"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6 font-label text-xs text-primary/80"> COORD: 54.9061° N, 1.3811° W </div>
+<div class="absolute bottom-6 left-6 font-label text-xs text-primary/80">
+                            COORD: 52.5200° N, 13.4050° E
+                        </div>
 </div>
 <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-secondary/40"></div>
 <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40"></div>
@@ -147,7 +149,7 @@
 </div>
 </section>
 <!-- Portfolio (Gry) Section -->
-<section class="px-6 max-w-7xl mx-auto">
+<section class="px-6 max-w-7xl mx-auto" id="games">
 <div class="flex items-end justify-between mb-16 border-b border-surface-container-highest pb-8">
 <div>
 <h2 class="text-xs font-label text-secondary uppercase tracking-[0.5em] mb-4">Project Portfolio</h2>
@@ -211,7 +213,7 @@
 </div>
 </section>
 <!-- Technology Section -->
-<section class="bg-surface-container-lowest py-32 border-y border-outline-variant/10 scanline">
+<section class="bg-surface-container-lowest py-32 border-y border-outline-variant/10 scanline" id="technology">
 <div class="px-6 max-w-7xl mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="space-y-12">
@@ -304,7 +306,7 @@
 </footer>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="md:hidden fixed bottom-0 w-full z-50 bg-black/90 backdrop-blur-xl border-t border-[#dfb7ff]/10 flex justify-around items-center py-4 px-2">
-<a class="flex flex-col items-center gap-1 text-[#dfb7ff] transition-all duration-150 ease-in active:scale-95" href="#">
+<a class="flex flex-col items-center gap-1 text-[#dfb7ff] transition-all duration-150 ease-in active:scale-95" href="#games">
 <span class="material-symbols-outlined">sports_esports</span>
 <span class="font-label text-[10px] uppercase">Games</span>
 </a>
