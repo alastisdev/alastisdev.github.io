@@ -1,400 +1,950 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Alastis Dev | Industrial Game Systems</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Manrope:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-          tailwind.config = {
-            darkMode: "class",
-            theme: {
-              extend: {
-                "colors": {
-                        "on-error-container": "#ffdad6",
-                        "on-secondary-fixed": "#002022",
-                        "inverse-on-surface": "#303030",
-                        "on-primary-fixed": "#2d004f",
-                        "surface-container": "#1f1f1f",
-                        "inverse-surface": "#e2e2e2",
-                        "primary-container": "#9d00ff",
-                        "on-secondary-container": "#006a70",
-                        "surface": "#131313",
-                        "on-primary-container": "#f7e5ff",
-                        "surface-dim": "#131313",
-                        "surface-bright": "#393939",
-                        "on-surface-variant": "#d1c1d9",
-                        "on-tertiary": "#4e2500",
-                        "primary": "#dfb7ff",
-                        "tertiary-fixed-dim": "#ffb781",
-                        "on-primary-fixed-variant": "#6b00b0",
-                        "secondary-container": "#00f1fe",
-                        "on-tertiary-fixed": "#2f1400",
-                        "surface-variant": "#353535",
-                        "secondary-fixed": "#74f5ff",
-                        "error-container": "#93000a",
-                        "surface-container-lowest": "#0e0e0e",
-                        "outline": "#9a8ca2",
-                        "surface-tint": "#dfb7ff",
-                        "on-surface": "#e2e2e2",
-                        "primary-fixed-dim": "#dfb7ff",
-                        "on-tertiary-fixed-variant": "#703800",
-                        "tertiary": "#ffb781",
-                        "surface-container-high": "#2a2a2a",
-                        "secondary-fixed-dim": "#00dbe7",
-                        "on-error": "#690005",
-                        "on-secondary-fixed-variant": "#004f54",
-                        "surface-container-highest": "#353535",
-                        "secondary": "#ddfcff",
-                        "background": "#131313",
-                        "primary-fixed": "#f1daff",
-                        "on-secondary": "#00363a",
-                        "tertiary-container": "#a45500",
-                        "inverse-primary": "#8c00e5",
-                        "surface-container-low": "#1b1b1b",
-                        "on-background": "#e2e2e2",
-                        "on-primary": "#4b007e",
-                        "error": "#ffb4ab",
-                        "outline-variant": "#4e4356",
-                        "on-tertiary-container": "#ffe7d8",
-                        "tertiary-fixed": "#ffdcc4"
-                },
-                "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                },
-                "fontFamily": {
-                        "headline": ["Roboto Mono"],
-                        "body": ["Manrope"],
-                        "label": ["Roboto Mono"]
-                }
-              },
-            },
-          }
-    </script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALASTIS DEV // INDUSTRIAL SYSTEMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-        body {
-            background-color: #000000;
-            color: #e2e2e2;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glow-primary {
-            box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
-        }
-        .glow-secondary {
-            box-shadow: 0 0 15px rgba(0, 241, 254, 0.3);
-        }
-        .scanline {
-            background: linear-gradient(to bottom, transparent 50%, rgba(223, 183, 255, 0.02) 50%);
-            background-size: 100% 4px;
-        }
-        
-        .nav-link {
-            transition: all 150ms ease-in;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
-        }
-        .nav-link:active {
-            transform: scale(0.95);
-        }
-        .nav-link.active {
-            color: #dfb7ff;
-            border-bottom-color: #dfb7ff;
-        }
-        .nav-link:not(.active) {
-            color: rgba(223, 183, 255, 0.6);
-        }
-        .nav-link:not(.active):hover {
-            color: #dfb7ff;
-        }
-        .tactical-grid {
-            background-image: radial-gradient(rgba(157, 0, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-        .tactical-lines {
-            background-image: 
-                linear-gradient(to right, rgba(157, 0, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(157, 0, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-    </style>
+  :root {
+    --bg:        #080a0e;
+    --bg2:       #0d1117;
+    --panel:     #111820;
+    --border:    #1e2d3d;
+    --accent:    #00d4ff;
+    --accent2:   #ff6b00;
+    --accent3:   #7fff00;
+    --text:      #c8d6e5;
+    --dim:       #4a6278;
+    --mono:      'Share Tech Mono', monospace;
+    --display:   'Orbitron', sans-serif;
+    --body:      'Rajdhani', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* GRID BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SCAN LINE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(8,10,14,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--dim); }
+
+  .nav-links { display: flex; gap: 32px; }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* STATUS DOT */
+  .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px 60px;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(32px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero h1 .slash { color: var(--accent); }
+
+  .hero-sub {
+    font-family: var(--display);
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 400;
+    color: var(--dim);
+    letter-spacing: 6px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-desc {
+    font-family: var(--body);
+    font-size: 16px;
+    color: var(--text);
+    max-width: 500px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #000;
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 32px;
+    text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* TERMINAL WIDGET */
+  .terminal {
+    position: relative;
+    z-index: 1;
+    margin: 20px auto 0;
+    max-width: 480px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 20px 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--dim);
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  .terminal-header {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .terminal-line { margin-bottom: 4px; }
+  .terminal-line .ok { color: var(--accent3); }
+  .terminal-line .val { color: var(--accent2); }
+  .terminal-cursor {
+    display: inline-block;
+    width: 8px; height: 12px;
+    background: var(--accent);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    padding: 4px 12px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  /* GAME CARDS */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .game-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, var(--accent));
+    transition: height 0.3s;
+  }
+
+  .game-card:hover {
+    border-color: var(--card-accent, var(--accent));
+    transform: translateY(-4px);
+  }
+
+  .game-card.shadow-blocks { --card-accent: var(--accent3); }
+  .game-card.shadow-raid   { --card-accent: var(--accent); }
+  .game-card.shadow-slash  { --card-accent: var(--accent2); }
+
+  .card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    padding: 4px 10px;
+    border: 1px solid;
+  }
+
+  .status-live  { color: var(--accent3); border-color: rgba(127,255,0,0.3); background: rgba(127,255,0,0.05); }
+  .status-dev   { color: var(--accent);  border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.05); }
+  .status-slash { color: var(--accent2); border-color: rgba(255,107,0,0.3); background: rgba(255,107,0,0.05); }
+
+  .card-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .card-desc {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--dim);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--dim);
+  }
+
+  .card-progress {
+    margin-bottom: 24px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  .progress-bar {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--card-accent, var(--accent));
+    transition: width 1s ease;
+  }
+
+  .card-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 1px solid;
+    transition: all 0.2s;
+  }
+
+  .btn-card.primary {
+    background: var(--card-accent, var(--accent));
+    border-color: var(--card-accent, var(--accent));
+    color: #000;
+  }
+
+  .btn-card.primary:hover { opacity: 0.85; }
+
+  .btn-card.secondary {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--dim);
+  }
+
+  .btn-card.secondary:hover {
+    border-color: var(--card-accent, var(--accent));
+    color: var(--card-accent, var(--accent));
+  }
+
+  /* LEADERBOARD */
+  .leaderboard-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent2);
+    overflow: hidden;
+  }
+
+  .lb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,107,0,0.05);
+  }
+
+  .lb-title {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 2px;
+  }
+
+  .lb-live {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent3);
+    letter-spacing: 2px;
+  }
+
+  .lb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .lb-table th {
+    text-align: left;
+    padding: 12px 28px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(0,0,0,0.2);
+  }
+
+  .lb-table td {
+    padding: 16px 28px;
+    border-bottom: 1px solid rgba(30,45,61,0.5);
+    color: var(--text);
+    transition: background 0.2s;
+  }
+
+  .lb-table tr:hover td { background: rgba(0,212,255,0.03); }
+  .lb-table tr:last-child td { border-bottom: none; }
+
+  .rank-1 { color: #ffd700; }
+  .rank-2 { color: #c0c0c0; }
+  .rank-3 { color: #cd7f32; }
+
+  .score-val { color: var(--accent2); font-weight: bold; }
+
+  .lb-loading {
+    text-align: center;
+    padding: 60px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+  }
+
+  .lb-empty {
+    text-align: center;
+    padding: 60px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+  }
+
+  /* TECH GRID */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .tech-item {
+    background: var(--panel);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+
+  .tech-item:hover { background: var(--bg2); }
+
+  .tech-icon {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .tech-name {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .tech-desc {
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+
+  /* CREDITS */
+  .credits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .credits-grid { grid-template-columns: 1fr; }
+  }
+
+  .credit-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .credit-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .credit-value {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .credit-value a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .credit-value a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--dim);
+  }
+
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    section { padding: 80px 20px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
 </head>
-<body class="font-body selection:bg-primary-container selection:text-on-primary-container" id="top">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4">
-<a class="text-xl font-black tracking-widest text-[#dfb7ff] uppercase font-headline" href="index.html#top">ALASTIS DEV // INDUSTRIAL SYSTEMS</a>
-<div class="hidden md:flex gap-8 font-label uppercase tracking-tighter text-sm" id="desktop-nav">
-<a class="nav-link active" href="#" id="nav-home">Home</a>
-<a class="nav-link" href="#games" id="nav-games">Games</a>
-<a class="nav-link" href="#technology" id="nav-technology">Technology</a>
-<a class="nav-link" href="privacy-policy.html">Privacy</a>
-</div>
-<div class="flex items-center gap-4 text-[#dfb7ff]">
-<span class="material-symbols-outlined hover:bg-[#9d00ff]/10 p-2 rounded transition-all cursor-pointer">terminal</span>
-</div>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">ALASTIS<span> // </span>DEV</a>
+  <div class="nav-links">
+    <a href="#games">GAMES</a>
+    <a href="#leaderboard">LEADERBOARD</a>
+    <a href="#technology">TECH</a>
+    <a href="#credits">CREDITS</a>
+    <a href="privacy-policy.html">PRIVACY</a>
+  </div>
 </nav>
-<main class="pt-24 space-y-32">
-<!-- Hero Section -->
-<section class="relative min-h-[85vh] flex items-center px-6 overflow-hidden" id="home">
-<div class="absolute inset-0 tactical-lines opacity-100"></div>
-<div class="absolute inset-0 tactical-grid opacity-100"></div>
-<div class="max-w-7xl mx-auto w-full relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-7 space-y-8">
-<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 text-secondary-container font-label text-xs uppercase tracking-widest">
-<span class="w-2 h-2 bg-secondary-container rounded-full animate-pulse"></span>
-                    System Online: v1.1.0
-                </div>
-<h1 class="text-5xl md:text-7xl font-headline font-bold leading-tight tracking-tighter uppercase">ALASTIS DEV // <br/>INDUSTRIAL SYSTEMS</h1>
-<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed font-body">Precision-coded mobile mechanics. Play Shadow Blocks today.</p>
-<div class="flex flex-wrap gap-4 pt-4"><a class="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary font-label font-bold uppercase text-lg rounded-lg glow-primary transition-all active:scale-95 inline-flex items-center justify-center gap-4 group" href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">shop</span> <span>Play Shadow Blocks</span></a></div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v3.2.0</div>
+  <h1>ALASTIS <span class="slash">//</span> DEV</h1>
+  <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
+  <p class="hero-desc">Precision-coded mobile mechanics. Built for OLED screens, optimised for one-handed play, engineered in pure GML.</p>
+  <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-primary" target="_blank">
+    ▶ PLAY SHADOW BLOCKS
+  </a>
+  <div class="terminal">
+    <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Graphics pipeline initialized</div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LIVE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">IN_DEV</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">IN_DEV</span></div>
+    <div class="terminal-line">LATENCY: <span class="val">0.04ms</span> // UPTIME: <span class="val">99.9%</span><span class="terminal-cursor"></span></div>
+  </div>
 </div>
-<div class="lg:col-span-5 relative">
-<div class="aspect-video bg-surface-container-low border border-primary/10 rounded-xl overflow-hidden relative group flex items-center justify-center">
-<div class="font-label text-sm text-primary/40 uppercase tracking-widest text-center px-4">
-                        [ALASTIS_DEV // CORE_TERMINAL]
-                    </div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6 font-label text-[10px] text-primary/60">
-                        LATENCY: 0.04ms // UPTIME: 99.9%
-                    </div>
-</div>
-<div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-secondary/40"></div>
-<div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40"></div>
-</div>
-</div>
-</div>
+
+<!-- GAMES -->
+<section id="games">
+  <div class="section-header">
+    <div class="section-tag">// ACTIVE_DEPLOYMENTS</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title" style="margin-bottom:48px;">Project Portfolio</div>
+
+  <div class="games-grid">
+
+    <!-- SHADOW BLOCKS -->
+    <div class="game-card shadow-blocks fade-in">
+      <div class="card-id">// SHADOW_BLOCKS_v3.2.0</div>
+      <div class="card-status status-live"><span class="status-dot"></span>LIVE</div>
+      <div class="card-title">Shadow Blocks</div>
+      <p class="card-desc">Minimalist Match-3 puzzle engine built for rapid tactile feedback and low-latency interaction. Designed for OLED efficiency. 80 handcrafted levels across 8 atmospheric worlds.</p>
+      <div class="card-tags">
+        <span class="tag">MATCH-3</span>
+        <span class="tag">ANDROID</span>
+        <span class="tag">GML</span>
+        <span class="tag">80 LEVELS</span>
+        <span class="tag">8 WORLDS</span>
+      </div>
+      <div class="card-progress">
+        <div class="progress-label"><span>COMPLETION</span><span>100%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+      </div>
+      <div class="card-links">
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-card primary" target="_blank">▶ GOOGLE PLAY</a>
+      </div>
+    </div>
+
+    <!-- SHADOW SLASH -->
+    <div class="game-card shadow-slash fade-in">
+      <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
+      <div class="card-status status-slash">⚡ IN DEVELOPMENT</div>
+      <div class="card-title">Shadow Slash</div>
+      <p class="card-desc">Skill-based mini game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the skull — one wrong cut ends your run. Compete for global top 10.</p>
+      <div class="card-tags">
+        <span class="tag">MINI GAME</span>
+        <span class="tag">SKILL</span>
+        <span class="tag">LEADERBOARD</span>
+        <span class="tag">ANDROID</span>
+        <span class="tag">GML</span>
+      </div>
+      <div class="card-progress">
+        <div class="progress-label"><span>COMPILATION</span><span>70%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+      </div>
+      <div class="card-links">
+        <a href="#leaderboard" class="btn-card primary">⚡ LEADERBOARD</a>
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-card secondary" target="_blank">GET THE GAME</a>
+      </div>
+    </div>
+
+    <!-- SHADOW RAID -->
+    <div class="game-card shadow-raid fade-in">
+      <div class="card-id">// SHADOW_RAID_v0.4.0</div>
+      <div class="card-status status-dev">◈ IN DEVELOPMENT</div>
+      <div class="card-title">Shadow Raid</div>
+      <p class="card-desc">High-velocity vertical space shooter pushing the limits of the Antigravity mobile framework. Precision flight in pure darkness. 144Hz optimised.</p>
+      <div class="card-tags">
+        <span class="tag">SHOOTER</span>
+        <span class="tag">ANDROID</span>
+        <span class="tag">GML</span>
+        <span class="tag">144HZ</span>
+        <span class="tag">ANTIGRAVITY</span>
+      </div>
+      <div class="card-progress">
+        <div class="progress-label"><span>COMPILATION</span><span>65%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+      </div>
+      <div class="card-links">
+        <a href="#" class="btn-card secondary">COMING SOON</a>
+      </div>
+    </div>
+
+  </div>
 </section>
-<!-- Portfolio Section -->
-<section class="px-6 max-w-7xl mx-auto scroll-mt-[100px]" id="games">
-<div class="flex items-end justify-between mb-16 border-b border-surface-container-highest pb-8">
-<div>
-<h2 class="text-xs font-label text-secondary uppercase tracking-[0.5em] mb-4 font-headline">Project Portfolio</h2>
-<h3 class="text-4xl md:text-5xl font-headline font-black uppercase">Active Deployments</h3>
-</div>
-<div class="hidden md:block font-label text-xs text-on-surface-variant/40">
-                // TOTAL_PROJECTS: 02
-            </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Shadow Blocks Card -->
-<div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10 group">
-<div class="aspect-video relative overflow-hidden bg-surface-container-low flex items-center justify-center border-b border-outline-variant/10">
-<div class="font-label text-xs text-secondary-container/50 uppercase tracking-[0.2em] text-center px-4">
-                        [SHADOW_BLOCKS // TELEMETRY_ACTIVE]
-                    </div>
-<div class="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-md border border-secondary-container/50 text-secondary-container font-label text-[10px] uppercase">
-                        Status: Finished
-                    </div>
-</div>
-<div class="p-8 space-y-6">
-<div class="space-y-2">
-<h4 class="text-3xl font-headline font-bold uppercase tracking-tight">Shadow Blocks</h4>
-<p class="text-on-surface-variant font-body">Minimalist Match-3 puzzle engine built for rapid tactile feedback and low-latency interaction. Designed for OLED efficiency.</p>
-</div>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-label font-bold text-xs uppercase rounded hover:bg-secondary-fixed transition-colors" href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" rel="noopener noreferrer" target="_blank">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 20.5v-17l14.4 8.5L3 20.5zM4 5.3v13.4l11.4-6.7L4 5.3zM21 12l-5.6-3.3-1 0.6 4.6 2.7-4.6 2.7 1 0.6L21 12z"></path></svg>
-                            Google Play
-                        </a>
-<a class="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-primary/40 text-primary font-label font-bold text-xs uppercase rounded hover:bg-primary/5 transition-colors" href="#">
-                            Support Developer
-                        </a>
-</div>
-</div>
-</div>
-<!-- Shadow Raid Card -->
-<div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10 group">
-<div class="aspect-video relative overflow-hidden bg-surface-container-low flex items-center justify-center border-b border-outline-variant/10">
-<div class="font-label text-xs text-on-surface-variant/30 uppercase tracking-[0.2em] text-center px-4">
-                        [SHADOW_RAID // ANTIGRAVITY_PROTOCOL_LOADING]
-                    </div>
-<div class="absolute top-4 right-4 px-3 py-1 bg-primary-container text-on-primary-container font-label text-[10px] uppercase">
-                        In Development
-                    </div>
-<div class="absolute bottom-4 left-4 flex gap-2">
-<span class="px-2 py-1 bg-black/60 text-secondary text-[9px] font-label uppercase border border-secondary/20">144Hz Optimized</span>
-<span class="px-2 py-1 bg-black/60 text-primary text-[9px] font-label uppercase border border-primary/20">Antigravity Protocol</span>
-</div>
-</div>
-<div class="p-8 space-y-6">
-<div class="space-y-2">
-<h4 class="text-3xl font-headline font-bold uppercase tracking-tight">Shadow Raid</h4>
-<p class="text-on-surface-variant font-body">A high-velocity vertical space shooter pushing the limits of the Antigravity mobile framework. Precision flight in pure darkness.</p>
-</div>
-<div class="pt-4 flex items-center gap-4">
-<div class="flex-1 h-[2px] bg-surface-container-highest overflow-hidden">
-<div class="w-2/3 h-full bg-primary-container glow-primary animate-pulse"></div>
-</div>
-<span class="font-label text-xs text-primary">65% Compiled</span>
-</div>
-</div>
-</div>
-</div>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+  <div class="section-header">
+    <div class="section-tag">// SHADOW_SLASH_RANKINGS</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title" style="margin-bottom:12px;">Global Leaderboard</div>
+  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">TOP 10 // SHADOW SLASH // ALL TIME</p>
+
+  <div class="leaderboard-wrap fade-in">
+    <div class="lb-header">
+      <div class="lb-title">⚡ SHADOW SLASH // TOP 10</div>
+      <div class="lb-live"><span class="status-dot"></span>LIVE DATA</div>
+    </div>
+    <div id="lb-content">
+      <div class="lb-loading">// CONNECTING TO DATABASE...</div>
+    </div>
+  </div>
 </section>
-<!-- Technology Section -->
-<section class="bg-surface-container-lowest py-32 border-y border-outline-variant/10 scanline scroll-mt-[100px]" id="technology">
-<div class="px-6 max-w-7xl mx-auto">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div class="space-y-12">
-<div>
-<h2 class="text-xs font-label text-primary uppercase tracking-[0.5em] mb-4 font-headline">Engineering Specs</h2>
-<h3 class="text-4xl md:text-5xl font-headline font-black uppercase leading-none">The Machine <br/> Under the Hood</h3>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-<div class="space-y-3">
-<div class="flex items-center gap-3 text-secondary">
-<span class="material-symbols-outlined">settings_input_component</span>
-<span class="font-label font-bold text-sm uppercase">GameMaker Engine</span>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed">Leveraging the raw power of GML for pixel-perfect collision and high-performance sprite manipulation.</p>
-</div>
-<div class="space-y-3">
-<div class="flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined">stay_current_portrait</span>
-<span class="font-label font-bold text-sm uppercase">9:16 Optimization</span>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed">Native portrait development for seamless one-handed mobile engagement and ergonomic controls.</p>
-</div>
-<div class="space-y-3">
-<div class="flex items-center gap-3 text-secondary">
-<span class="material-symbols-outlined">battery_charging_80</span>
-<span class="font-label font-bold text-sm uppercase">Eco-Logic Coding</span>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed">Subtractive rendering cycles to ensure minimal thermal output and maximum battery longevity.</p>
-</div>
-<div class="space-y-3">
-<div class="flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined">terminal</span>
-<span class="font-label font-bold text-sm uppercase">Zero Latency</span>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed">Dedicated input buffers designed for competitive frame-perfect interaction on high-refresh screens.</p>
-</div>
-</div>
-</div>
-<div class="relative bg-black p-8 border border-outline-variant/20 rounded-lg shadow-2xl">
-<div class="flex items-center justify-between mb-6 border-b border-outline-variant/10 pb-4">
-<div class="flex gap-2">
-<div class="w-3 h-3 rounded-full bg-error/40"></div>
-<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
-<div class="w-3 h-3 rounded-full bg-secondary/40"></div>
-</div>
-<div class="font-label text-[10px] text-on-surface-variant/40">CORE_DIAGNOSTICS.LOG</div>
-</div>
-<div class="font-label text-sm space-y-2 text-secondary-container/80">
-<p><span class="text-primary-container">system</span> <span class="text-white">init</span> --mode=silent</p>
-<p class="text-on-surface-variant/40">[OK] Graphics pipeline initialized</p>
-<p class="text-on-surface-variant/40">[OK] Antigravity assets loaded</p>
-<p><span class="text-primary-container">deploy</span> shadow_raid.apk</p>
-<p class="text-on-surface-variant/40">Optimizing shaders for 144Hz...</p>
-<p class="text-on-surface-variant/40">Zebra-striping memory blocks...</p>
-<p class="text-secondary-container">Compilation Successful. Battery impact: 1.2% / hr</p>
-<div class="pt-4 animate-pulse">_</div>
-</div>
-</div>
-</div>
-</div>
+
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="section-header">
+    <div class="section-tag">// ENGINEERING_SPECS</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title" style="margin-bottom:48px;">The Machine Under the Hood</div>
+
+  <div class="tech-grid fade-in">
+    <div class="tech-item">
+      <div class="tech-icon">// ENGINE</div>
+      <div class="tech-name">GameMaker Studio 2</div>
+      <div class="tech-desc">Leveraging the raw power of GML for pixel-perfect collision and high-performance sprite manipulation.</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">// FORMAT</div>
+      <div class="tech-name">9:16 Native</div>
+      <div class="tech-desc">Native portrait development for seamless one-handed mobile engagement and ergonomic controls.</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">// EFFICIENCY</div>
+      <div class="tech-name">Eco-Logic Coding</div>
+      <div class="tech-desc">Subtractive rendering cycles to ensure minimal thermal output and maximum battery longevity.</div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-icon">// INPUT</div>
+      <div class="tech-name">Zero Latency</div>
+      <div class="tech-desc">Dedicated input buffers designed for competitive frame-perfect interaction on high-refresh screens.</div>
+    </div>
+  </div>
 </section>
-<!-- Ticker Section -->
-<section class="overflow-hidden py-12 bg-black border-y border-primary/5">
-<div class="flex whitespace-nowrap gap-12 font-headline font-black text-4xl opacity-10 uppercase tracking-tighter">
-<span>Shadow Core System</span>
-<span class="text-primary">Alastis Dev</span>
-<span>Mobile Optimization</span>
-<span class="text-secondary">Industrial Design</span>
-<span>Shadow Core System</span>
-<span class="text-primary">Alastis Dev</span>
-<span>Mobile Optimization</span>
-<span class="text-secondary">Industrial Design</span>
-</div>
+
+<!-- CREDITS -->
+<section id="credits">
+  <div class="section-header">
+    <div class="section-tag">// SYSTEM_CREDITS</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title" style="margin-bottom:48px;">Credits</div>
+
+  <div class="credits-grid fade-in">
+    <div class="credit-card">
+      <div class="credit-label">// DEVELOPER</div>
+      <div class="credit-value">Alastis Dev</div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// STUDIO</div>
+      <div class="credit-value">Alastis Dev</div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// CONTACT</div>
+      <div class="credit-value"><a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a></div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// WEBSITE</div>
+      <div class="credit-value"><a href="https://alastis.dev" target="_blank">alastis.dev</a></div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// ENGINE</div>
+      <div class="credit-value">GameMaker Studio 2</div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// LOCATION</div>
+      <div class="credit-value">Sunderland, UK</div>
+    </div>
+  </div>
 </section>
-</main>
-<!-- Footer -->
-<footer class="bg-black border-t border-[#dfb7ff]/10 py-12 w-full text-center flex flex-col items-center gap-6">
-<div class="font-mono text-xs uppercase tracking-widest text-[#00f1fe]/40 space-y-4">
-<div class="flex flex-col md:flex-row items-center gap-8">
-<a class="text-[#00f1fe] underline underline-offset-4 hover:text-[#00f1fe] transition-opacity" href="privacy-policy.html">Umbrella Privacy Policy</a>
-<a class="hover:text-[#00f1fe] transition-opacity" href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a>
-</div>
-<p>© 2026 Alastis Dev. All rights reserved.</p>
-</div>
-<div class="mt-8 flex gap-6 text-[#00f1fe]/20">
-<span class="material-symbols-outlined text-4xl">memory</span>
-<span class="material-symbols-outlined text-4xl">precision_manufacturing</span>
-<span class="material-symbols-outlined text-4xl">bolt</span>
-</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 Alastis Dev. All rights reserved.</div>
+  <div style="display:flex;gap:24px;">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a>
+  </div>
 </footer>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 bg-black/90 backdrop-blur-xl border-t border-[#dfb7ff]/10 flex justify-around items-center py-4 px-2" id="mobile-nav">
-<a class="flex flex-col items-center gap-1 nav-link active" href="#" id="m-nav-home">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label text-[10px] uppercase">Home</span>
-</a>
-<a class="flex flex-col items-center gap-1 nav-link" href="#games" id="m-nav-games">
-<span class="material-symbols-outlined">sports_esports</span>
-<span class="font-label text-[10px] uppercase">Games</span>
-</a>
-<a class="flex flex-col items-center gap-1 nav-link" href="#technology" id="m-nav-technology">
-<span class="material-symbols-outlined">memory</span>
-<span class="font-label text-[10px] uppercase">Tech</span>
-</a>
-<a class="flex flex-col items-center gap-1 nav-link" href="privacy-policy.html">
-<span class="material-symbols-outlined">policy</span>
-<span class="font-label text-[10px] uppercase">Legal</span>
-</a>
-</nav>
-<script>
-    const sections = ['home', 'games', 'technology'];
-    const navLinks = {
-        'home': [document.getElementById('nav-home'), document.getElementById('m-nav-home')],
-        'games': [document.getElementById('nav-games'), document.getElementById('m-nav-games')],
-        'technology': [document.getElementById('nav-technology'), document.getElementById('m-nav-technology')]
-    };
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
-    };
+<!-- FIREBASE + LEADERBOARD -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { getDatabase, ref, query, orderByChild, limitToLast, get }
+    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                updateActiveLink(id);
-            }
-        });
-    }, observerOptions);
+  // ⚠️ ZASTĄP SWOJĄ KONFIGURACJĄ FIREBASE
+  const firebaseConfig = {
+    apiKey:            "TWOJ_API_KEY",
+    authDomain:        "TWOJ_PROJECT.firebaseapp.com",
+    databaseURL:       "https://TWOJ_PROJECT-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId:         "TWOJ_PROJECT",
+    storageBucket:     "TWOJ_PROJECT.appspot.com",
+    messagingSenderId: "TWOJ_SENDER_ID",
+    appId:             "TWOJ_APP_ID"
+  };
 
-    sections.forEach(id => {
-        const section = document.getElementById(id);
-        if (section) observer.observe(section);
+  const DEMO_DATA = [
+    { rank:1,  name: "SHADOW_MASTER",  score: 847, date: "2026-04-23" },
+    { rank:2,  name: "GEM_SLAYER",     score: 712, date: "2026-04-22" },
+    { rank:3,  name: "BLADE_RUNNER",   score: 634, date: "2026-04-23" },
+    { rank:4,  name: "VOID_CUTTER",    score: 521, date: "2026-04-21" },
+    { rank:5,  name: "DARK_SLASH",     score: 498, date: "2026-04-20" },
+    { rank:6,  name: "PIXEL_KNIGHT",   score: 445, date: "2026-04-19" },
+    { rank:7,  name: "SHADOW_WOLF",    score: 389, date: "2026-04-23" },
+    { rank:8,  name: "NEON_BLADE",     score: 334, date: "2026-04-18" },
+    { rank:9,  name: "GHOST_CUTTER",   score: 278, date: "2026-04-17" },
+    { rank:10, name: "IRON_SLASH",     score: 211, date: "2026-04-16" }
+  ];
+
+  function renderTable(data) {
+    const medals = ['🥇','🥈','🥉'];
+    let html = `
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>PLAYER</th>
+            <th>SCORE</th>
+            <th>DATE</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+    data.forEach((row, i) => {
+      const rankClass = i < 3 ? `rank-${i+1}` : '';
+      const rankDisplay = i < 3 ? medals[i] : `${i+1}`;
+      html += `
+        <tr>
+          <td class="${rankClass}">${rankDisplay}</td>
+          <td>${row.name}</td>
+          <td class="score-val">${row.score.toLocaleString()}</td>
+          <td style="color:var(--dim)">${row.date}</td>
+        </tr>
+      `;
     });
+    html += '</tbody></table>';
+    document.getElementById('lb-content').innerHTML = html;
+  }
 
-    function updateActiveLink(activeId) {
-        Object.values(navLinks).forEach(links => {
-            links.forEach(link => {
-                if(link) link.classList.remove('active');
-            });
-        });
-
-        if (navLinks[activeId]) {
-            navLinks[activeId].forEach(link => {
-                if(link) link.classList.add('active');
-            });
-        }
+  async function loadLeaderboard() {
+    // Jeśli Firebase nie jest jeszcze skonfigurowany — pokaż demo
+    if (firebaseConfig.apiKey === "TWOJ_API_KEY") {
+      setTimeout(() => renderTable(DEMO_DATA), 800);
+      return;
     }
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY < 100) {
-            updateActiveLink('home');
-        }
-    });
+    try {
+      const app = initializeApp(firebaseConfig);
+      const db  = getDatabase(app);
+      const q   = query(ref(db, 'slash_scores'), orderByChild('score'), limitToLast(10));
+      const snap = await get(q);
+
+      if (!snap.exists()) {
+        document.getElementById('lb-content').innerHTML =
+          '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
+        return;
+      }
+
+      const rows = [];
+      snap.forEach(child => rows.push(child.val()));
+      rows.sort((a,b) => b.score - a.score);
+      rows.forEach((r,i) => r.rank = i+1);
+      renderTable(rows.slice(0,10));
+
+    } catch(e) {
+      console.error('Firebase error:', e);
+      renderTable(DEMO_DATA);
+    }
+  }
+
+  loadLeaderboard();
 </script>
-</body></html>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
