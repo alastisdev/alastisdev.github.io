@@ -839,36 +839,9 @@
   </div>
 </footer>
 
-<!-- FIREBASE + LEADERBOARD -->
-<script type="module">
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getDatabase, ref, query, orderByChild, limitToLast, get }
-    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
-
-  // ⚠️ ZASTĄP SWOJĄ KONFIGURACJĄ FIREBASE
-  const firebaseConfig = {
-    apiKey:            "AIzaSyCcErsKQWFMCrP4-wmi4ZY6Hk9Z_GwGlN4",
-    authDomain:        "alastisdev-shadow-blocks.firebaseapp.com",
-    databaseURL:       "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId:         "alastisdev-shadow-blocks",
-    storageBucket:     "alastisdev-shadow-blocks.firebasestorage.app",
-    messagingSenderId: "110929702156",
-    appId:             "1:110929702156:web:6bd14fae950c6352132d29",
-    measurementId:     "G-J92094KPM1"
-  };
-
-  const DEMO_DATA = [
-    { rank:1,  name: "SHADOW_MASTER",  score: 847, date: "2026-04-23" },
-    { rank:2,  name: "GEM_SLAYER",     score: 712, date: "2026-04-22" },
-    { rank:3,  name: "BLADE_RUNNER",   score: 634, date: "2026-04-23" },
-    { rank:4,  name: "VOID_CUTTER",    score: 521, date: "2026-04-21" },
-    { rank:5,  name: "DARK_SLASH",     score: 498, date: "2026-04-20" },
-    { rank:6,  name: "PIXEL_KNIGHT",   score: 445, date: "2026-04-19" },
-    { rank:7,  name: "SHADOW_WOLF",    score: 389, date: "2026-04-23" },
-    { rank:8,  name: "NEON_BLADE",     score: 334, date: "2026-04-18" },
-    { rank:9,  name: "GHOST_CUTTER",   score: 278, date: "2026-04-17" },
-    { rank:10, name: "IRON_SLASH",     score: 211, date: "2026-04-16" }
-  ];
+<!-- LEADERBOARD (fetch direct JSON) -->
+<script>
+  const FIREBASE_URL = "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app/slash_scores.json";
 
   function renderTable(data) {
     const medals = ['🥇','🥈','🥉'];
@@ -891,7 +864,7 @@
         <tr>
           <td class="${rankClass}">${rankDisplay}</td>
           <td>${row.name}</td>
-          <td class="score-val">${row.score.toLocaleString()}</td>
+          <td class="score-val">${Math.floor(row.score).toLocaleString()}</td>
           <td style="color:var(--dim)">${row.date}</td>
         </tr>
       `;
@@ -901,39 +874,54 @@
   }
 
   async function loadLeaderboard() {
-    // Jeśli Firebase nie jest jeszcze skonfigurowany — pokaż demo
-    if (firebaseConfig.apiKey === "TWOJ_API_KEY") {
-      setTimeout(() => renderTable(DEMO_DATA), 800);
-      return;
-    }
-
     try {
-      const app = initializeApp(firebaseConfig);
-      const db  = getDatabase(app);
-      const q   = query(ref(db, 'slash_scores'), orderByChild('score'), limitToLast(10));
-      const snap = await get(q);
+      const response = await fetch(FIREBASE_URL);
 
-      if (!snap.exists()) {
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+      }
+
+      const data = await response.json();
+
+      if (!data || Object.keys(data).length === 0) {
         document.getElementById('lb-content').innerHTML =
           '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
         return;
       }
 
-      const rows = [];
-      snap.forEach(child => rows.push(child.val()));
-      rows.sort((a,b) => b.score - a.score);
-      rows.forEach((r,i) => r.rank = i+1);
-      renderTable(rows.slice(0,10));
+      // Firebase zwraca { id1: {...}, id2: {...} } → tablica
+      const scores = Object.values(data);
 
-    } catch(e) {
-      console.error('Firebase error:', e);
-      renderTable(DEMO_DATA);
+      // Filtruj puste/nieprawidłowe wpisy
+      const validScores = scores.filter(s =>
+        s && typeof s.score === 'number' && s.name
+      );
+
+      // Sortuj malejąco po score
+      validScores.sort((a, b) => b.score - a.score);
+
+      // Top 10
+      const top10 = validScores.slice(0, 10);
+
+      if (top10.length === 0) {
+        document.getElementById('lb-content').innerHTML =
+          '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
+        return;
+      }
+
+      renderTable(top10);
+
+    } catch (error) {
+      console.error('Leaderboard error:', error);
+      document.getElementById('lb-content').innerHTML =
+        '<div class="lb-empty">// CONNECTION ERROR. RETRY LATER.</div>';
     }
   }
 
+  // Załaduj od razu + odświeżaj co 30 sekund
   loadLeaderboard();
+  setInterval(loadLeaderboard, 30000);
 </script>
-
 <!-- SCROLL ANIMATIONS -->
 <script>
   const observer = new IntersectionObserver(entries => {
