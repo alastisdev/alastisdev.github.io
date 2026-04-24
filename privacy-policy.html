@@ -1,315 +1,504 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy // Alastis Dev</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Roboto+Mono:wght@400;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "on-tertiary-container": "#ffe7d8",
-          "on-secondary": "#00363a",
-          "primary-container": "#9d00ff",
-          "on-primary-container": "#f7e5ff",
-          "on-tertiary": "#4e2500",
-          "secondary-fixed": "#74f5ff",
-          "surface-container-highest": "#353535",
-          "on-secondary-container": "#006a70",
-          "surface-container-high": "#2a2a2a",
-          "on-primary-fixed-variant": "#6b00b0",
-          "on-error-container": "#ffdad6",
-          "on-surface-variant": "#d1c1d9",
-          "primary-fixed": "#f1daff",
-          "surface-dim": "#131313",
-          "primary-fixed-dim": "#dfb7ff",
-          "on-tertiary-fixed": "#2f1400",
-          "secondary-fixed-dim": "#00dbe7",
-          "on-surface": "#e2e2e2",
-          "outline-variant": "#4e4356",
-          "tertiary-fixed": "#ffdcc4",
-          "inverse-primary": "#8c00e5",
-          "on-primary": "#4b007e",
-          "secondary-container": "#00f1fe",
-          "secondary": "#ddfcff",
-          "on-error": "#690005",
-          "inverse-on-surface": "#303030",
-          "surface": "#131313",
-          "on-tertiary-fixed-variant": "#703800",
-          "surface-container-low": "#1b1b1b",
-          "surface-tint": "#dfb7ff",
-          "surface-bright": "#393939",
-          "surface-container-lowest": "#0e0e0e",
-          "on-primary-fixed": "#2d004f",
-          "background": "#131313",
-          "error-container": "#93000a",
-          "tertiary-container": "#a45500",
-          "surface-variant": "#353535",
-          "primary": "#dfb7ff",
-          "on-secondary-fixed": "#002022",
-          "tertiary": "#ffb781",
-          "surface-container": "#1f1f1f",
-          "error": "#ffb4ab",
-          "inverse-surface": "#e2e2e2",
-          "on-secondary-fixed-variant": "#004f54",
-          "on-background": "#e2e2e2",
-          "tertiary-fixed-dim": "#ffb781",
-          "outline": "#9a8ca2"
-        },
-        borderRadius: {
-          DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"
-        },
-        fontFamily: {
-          headline: ["Space Grotesk"],
-          body: ["Manrope"],
-          label: ["Manrope"],
-          mono: ["Roboto Mono"]
-        }
-      }
-    }
-  }
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  :root {
+    --bg:      #080a0e;
+    --bg2:     #0d1117;
+    --panel:   #111820;
+    --border:  #1e2d3d;
+    --accent:  #00d4ff;
+    --accent2: #ff6b00;
+    --accent3: #7fff00;
+    --text:    #c8d6e5;
+    --dim:     #4a6278;
+    --mono:    'Share Tech Mono', monospace;
+    --display: 'Orbitron', sans-serif;
+    --body:    'Rajdhani', sans-serif;
   }
-  body { background-color: #000000; color: #e2e2e2; }
-  .glow-text { text-shadow: 0 0 12px rgba(223,183,255,0.4); }
-  .subtractive-bg {
-    background: linear-gradient(135deg, rgba(223,183,255,0.05) 0%, rgba(157,0,255,0.02) 100%);
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
   }
-  .section-reveal {
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(8,10,14,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--dim); }
+  .nav-links { display: flex; gap: 32px; }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); }
+
+  .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 120px 40px 100px;
+  }
+
+  .page-header { margin-bottom: 60px; }
+
+  .page-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin-bottom: 20px;
     opacity: 0;
-    transform: translateY(16px);
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .page-title {
+    font-family: var(--display);
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .page-title span { color: var(--accent); }
+
+  .page-bar {
+    width: 80px; height: 2px;
+    background: var(--accent);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s forwards;
+  }
+
+  .page-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s forwards;
+  }
+
+  .intro-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 28px 32px;
+    margin-bottom: 60px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.7s forwards;
+  }
+
+  .intro-icon {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .intro-box p {
+    font-family: var(--body);
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .intro-box strong { color: var(--accent); font-weight: 600; }
+
+  .sections { display: flex; flex-direction: column; gap: 48px; }
+
+  .policy-section {
+    opacity: 0;
+    transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .section-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+
+  .policy-section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 22px;
+    color: var(--accent);
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .section-body {
+    padding-left: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-body p {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--dim);
+    line-height: 1.8;
+  }
+
+  .info-box {
+    background: rgba(0,212,255,0.04);
+    border: 1px solid rgba(0,212,255,0.15);
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .info-box .ib-icon {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .info-box p {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    color: var(--accent) !important;
+    letter-spacing: 1px;
+    line-height: 1.6 !important;
+  }
+
+  .warn-box {
+    background: rgba(255,107,0,0.05);
+    border: 1px solid rgba(255,107,0,0.2);
+    padding: 12px 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    display: inline-block;
+  }
+
+  .policy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .policy-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    letter-spacing: 1px;
+  }
+
+  .policy-list li::before {
+    content: '▸';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .contact-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 32px;
+    transition: border-color 0.3s;
+  }
+
+  .contact-card:hover { border-color: var(--accent); }
+
+  .contact-card p {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--dim);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .contact-card a {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  .contact-card a:hover { text-decoration: underline; }
+
+  .contact-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin-top: 16px;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--dim);
+  }
+
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  footer .footer-links { display: flex; gap: 24px; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    main { padding: 100px 20px 80px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .section-body { padding-left: 32px; }
   }
 </style>
 </head>
-<body class="font-body selection:bg-primary-container selection:text-on-primary-container pb-20 md:pb-0">
+<body>
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-[#dfb7ff]/10 flex justify-between items-center px-6 py-4">
-  <a class="text-2xl font-black italic tracking-tighter text-[#dfb7ff] glow-text" href="index.html">ALASTIS DEV</a>
-  <div class="hidden md:flex items-center space-x-8 font-mono uppercase tracking-tighter text-sm">
-    <a class="text-zinc-500 hover:text-[#dfb7ff] transition-colors" href="index.html">HOME</a>
-    <a class="text-zinc-500 hover:text-[#dfb7ff] transition-colors" href="index.html#games">GAMES</a>
-    <a class="text-zinc-500 hover:text-[#dfb7ff] transition-colors" href="index.html#technology">TECHNOLOGY</a>
-    <a class="text-[#dfb7ff] border-b-2 border-[#9d00ff] pb-1" href="privacy-policy.html">PRIVACY</a>
-  </div>
-  <div class="flex items-center space-x-4">
-    <button class="p-2 text-[#dfb7ff] hover:bg-[#131313] transition-all duration-150 active:scale-95">
-      <span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
-    </button>
+<nav>
+  <a href="index.html" class="nav-logo">ALASTIS<span> // </span>DEV</a>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="index.html#games">GAMES</a>
+    <a href="index.html#leaderboard">LEADERBOARD</a>
+    <a href="index.html#technology">TECH</a>
+    <a href="privacy-policy.html" class="active">PRIVACY</a>
   </div>
 </nav>
 
-<!-- MAIN -->
-<main class="relative pt-32 pb-24 px-6 min-h-screen max-w-4xl mx-auto overflow-hidden">
+<main>
 
-  <!-- BG GLOW -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] subtractive-bg rounded-full -z-10 blur-[120px] opacity-20"></div>
+  <div class="page-header">
+    <div class="page-tag"><span class="status-dot"></span>LEGAL TELEMETRY // v2.0.0</div>
+    <h1 class="page-title">PRIVACY <span>//</span> POLICY</h1>
+    <div class="page-bar"></div>
+    <div class="page-meta">LAST_UPDATE: 2026-04-24 // JURISDICTION: UK</div>
+  </div>
 
-  <!-- HEADER -->
-  <header class="mb-16 section-reveal">
-    <div class="font-mono text-xs text-primary mb-2 uppercase tracking-[0.3em] opacity-80">Legal Telemetry // v2.0.0</div>
-    <h1 class="font-mono text-4xl md:text-6xl font-bold tracking-tighter text-on-background uppercase glow-text">
-      Privacy Policy
-    </h1>
-    <div class="h-1 w-24 bg-primary-container mt-6"></div>
-    <p class="font-mono text-xs text-zinc-500 mt-4 tracking-widest">LAST_UPDATE: 2026-04-24 // JURISDICTION: UK</p>
-  </header>
+  <div class="intro-box">
+    <div class="intro-icon">[i]</div>
+    <p>
+      This Privacy Policy applies to all mobile games and applications developed and published by
+      <strong>Marek Banaś</strong> under the studio name <strong>Alastis Dev</strong>
+      — including Shadow Blocks, Shadow Slash, Shadow Raid, and Operation Shadow.
+    </p>
+  </div>
 
-  <!-- INTRO -->
-  <section class="mb-16 p-8 bg-surface-container-low border-l-4 border-l-primary-container section-reveal">
-    <div class="flex items-start gap-4">
-      <span class="material-symbols-outlined text-primary mt-1">shield</span>
-      <p class="text-on-surface text-lg leading-relaxed font-body">
-        This Privacy Policy applies to all mobile games and applications ("Services") developed and published by
-        <span class="text-primary font-semibold">Marek Banaś</span> under the studio name
-        <span class="text-primary font-semibold">Alastis Dev</span>
-        — including Shadow Blocks, Shadow Slash, Shadow Raid, and Operation Shadow.
-      </p>
-    </div>
-  </section>
+  <div class="sections">
 
-  <!-- SECTIONS -->
-  <div class="space-y-16">
-
-    <!-- 01 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">01</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Information Collection and Use
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">INFORMATION COLLECTION AND USE</span>
       </div>
-      <div class="pl-12 space-y-4">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          As a core principle, Alastis Dev aims to collect as little user data as possible. Game progress and settings are saved purely locally on your device using an encrypted save file. We do not require you to create an account to play our games.
-        </p>
-        <div class="bg-surface-container-highest/30 border border-[#dfb7ff]/10 p-4 rounded-lg">
-          <p class="font-mono text-xs text-secondary-fixed-dim tracking-tight">
-            // EXCEPTION: Shadow Slash leaderboard requires a player nickname and score to be submitted to our server. No other personal data is collected.
-          </p>
+      <div class="section-body">
+        <p>As a core principle, Alastis Dev aims to collect as little user data as possible. Game progress and settings are saved purely locally on your device. We do not require you to create an account to play our games.</p>
+        <div class="info-box">
+          <span class="ib-icon">//</span>
+          <p>EXCEPTION: Shadow Slash leaderboard requires a player nickname and score. No other personal data is collected.</p>
         </div>
       </div>
     </article>
 
-    <!-- 02 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">02</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Leaderboard Data
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">LEADERBOARD DATA</span>
       </div>
-      <div class="pl-12 space-y-4">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          Shadow Slash features an optional global leaderboard. If you choose to submit your score, the following data is stored on our secure server (Firebase / Google Cloud):
-        </p>
-        <ul class="space-y-2">
-          <li class="flex items-center gap-3 font-mono text-sm text-on-surface-variant">
-            <span class="text-primary-container">▸</span> Player nickname (chosen by you)
-          </li>
-          <li class="flex items-center gap-3 font-mono text-sm text-on-surface-variant">
-            <span class="text-primary-container">▸</span> Score (integer value)
-          </li>
-          <li class="flex items-center gap-3 font-mono text-sm text-on-surface-variant">
-            <span class="text-primary-container">▸</span> Date of submission
-          </li>
+      <div class="section-body">
+        <p>Shadow Slash features an optional global leaderboard. If you choose to submit your score, the following data is stored on our secure server (Firebase / Google Cloud):</p>
+        <ul class="policy-list">
+          <li>Player nickname (chosen by you)</li>
+          <li>Score (integer value)</li>
+          <li>Date of submission</li>
         </ul>
-        <div class="flex items-center gap-3 bg-surface-container-highest/30 p-4 rounded-lg">
-          <span class="material-symbols-outlined text-secondary">security</span>
-          <p class="text-sm font-mono text-secondary-fixed-dim tracking-tight">
-            No device identifiers, IP addresses, or personal information are stored alongside leaderboard entries.
-          </p>
+        <div class="info-box">
+          <span class="ib-icon">//</span>
+          <p>No device identifiers, IP addresses, or personal information are stored alongside leaderboard entries.</p>
         </div>
       </div>
     </article>
 
-    <!-- 03 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">03</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Third-Party Services and Advertising
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">THIRD-PARTY SERVICES AND ADVERTISING</span>
       </div>
-      <div class="pl-12 space-y-4">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          Our free games may incorporate third-party advertising networks (Google AdMob). These third parties may use cookies, device identifiers (such as Android Advertising ID), and similar technologies to collect non-personal data to provide tailored advertisements and perform analytics.
-        </p>
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          Players may permanently remove all advertisements via the in-app purchase <span class="text-primary font-mono text-sm">remove_ads</span>. Once purchased, no ad SDK calls are made.
-        </p>
-        <div class="flex items-center gap-3 bg-surface-container-highest/30 p-4 rounded-lg">
-          <span class="material-symbols-outlined text-secondary">policy</span>
-          <p class="text-sm font-mono text-secondary-fixed-dim tracking-tight">
-            Ad data processing is governed by Google AdMob's privacy policy.
-          </p>
+      <div class="section-body">
+        <p>Our free games may incorporate third-party advertising networks (Google AdMob). These third parties may use cookies and device identifiers (such as Android Advertising ID) to collect non-personal data for tailored advertisements and analytics.</p>
+        <p>Players may permanently remove all advertisements via the in-app purchase <strong style="color:var(--accent);font-family:var(--mono);font-size:13px;">remove_ads</strong>. Once purchased, no ad SDK calls are made.</p>
+        <div class="info-box">
+          <span class="ib-icon">//</span>
+          <p>Ad data processing is governed by Google AdMob's privacy policy.</p>
         </div>
       </div>
     </article>
 
-    <!-- 04 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">04</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          In-App Purchases
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">IN-APP PURCHASES</span>
       </div>
-      <div class="pl-12 space-y-4">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          Some of our games offer optional In-App Purchases. All payment processing and financial data management are handled securely and exclusively by Google Play Services.
-        </p>
-        <p class="font-mono text-sm uppercase text-error px-3 py-1 border border-error/20 inline-block bg-error-container/5">
-          Alastis Dev never has access to your credit card or billing information.
-        </p>
+      <div class="section-body">
+        <p>Some of our games offer optional In-App Purchases. All payment processing and financial data management are handled securely and exclusively by Google Play Services.</p>
+        <div class="warn-box">⚠ ALASTIS DEV NEVER HAS ACCESS TO YOUR CREDIT CARD OR BILLING INFORMATION.</div>
       </div>
     </article>
 
-    <!-- 05 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">05</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Children's Privacy
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <span class="section-title">CHILDREN'S PRIVACY</span>
       </div>
-      <div class="pl-12">
-        <p class="text-on-surface-variant leading-relaxed font-body mb-4">
-          Our Services are not designed to knowingly collect personally identifiable information from children under the age of 13. Age ratings vary per game — please refer to the official rating on the Google Play Store for each title.
-        </p>
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          If you are a parent or guardian and believe your child has provided us with personal data, please contact us immediately.
-        </p>
+      <div class="section-body">
+        <p>Our Services are not designed to knowingly collect personally identifiable information from children under the age of 13. Age ratings vary per game — please refer to the official rating on the Google Play Store for each title.</p>
+        <p>If you are a parent or guardian and believe your child has provided us with personal data, please contact us immediately.</p>
       </div>
     </article>
 
-    <!-- 06 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">06</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Data Retention and Deletion
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <span class="section-title">DATA RETENTION AND DELETION</span>
       </div>
-      <div class="pl-12 space-y-4">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          Local save data can be deleted at any time by uninstalling the application. Leaderboard entries can be removed upon request by contacting us with your player nickname.
-        </p>
-        <div class="bg-surface-container-highest/30 border border-[#dfb7ff]/10 p-4 rounded-lg font-mono text-xs text-secondary-fixed-dim tracking-tight">
-          // To request leaderboard data deletion: contact alastisdev@gmail.com with subject "DATA_DELETE // [your nickname]"
+      <div class="section-body">
+        <p>Local save data can be deleted at any time by uninstalling the application. Leaderboard entries can be removed upon request by contacting us with your player nickname.</p>
+        <div class="info-box">
+          <span class="ib-icon">//</span>
+          <p>TO REQUEST DATA DELETION: EMAIL alastisdev@gmail.com WITH SUBJECT "DATA_DELETE // [YOUR_NICKNAME]"</p>
         </div>
       </div>
     </article>
 
-    <!-- 07 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">07</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Changes to This Policy
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <span class="section-title">CHANGES TO THIS POLICY</span>
       </div>
-      <div class="pl-12">
-        <p class="text-on-surface-variant leading-relaxed font-body">
-          We may update our Privacy Policy from time to time. We advise you to review this page periodically for any changes. Changes are effective immediately after being posted on this page.
-        </p>
+      <div class="section-body">
+        <p>We may update our Privacy Policy from time to time. We advise you to review this page periodically for any changes. Changes are effective immediately after being posted on this page.</p>
       </div>
     </article>
 
-    <!-- 08 -->
-    <article class="group section-reveal">
-      <div class="flex items-baseline gap-4 mb-4">
-        <span class="font-mono text-2xl text-primary-container opacity-50">08</span>
-        <h2 class="font-mono text-xl font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">
-          Contact
-        </h2>
+    <article class="policy-section">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <span class="section-title">CONTACT</span>
       </div>
-      <div class="pl-12">
-        <div class="bg-[#131313] border border-[#dfb7ff]/10 p-6 rounded-lg hover:border-[#dfb7ff]/30 transition-all">
-          <p class="text-on-surface-variant leading-relaxed font-body mb-4">
-            Questions about this Privacy Policy? Contact the developer:
-          </p>
-          <a class="font-mono text-primary text-lg font-bold tracking-tighter hover:underline decoration-primary-container underline-offset-4" href="mailto:alastisdev@gmail.com">
-            alastisdev@gmail.com
-          </a>
-          <div class="mt-4 font-mono text-xs text-zinc-600 tracking-widest">
-            MAREK BANAŚ // ALASTIS DEV // SUNDERLAND, UK
-          </div>
+      <div class="section-body">
+        <div class="contact-card">
+          <p>Questions about this Privacy Policy? Contact the developer directly:</p>
+          <a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a>
+          <div class="contact-meta">MAREK BANAŚ // ALASTIS DEV // SUNDERLAND, UK</div>
         </div>
       </div>
     </article>
@@ -317,51 +506,21 @@
   </div>
 </main>
 
-<!-- FOOTER -->
-<footer class="w-full py-12 px-6 border-t border-[#353535] bg-black">
-  <div class="flex flex-col md:flex-row justify-between items-center gap-4 max-w-4xl mx-auto">
-    <div class="font-mono text-[10px] uppercase tracking-widest text-zinc-600">© 2026 ALASTIS DEV // ALL_RIGHTS_RESERVED</div>
-    <div class="flex gap-8 font-mono text-[10px] uppercase tracking-widest">
-      <a class="text-zinc-600 hover:text-[#00f1fe] transition-colors" href="index.html">HOME</a>
-      <a class="text-zinc-600 hover:text-[#00f1fe] transition-colors" href="index.html#games">GAMES</a>
-      <a class="text-[#dfb7ff]" href="privacy-policy.html">PRIVACY</a>
-    </div>
-    <div class="flex items-center gap-2">
-      <div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#00f1fe]"></div>
-      <span class="font-mono text-[10px] text-secondary tracking-widest">SYSTEM ONLINE</span>
-    </div>
+<footer>
+  <div>© 2026 Alastis Dev. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a>
+    <a href="index.html#games">GAMES</a>
+    <a href="privacy-policy.html">PRIVACY</a>
+    <a href="mailto:alastisdev@gmail.com">CONTACT</a>
   </div>
 </footer>
 
-<!-- MOBILE NAV -->
-<div class="fixed bottom-0 left-0 w-full z-[100] md:hidden bg-black/95 backdrop-blur-md border-t border-[#dfb7ff]/10 px-4 py-2">
-  <div class="flex justify-around items-center h-14">
-    <a class="flex flex-col items-center gap-1 group" href="index.html">
-      <span class="material-symbols-outlined text-zinc-500 group-hover:text-primary transition-colors text-[20px]">home</span>
-      <span class="font-mono text-[9px] uppercase tracking-tighter text-zinc-600 group-hover:text-primary">Home</span>
-    </a>
-    <a class="flex flex-col items-center gap-1 group" href="index.html#games">
-      <span class="material-symbols-outlined text-zinc-500 group-hover:text-primary transition-colors text-[20px]">sports_esports</span>
-      <span class="font-mono text-[9px] uppercase tracking-tighter text-zinc-600 group-hover:text-primary">Games</span>
-    </a>
-    <a class="flex flex-col items-center gap-1 group" href="index.html#technology">
-      <span class="material-symbols-outlined text-zinc-500 group-hover:text-primary transition-colors text-[20px]">terminal</span>
-      <span class="font-mono text-[9px] uppercase tracking-tighter text-zinc-600 group-hover:text-primary">Tech</span>
-    </a>
-    <a class="flex flex-col items-center gap-1 group" href="privacy-policy.html">
-      <span class="material-symbols-outlined text-primary text-[20px]">policy</span>
-      <span class="font-mono text-[9px] uppercase tracking-tighter text-primary">Privacy</span>
-    </a>
-  </div>
-</div>
-
 <script>
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.policy-section').forEach(el => observer.observe(el));
 </script>
 
 </body>
