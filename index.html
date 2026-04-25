@@ -35,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* GRID BACKGROUND */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +47,6 @@
     z-index: 0;
   }
 
-  /* SCAN LINE */
   body::after {
     content: '';
     position: fixed;
@@ -64,7 +62,6 @@
     z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -103,7 +100,6 @@
 
   .nav-links a:hover { color: var(--accent); }
 
-  /* STATUS DOT */
   .status-dot {
     display: inline-block;
     width: 6px; height: 6px;
@@ -118,7 +114,6 @@
     50% { opacity: 0.3; }
   }
 
-  /* HERO */
   .hero {
     position: relative;
     z-index: 1;
@@ -198,7 +193,6 @@
     transform: translateY(-2px);
   }
 
-  /* TERMINAL WIDGET */
   .terminal {
     position: relative;
     z-index: 1;
@@ -236,7 +230,6 @@
 
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-  /* SECTIONS */
   section {
     position: relative;
     z-index: 1;
@@ -276,7 +269,6 @@
     margin-bottom: 8px;
   }
 
-  /* GAME CARDS */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -426,12 +418,27 @@
     color: var(--card-accent, var(--accent));
   }
 
-  /* LEADERBOARD */
   .leaderboard-wrap {
     background: var(--panel);
     border: 1px solid var(--border);
     border-top: 2px solid var(--accent2);
     overflow: hidden;
+  }
+
+  .lb-scroll {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .lb-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  .lb-scroll::-webkit-scrollbar-track {
+    background: var(--bg2);
+  }
+  .lb-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent2);
+    border-radius: 4px;
   }
 
   .lb-header {
@@ -473,6 +480,9 @@
     color: var(--dim);
     border-bottom: 1px solid var(--border);
     background: rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   .lb-table td {
@@ -507,7 +517,6 @@
     color: var(--dim);
   }
 
-  /* TECH GRID */
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -547,7 +556,6 @@
     line-height: 1.6;
   }
 
-  /* CREDITS */
   .credits-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -586,7 +594,6 @@
 
   .credit-value a:hover { text-decoration: underline; }
 
-  /* FOOTER */
   footer {
     position: relative;
     z-index: 1;
@@ -603,7 +610,6 @@
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -620,7 +626,6 @@
     transform: translateY(0);
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { gap: 20px; }
@@ -631,7 +636,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#top" class="nav-logo">ALASTIS<span> // </span>DEV</a>
   <div class="nav-links">
@@ -643,7 +647,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="top">
   <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v3.2.0</div>
   <h1>ALASTIS <span class="slash">//</span> DEV</h1>
@@ -662,7 +665,6 @@
   </div>
 </div>
 
-<!-- GAMES -->
 <section id="games">
   <div class="section-header">
     <div class="section-tag">// ACTIVE_DEPLOYMENTS</div>
@@ -672,7 +674,6 @@
 
   <div class="games-grid">
 
-    <!-- SHADOW BLOCKS -->
     <div class="game-card shadow-blocks fade-in">
       <div class="card-id">// SHADOW_BLOCKS_v3.2.0</div>
       <div class="card-status status-live"><span class="status-dot"></span>LIVE</div>
@@ -694,12 +695,11 @@
       </div>
     </div>
 
-    <!-- SHADOW SLASH -->
     <div class="game-card shadow-slash fade-in">
       <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
       <div class="card-status status-slash">⚡ IN DEVELOPMENT</div>
       <div class="card-title">Shadow Slash</div>
-      <p class="card-desc">Skill-based mini game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the skull — one wrong cut ends your run. Compete for global top 10.</p>
+      <p class="card-desc">Skill-based mini game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the skull — one wrong cut ends your run. Compete for global top 100.</p>
       <div class="card-tags">
         <span class="tag">MINI GAME</span>
         <span class="tag">SKILL</span>
@@ -717,7 +717,6 @@
       </div>
     </div>
 
-    <!-- SHADOW RAID -->
     <div class="game-card shadow-raid fade-in">
       <div class="card-id">// SHADOW_RAID_v0.4.0</div>
       <div class="card-status status-dev">◈ IN DEVELOPMENT</div>
@@ -742,18 +741,17 @@
   </div>
 </section>
 
-<!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="section-header">
     <div class="section-tag">// SHADOW_SLASH_RANKINGS</div>
     <div class="section-line"></div>
   </div>
   <div class="section-title" style="margin-bottom:12px;">Global Leaderboard</div>
-  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">TOP 10 // SHADOW SLASH // ALL TIME</p>
+  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">TOP 100 // SHADOW SLASH // ALL TIME</p>
 
   <div class="leaderboard-wrap fade-in">
     <div class="lb-header">
-      <div class="lb-title">⚡ SHADOW SLASH // TOP 10</div>
+      <div class="lb-title">⚡ SHADOW SLASH // TOP 100</div>
       <div class="lb-live"><span class="status-dot"></span>LIVE DATA</div>
     </div>
     <div id="lb-content">
@@ -762,7 +760,6 @@
   </div>
 </section>
 
-<!-- TECHNOLOGY -->
 <section id="technology">
   <div class="section-header">
     <div class="section-tag">// ENGINEERING_SPECS</div>
@@ -794,7 +791,6 @@
   </div>
 </section>
 
-<!-- CREDITS -->
 <section id="credits">
   <div class="section-header">
     <div class="section-tag">// SYSTEM_CREDITS</div>
@@ -830,7 +826,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>© 2026 Alastis Dev. All rights reserved.</div>
   <div style="display:flex;gap:24px;">
@@ -839,13 +834,13 @@
   </div>
 </footer>
 
-<!-- LEADERBOARD (fetch direct JSON) -->
 <script>
   const FIREBASE_URL = "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app/slash_scores.json";
 
   function renderTable(data) {
     const medals = ['🥇','🥈','🥉'];
     let html = `
+      <div class="lb-scroll">
       <table class="lb-table">
         <thead>
           <tr>
@@ -869,7 +864,7 @@
         </tr>
       `;
     });
-    html += '</tbody></table>';
+    html += '</tbody></table></div>';
     document.getElementById('lb-content').innerHTML = html;
   }
 
@@ -889,27 +884,23 @@
         return;
       }
 
-      // Firebase zwraca { id1: {...}, id2: {...} } → tablica
       const scores = Object.values(data);
 
-      // Filtruj puste/nieprawidłowe wpisy
       const validScores = scores.filter(s =>
         s && typeof s.score === 'number' && s.name
       );
 
-      // Sortuj malejąco po score
       validScores.sort((a, b) => b.score - a.score);
 
-      // Top 10
-      const top10 = validScores.slice(0, 10);
+      const top100 = validScores.slice(0, 100);
 
-      if (top10.length === 0) {
+      if (top100.length === 0) {
         document.getElementById('lb-content').innerHTML =
           '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
         return;
       }
 
-      renderTable(top10);
+      renderTable(top100);
 
     } catch (error) {
       console.error('Leaderboard error:', error);
@@ -918,11 +909,10 @@
     }
   }
 
-  // Załaduj od razu + odświeżaj co 30 sekund
   loadLeaderboard();
   setInterval(loadLeaderboard, 30000);
 </script>
-<!-- SCROLL ANIMATIONS -->
+
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
