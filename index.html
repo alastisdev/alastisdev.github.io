@@ -23,7 +23,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -501,7 +500,7 @@
 
   .score-val { color: var(--accent2); font-weight: bold; }
 
-  .lb-loading {
+  .lb-loading, .lb-empty {
     text-align: center;
     padding: 60px;
     font-family: var(--mono);
@@ -509,14 +508,230 @@
     color: var(--dim);
   }
 
-  .lb-empty {
-    text-align: center;
-    padding: 60px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--dim);
+  /* ============================================ */
+  /* COFFEE SECTION (DEV TRAPPED IN CODING HELL)   */
+  /* ============================================ */
+  .coffee-section {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 40px;
   }
 
+  .coffee-card {
+    background: linear-gradient(135deg, rgba(15,8,8,0.95), rgba(20,10,5,0.95));
+    border: 1px solid rgba(255,107,0,0.3);
+    border-top: 2px solid var(--accent2);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coffee-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(255,107,0,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .coffee-warning {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #ff3333;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    animation: blink 2s infinite;
+  }
+
+  .coffee-title {
+    font-family: var(--display);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .coffee-title .red { color: #ff3333; }
+
+  .coffee-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--accent2);
+    margin: 24px auto;
+    opacity: 0.6;
+  }
+
+  .coffee-line1 {
+    font-family: var(--display);
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--accent2);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .coffee-line2 {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--dim);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  .btn-coffee {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent2);
+    color: #000;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 18px 40px;
+    text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-coffee:hover {
+    background: #ff8533;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,107,0,0.3);
+  }
+
+  .btn-coffee .coffee-emoji {
+    font-size: 18px;
+    filter: grayscale(0.5);
+  }
+
+  /* ============================================ */
+  /* FLOATING COFFEE BUTTON (right-bottom)         */
+  /* ============================================ */
+  .coffee-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    background: var(--accent2);
+    color: #000;
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 22px;
+    text-decoration: none;
+    border: 2px solid #000;
+    box-shadow: 0 4px 16px rgba(255,107,0,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    animation: coffee-pulse 3s ease-in-out infinite;
+  }
+
+  .coffee-float:hover {
+    background: #ff8533;
+    transform: scale(1.05);
+    animation: none;
+  }
+
+  .coffee-float::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--accent2);
+    opacity: 0;
+    animation: coffee-ping 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes coffee-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
+  }
+
+  @keyframes coffee-ping {
+    0%   { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 0;   transform: scale(1.4); }
+  }
+
+  /* ============================================ */
+  /* TOOLS GRID                                     */
+  /* ============================================ */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .tool-item {
+    background: var(--panel);
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s, transform 0.2s;
+    display: block;
+    position: relative;
+  }
+
+  .tool-item:hover {
+    background: var(--bg2);
+  }
+
+  .tool-icon {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .tool-name {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .tool-role {
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+
+  .tool-desc {
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.5;
+  }
+
+  .tool-link {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin-top: 12px;
+    display: inline-block;
+  }
+
+  .tool-item:hover .tool-link {
+    color: var(--accent);
+  }
+
+  /* TECH GRID (existing) */
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -631,6 +846,9 @@
     .nav-links { gap: 20px; }
     section { padding: 80px 20px; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
+    .coffee-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
+    .coffee-section { padding: 0 20px; }
+    .coffee-card { padding: 40px 24px; }
   }
 </style>
 </head>
@@ -642,6 +860,7 @@
     <a href="#games">GAMES</a>
     <a href="#leaderboard">LEADERBOARD</a>
     <a href="#technology">TECH</a>
+    <a href="#tools">TOOLS</a>
     <a href="#credits">CREDITS</a>
     <a href="privacy-policy.html">PRIVACY</a>
   </div>
@@ -741,6 +960,22 @@
   </div>
 </section>
 
+<!-- ============================================ -->
+<!-- COFFEE SECTION - DEV TRAPPED IN CODING HELL   -->
+<!-- ============================================ -->
+<div class="coffee-section fade-in">
+  <div class="coffee-card">
+    <div class="coffee-warning">⚠ EMERGENCY BROADCAST ⚠</div>
+    <h2 class="coffee-title"><span class="red">DEV TRAPPED</span><br>IN CODING HELL</h2>
+    <div class="coffee-divider"></div>
+    <div class="coffee-line1">EACH COFFEE UNLOCKS ONE HOUR OF ESCAPE</div>
+    <div class="coffee-line2">Your support keeps the developer alive. Literally.</div>
+    <a href="https://buymeacoffee.com/alastis.dev" class="btn-coffee" target="_blank">
+      <span class="coffee-emoji">☕</span> SEND COFFEE
+    </a>
+  </div>
+</div>
+
 <section id="leaderboard">
   <div class="section-header">
     <div class="section-tag">// SHADOW_SLASH_RANKINGS</div>
@@ -791,6 +1026,86 @@
   </div>
 </section>
 
+<!-- ============================================ -->
+<!-- TOOLS I USE                                    -->
+<!-- ============================================ -->
+<section id="tools">
+  <div class="section-header">
+    <div class="section-tag">// PRODUCTION_STACK</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title" style="margin-bottom:12px;">Tools I Use</div>
+  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">BATTLE-TESTED // WHAT POWERS ALASTIS DEV</p>
+
+  <div class="tools-grid fade-in">
+
+    <a href="https://gamemaker.io" target="_blank" class="tool-item">
+      <div class="tool-icon">// ENGINE</div>
+      <div class="tool-name">GameMaker Studio 2</div>
+      <div class="tool-role">Game Engine</div>
+      <div class="tool-desc">The backbone. Pure GML, fast iteration, mobile-first.</div>
+      <div class="tool-link">→ gamemaker.io</div>
+    </a>
+
+    <a href="https://firebase.google.com" target="_blank" class="tool-item">
+      <div class="tool-icon">// BACKEND</div>
+      <div class="tool-name">Firebase</div>
+      <div class="tool-role">Realtime Database</div>
+      <div class="tool-desc">Powers the global leaderboard. Free tier, zero downtime.</div>
+      <div class="tool-link">→ firebase.google.com</div>
+    </a>
+
+    <a href="https://pages.github.com" target="_blank" class="tool-item">
+      <div class="tool-icon">// HOSTING</div>
+      <div class="tool-name">GitHub Pages</div>
+      <div class="tool-role">Static Hosting</div>
+      <div class="tool-desc">This site lives here. Free, fast, version-controlled.</div>
+      <div class="tool-link">→ pages.github.com</div>
+    </a>
+
+    <a href="https://deepmind.google/technologies/veo/" target="_blank" class="tool-item">
+      <div class="tool-icon">// VIDEO_AI</div>
+      <div class="tool-name">Google Veo</div>
+      <div class="tool-role">Video Generation</div>
+      <div class="tool-desc">Every animated background in Shadow Blocks. 8 unique biomes, all AI-rendered.</div>
+      <div class="tool-link">→ deepmind.google</div>
+    </a>
+
+    <a href="https://www.photopea.com" target="_blank" class="tool-item">
+      <div class="tool-icon">// GRAPHICS</div>
+      <div class="tool-name">Photopea</div>
+      <div class="tool-role">Image Editor</div>
+      <div class="tool-desc">Free Photoshop alternative. Sprites, UI, marketing assets.</div>
+      <div class="tool-link">→ photopea.com</div>
+    </a>
+
+    <a href="https://claude.ai" target="_blank" class="tool-item">
+      <div class="tool-icon">// AI_REVIEWER</div>
+      <div class="tool-name">Claude</div>
+      <div class="tool-role">Senior Code Review</div>
+      <div class="tool-desc">Anthropic's AI. Catches bugs, suggests architecture, debugs production issues.</div>
+      <div class="tool-link">→ claude.ai</div>
+    </a>
+
+    <a href="https://gemini.google.com" target="_blank" class="tool-item">
+      <div class="tool-icon">// AI_ARCHITECT</div>
+      <div class="tool-name">Gemini</div>
+      <div class="tool-role">Daily GML Partner</div>
+      <div class="tool-desc">Google's AI. Day-to-day GML coding, planning, project memory.</div>
+      <div class="tool-link">→ gemini.google.com</div>
+    </a>
+
+    <a href="https://notebooklm.google.com" target="_blank" class="tool-item">
+      <div class="tool-icon">// AI_RESEARCH</div>
+      <div class="tool-name">NotebookLM</div>
+      <div class="tool-role">Knowledge Base</div>
+      <div class="tool-desc">Project documentation, lore tracking, design decisions.</div>
+      <div class="tool-link">→ notebooklm.google.com</div>
+    </a>
+
+  </div>
+</section>
+
 <section id="credits">
   <div class="section-header">
     <div class="section-tag">// SYSTEM_CREDITS</div>
@@ -831,8 +1146,14 @@
   <div style="display:flex;gap:24px;">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a>
+    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Buy Me a Coffee</a>
   </div>
 </footer>
+
+<!-- FLOATING COFFEE BUTTON -->
+<a href="https://buymeacoffee.com/alastis.dev" target="_blank" class="coffee-float">
+  ☕ COFFEE?
+</a>
 
 <script>
   const FIREBASE_URL = "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app/slash_scores.json";
@@ -871,11 +1192,7 @@
   async function loadLeaderboard() {
     try {
       const response = await fetch(FIREBASE_URL);
-
-      if (!response.ok) {
-        throw new Error('HTTP ' + response.status);
-      }
-
+      if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
 
       if (!data || Object.keys(data).length === 0) {
@@ -885,13 +1202,8 @@
       }
 
       const scores = Object.values(data);
-
-      const validScores = scores.filter(s =>
-        s && typeof s.score === 'number' && s.name
-      );
-
+      const validScores = scores.filter(s => s && typeof s.score === 'number' && s.name);
       validScores.sort((a, b) => b.score - a.score);
-
       const top100 = validScores.slice(0, 100);
 
       if (top100.length === 0) {
@@ -901,7 +1213,6 @@
       }
 
       renderTable(top100);
-
     } catch (error) {
       console.error('Leaderboard error:', error);
       document.getElementById('lb-content').innerHTML =
