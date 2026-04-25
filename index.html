@@ -594,6 +594,56 @@
   .credit-value a { color: var(--accent); text-decoration: none; }
   .credit-value a:hover { text-decoration: underline; }
 
+  /* DEDICATION */
+  .dedication-section {
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 80px auto 40px;
+    padding: 0 40px;
+  }
+  .dedication-card {
+    background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(255,107,0,0.04));
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .dedication-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0,212,255,0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .dedication-tag {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 4px;
+    margin-bottom: 32px;
+  }
+  .dedication-text {
+    font-family: var(--body);
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text); line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 32px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dedication-text strong {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .dedication-signature {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--accent2);
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+
   footer {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
@@ -623,6 +673,8 @@
     .coffee-section { padding: 0 20px; }
     .coffee-card { padding: 40px 24px; }
     .roadmap-item { grid-template-columns: 1fr; gap: 8px; }
+    .dedication-section { padding: 0 20px; margin: 60px auto 20px; }
+    .dedication-card { padding: 40px 24px; }
   }
 </style>
 </head>
@@ -671,7 +723,7 @@
   <div class="about-card fade-in">
     <div class="about-icon">A<span class="slash">/</span>D</div>
     <div class="about-text">
-      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. Founded by a developer balancing autism, depression and full-time fatherhood — every line of code is written between school runs and bedtime stories. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
+      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. <strong>Founded by Marek Banaś</strong> — self-taught developer based in Sunderland, UK. Building games as a path forward after years of corporate burnout. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
     </div>
   </div>
 </section>
@@ -690,10 +742,10 @@
     <!-- SHADOW BLOCKS -->
     <div class="game-card shadow-blocks fade-in">
       <div class="card-image">
-  <img src="images/shadow-blocks-hero.jpeg" alt="Shadow Blocks" 
-       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-  <div class="card-image-placeholder" style="display:none;">◆</div>
-</div>
+        <img src="images/shadow-blocks-hero.jpeg" alt="Shadow Blocks" 
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="card-image-placeholder" style="display:none;">◆</div>
+      </div>
       <div class="card-id">// SHADOW_BLOCKS_v4.0.0</div>
       <div class="card-status status-live"><span class="status-dot"></span>LIVE ON PLAY STORE</div>
       <div class="card-title">Shadow Blocks</div>
@@ -718,10 +770,10 @@
     <!-- SHADOW SLASH -->
     <div class="game-card shadow-slash fade-in">
       <div class="card-image">
-  <img src="images/shadow-slash-hero.jpeg" alt="Shadow Slash"
-       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-  <div class="card-image-placeholder" style="display:none;">⚡</div>
-</div>
+        <img src="images/shadow-slash-hero.jpeg" alt="Shadow Slash"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="card-image-placeholder" style="display:none;">⚡</div>
+      </div>
       <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
       <div class="card-status status-slash">⚡ LIVE IN SHADOW BLOCKS</div>
       <div class="card-title">Shadow Slash</div>
@@ -1057,12 +1109,20 @@
 
   <div class="credits-grid fade-in">
     <div class="credit-card">
-      <div class="credit-label">// DEVELOPER</div>
+      <div class="credit-label">// FOUNDER</div>
+      <div class="credit-value">Marek Banaś</div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// STUDIO</div>
       <div class="credit-value">Alastis Dev</div>
     </div>
     <div class="credit-card">
-      <div class="credit-label">// LOCATION</div>
-      <div class="credit-value">Sunderland, UK</div>
+      <div class="credit-label">// FOUNDED</div>
+      <div class="credit-value">2026 — Sunderland, UK</div>
+    </div>
+    <div class="credit-card">
+      <div class="credit-label">// FIRST RELEASE</div>
+      <div class="credit-value">Shadow Blocks (2026)</div>
     </div>
     <div class="credit-card">
       <div class="credit-label">// CONTACT</div>
@@ -1072,14 +1132,18 @@
       <div class="credit-label">// SUPPORT</div>
       <div class="credit-value"><a href="https://buymeacoffee.com/alastis.dev" target="_blank">Buy Me a Coffee</a></div>
     </div>
-    <div class="credit-card">
-      <div class="credit-label">// ENGINE</div>
-      <div class="credit-value">GameMaker Studio 2 Pro</div>
+  </div>
+</section>
+
+<!-- DEDICATION -->
+<section class="dedication-section">
+  <div class="dedication-card fade-in">
+    <div class="dedication-tag">// DEDICATED_TO</div>
+    <div class="dedication-text">
+      For my wife <strong>Judyta</strong> — the steady ground beneath every line of code.<br>
+      And for my two boys, <strong>Erick</strong> and <strong>Brandon</strong> — who teach me every day what determination really means.
     </div>
-    <div class="credit-card">
-      <div class="credit-label">// EST.</div>
-      <div class="credit-value">2024</div>
-    </div>
+    <div class="dedication-signature">— Marek</div>
   </div>
 </section>
 
