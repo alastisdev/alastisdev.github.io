@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALASTIS DEV // INDUSTRIAL SYSTEMS</title>
+<title>ALASTIS DEV // INDUSTRIAL GAME SYSTEMS</title>
+<meta name="description" content="Indie game studio from Sunderland, UK. Building dark fantasy mobile games with engineering precision.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -51,223 +52,173 @@
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
     );
     pointer-events: none;
     z-index: 0;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
     background: rgba(8,10,14,0.92);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
   }
 
   .nav-logo {
     font-family: var(--display);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 2px;
+    font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px;
     text-decoration: none;
   }
-
   .nav-logo span { color: var(--dim); }
-
-  .nav-links { display: flex; gap: 32px; }
-
+  .nav-links { display: flex; gap: 28px; }
   .nav-links a {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--dim);
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 1px; transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--accent); }
 
   .status-dot {
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--accent3);
-    border-radius: 50%;
-    margin-right: 8px;
-    animation: pulse 2s infinite;
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--accent3); border-radius: 50%;
+    margin-right: 8px; animation: pulse 2s infinite;
   }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
   .hero {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 40px 60px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 80px 40px 60px;
   }
 
   .hero-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 4px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 4px;
     margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
   }
 
   .hero h1 {
     font-family: var(--display);
     font-size: clamp(32px, 6vw, 80px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -1px;
+    font-weight: 900; line-height: 1; letter-spacing: -1px;
     margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
   }
-
   .hero h1 .slash { color: var(--accent); }
 
   .hero-sub {
     font-family: var(--display);
     font-size: clamp(14px, 2vw, 20px);
-    font-weight: 400;
-    color: var(--dim);
-    letter-spacing: 6px;
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
+    font-weight: 400; color: var(--dim);
+    letter-spacing: 6px; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
   }
 
   .hero-desc {
-    font-family: var(--body);
-    font-size: 16px;
-    color: var(--text);
-    max-width: 500px;
+    font-family: var(--body); font-size: 16px;
+    color: var(--text); max-width: 500px;
     margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
   }
 
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--accent);
-    color: #000;
-    font-family: var(--display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    padding: 14px 32px;
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #000;
+    font-family: var(--display); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 14px 32px; text-decoration: none;
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     transition: all 0.2s;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
+    opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
-
-  .btn-primary:hover {
-    background: #fff;
-    transform: translateY(-2px);
-  }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
 
   .terminal {
-    position: relative;
-    z-index: 1;
-    margin: 20px auto 0;
-    max-width: 480px;
-    background: var(--panel);
-    border: 1px solid var(--border);
+    position: relative; z-index: 1;
+    margin: 20px auto 0; max-width: 480px;
+    background: var(--panel); border: 1px solid var(--border);
     border-top: 2px solid var(--accent);
     padding: 20px 24px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--dim);
-    opacity: 0;
-    animation: fadeUp 0.8s 1.2s forwards;
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
+    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
   }
-
-  .terminal-header {
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-size: 10px;
-    letter-spacing: 2px;
-  }
-
+  .terminal-header { color: var(--accent); margin-bottom: 12px; font-size: 10px; letter-spacing: 2px; }
   .terminal-line { margin-bottom: 4px; }
   .terminal-line .ok { color: var(--accent3); }
   .terminal-line .val { color: var(--accent2); }
   .terminal-cursor {
-    display: inline-block;
-    width: 8px; height: 12px;
-    background: var(--accent);
-    animation: blink 1s infinite;
-    vertical-align: middle;
-    margin-left: 4px;
+    display: inline-block; width: 8px; height: 12px;
+    background: var(--accent); animation: blink 1s infinite;
+    vertical-align: middle; margin-left: 4px;
   }
-
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
   section {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto;
     padding: 100px 40px;
   }
 
   .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: flex; align-items: center; gap: 16px;
     margin-bottom: 60px;
   }
-
   .section-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 3px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent); letter-spacing: 3px;
     background: rgba(0,212,255,0.08);
     border: 1px solid rgba(0,212,255,0.2);
     padding: 4px 12px;
   }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
+  .section-line { flex: 1; height: 1px; background: var(--border); }
   .section-title {
     font-family: var(--display);
     font-size: clamp(22px, 3vw, 36px);
-    font-weight: 700;
-    color: #fff;
+    font-weight: 700; color: #fff;
     margin-bottom: 8px;
   }
+  .section-subtitle {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--dim); letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
 
+  /* ABOUT SECTION */
+  .about-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .about-card { grid-template-columns: 1fr; text-align: center; }
+  }
+  .about-icon {
+    font-family: var(--display);
+    font-size: 60px; font-weight: 900;
+    color: var(--accent); line-height: 1;
+  }
+  .about-icon .slash { color: var(--accent2); }
+  .about-text {
+    font-family: var(--body); font-size: 16px;
+    color: var(--text); line-height: 1.7;
+  }
+  .about-text strong { color: var(--accent); font-weight: 600; }
+
+  /* GAMES GRID */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -278,550 +229,378 @@
     background: var(--panel);
     border: 1px solid var(--border);
     padding: 32px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
   }
-
   .game-card::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
+    position: absolute; top: 0; left: 0; right: 0;
     height: 2px;
     background: var(--card-accent, var(--accent));
-    transition: height 0.3s;
   }
-
   .game-card:hover {
     border-color: var(--card-accent, var(--accent));
     transform: translateY(-4px);
   }
-
   .game-card.shadow-blocks { --card-accent: var(--accent3); }
-  .game-card.shadow-raid   { --card-accent: var(--accent); }
   .game-card.shadow-slash  { --card-accent: var(--accent2); }
+  .game-card.shadow-raid   { --card-accent: var(--accent); }
 
-  .card-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    padding: 4px 10px;
-    border: 1px solid;
+  .card-image {
+    width: calc(100% + 64px);
+    margin: -32px -32px 24px -32px;
+    height: 200px;
+    background: linear-gradient(135deg, #0d1117, #1e2d3d);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .card-image-placeholder {
+    font-family: var(--mono); font-size: 80px;
+    color: var(--card-accent, var(--accent));
+    opacity: 0.3;
   }
 
+  .card-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2px; margin-bottom: 20px;
+    padding: 4px 10px; border: 1px solid;
+  }
   .status-live  { color: var(--accent3); border-color: rgba(127,255,0,0.3); background: rgba(127,255,0,0.05); }
   .status-dev   { color: var(--accent);  border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.05); }
   .status-slash { color: var(--accent2); border-color: rgba(255,107,0,0.3); background: rgba(255,107,0,0.05); }
 
-  .card-id {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
+  .card-id { font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 2px; margin-bottom: 12px; }
+  .card-title { font-family: var(--display); font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .card-desc { font-family: var(--body); font-size: 15px; color: var(--dim); line-height: 1.7; margin-bottom: 28px; }
 
-  .card-title {
-    font-family: var(--display);
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-
-  .card-desc {
-    font-family: var(--body);
-    font-size: 15px;
-    color: var(--dim);
-    line-height: 1.7;
-    margin-bottom: 28px;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
-
+  .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .tag {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 1px;
-    padding: 3px 10px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 1px; padding: 3px 10px;
     background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    color: var(--dim);
+    border: 1px solid var(--border); color: var(--dim);
   }
 
-  .card-progress {
-    margin-bottom: 24px;
-  }
-
+  .card-progress { margin-bottom: 24px; }
   .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--dim);
-    margin-bottom: 8px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--dim); margin-bottom: 8px;
   }
-
-  .progress-bar {
-    height: 2px;
-    background: var(--border);
-    position: relative;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--card-accent, var(--accent));
-    transition: width 1s ease;
-  }
+  .progress-bar { height: 2px; background: var(--border); position: relative; }
+  .progress-fill { height: 100%; background: var(--card-accent, var(--accent)); transition: width 1s ease; }
 
   .card-links { display: flex; gap: 12px; flex-wrap: wrap; }
-
   .btn-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: 1px solid;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 1px; padding: 10px 20px;
+    text-decoration: none; border: 1px solid;
     transition: all 0.2s;
   }
-
   .btn-card.primary {
     background: var(--card-accent, var(--accent));
     border-color: var(--card-accent, var(--accent));
     color: #000;
   }
-
   .btn-card.primary:hover { opacity: 0.85; }
-
   .btn-card.secondary {
-    background: transparent;
-    border-color: var(--border);
-    color: var(--dim);
+    background: transparent; border-color: var(--border); color: var(--dim);
   }
-
   .btn-card.secondary:hover {
     border-color: var(--card-accent, var(--accent));
     color: var(--card-accent, var(--accent));
   }
 
-  .leaderboard-wrap {
+  /* BIOM GALLERY */
+  .biome-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .biome-card {
     background: var(--panel);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--accent2);
-    overflow: hidden;
+    overflow: hidden; position: relative;
+    aspect-ratio: 9/16;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .biome-card:hover {
+    border-color: var(--accent2);
+    transform: scale(1.02);
+  }
+  .biome-card img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .biome-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--bg2), var(--panel));
+    font-family: var(--mono); font-size: 14px;
+    color: var(--dim); letter-spacing: 2px;
+  }
+  .biome-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: #fff;
+  }
+  .biome-name {
+    font-family: var(--display); font-size: 14px;
+    font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .biome-range {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent2); letter-spacing: 2px;
   }
 
-  .lb-scroll {
-    max-height: 600px;
-    overflow-y: auto;
-  }
-
-  .lb-scroll::-webkit-scrollbar {
-    width: 8px;
-  }
-  .lb-scroll::-webkit-scrollbar-track {
-    background: var(--bg2);
-  }
-  .lb-scroll::-webkit-scrollbar-thumb {
-    background: var(--accent2);
-    border-radius: 4px;
-  }
-
-  .lb-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 28px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,107,0,0.05);
-  }
-
-  .lb-title {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent2);
-    letter-spacing: 2px;
-  }
-
-  .lb-live {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent3);
-    letter-spacing: 2px;
-  }
-
-  .lb-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-
-  .lb-table th {
-    text-align: left;
-    padding: 12px 28px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--dim);
-    border-bottom: 1px solid var(--border);
-    background: rgba(0,0,0,0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-
-  .lb-table td {
-    padding: 16px 28px;
-    border-bottom: 1px solid rgba(30,45,61,0.5);
-    color: var(--text);
-    transition: background 0.2s;
-  }
-
-  .lb-table tr:hover td { background: rgba(0,212,255,0.03); }
-  .lb-table tr:last-child td { border-bottom: none; }
-
-  .rank-1 { color: #ffd700; }
-  .rank-2 { color: #c0c0c0; }
-  .rank-3 { color: #cd7f32; }
-
-  .score-val { color: var(--accent2); font-weight: bold; }
-
-  .lb-loading, .lb-empty {
-    text-align: center;
-    padding: 60px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--dim);
-  }
-
-  /* ============================================ */
-  /* COFFEE SECTION (DEV TRAPPED IN CODING HELL)   */
-  /* ============================================ */
+  /* COFFEE SECTION */
   .coffee-section {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 60px auto;
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 60px auto;
     padding: 0 40px;
   }
-
   .coffee-card {
     background: linear-gradient(135deg, rgba(15,8,8,0.95), rgba(20,10,5,0.95));
     border: 1px solid rgba(255,107,0,0.3);
     border-top: 2px solid var(--accent2);
     padding: 60px 40px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
   .coffee-card::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 100%;
+    position: absolute; top: 0; left: 0; right: 0; height: 100%;
     background: radial-gradient(circle at 50% 0%, rgba(255,107,0,0.08), transparent 70%);
     pointer-events: none;
   }
-
   .coffee-warning {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: #ff3333;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    animation: blink 2s infinite;
+    font-family: var(--mono); font-size: 10px;
+    color: #ff3333; letter-spacing: 4px;
+    margin-bottom: 20px; animation: blink 2s infinite;
   }
-
   .coffee-title {
     font-family: var(--display);
     font-size: clamp(28px, 5vw, 48px);
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    line-height: 1.1;
+    font-weight: 900; color: #fff;
+    letter-spacing: 2px; margin-bottom: 12px; line-height: 1.1;
   }
-
   .coffee-title .red { color: #ff3333; }
-
   .coffee-divider {
-    width: 80px;
-    height: 2px;
+    width: 80px; height: 2px;
     background: var(--accent2);
-    margin: 24px auto;
-    opacity: 0.6;
+    margin: 24px auto; opacity: 0.6;
   }
-
   .coffee-line1 {
     font-family: var(--display);
     font-size: clamp(14px, 2vw, 18px);
-    color: var(--accent2);
-    letter-spacing: 3px;
+    color: var(--accent2); letter-spacing: 3px;
     margin-bottom: 8px;
   }
-
   .coffee-line2 {
-    font-family: var(--body);
-    font-size: 14px;
-    color: var(--dim);
-    margin-bottom: 32px;
-    font-style: italic;
+    font-family: var(--body); font-size: 14px;
+    color: var(--dim); margin-bottom: 32px; font-style: italic;
   }
-
   .btn-coffee {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--accent2);
-    color: #000;
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    padding: 18px 40px;
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--accent2); color: #000;
+    font-family: var(--display); font-size: 14px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 18px 40px; text-decoration: none;
     clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
+    transition: all 0.2s; border: none; cursor: pointer;
   }
-
   .btn-coffee:hover {
-    background: #ff8533;
-    transform: translateY(-2px);
+    background: #ff8533; transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(255,107,0,0.3);
   }
 
-  .btn-coffee .coffee-emoji {
-    font-size: 18px;
-    filter: grayscale(0.5);
-  }
-
-  /* ============================================ */
-  /* FLOATING COFFEE BUTTON (right-bottom)         */
-  /* ============================================ */
+  /* FLOATING COFFEE */
   .coffee-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
+    position: fixed; bottom: 24px; right: 24px;
     z-index: 200;
-    background: var(--accent2);
-    color: #000;
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    padding: 14px 22px;
-    text-decoration: none;
+    background: var(--accent2); color: #000;
+    font-family: var(--display); font-size: 13px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 14px 22px; text-decoration: none;
     border: 2px solid #000;
     box-shadow: 0 4px 16px rgba(255,107,0,0.4);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     transition: all 0.2s;
     animation: coffee-pulse 3s ease-in-out infinite;
   }
-
   .coffee-float:hover {
-    background: #ff8533;
-    transform: scale(1.05);
+    background: #ff8533; transform: scale(1.05);
     animation: none;
   }
-
   .coffee-float::before {
     content: '';
-    position: absolute;
-    inset: -4px;
+    position: absolute; inset: -4px;
     border: 2px solid var(--accent2);
     opacity: 0;
     animation: coffee-ping 3s ease-in-out infinite;
     pointer-events: none;
   }
-
   @keyframes coffee-pulse {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.06); }
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.06); }
   }
-
   @keyframes coffee-ping {
     0%   { opacity: 0.6; transform: scale(1); }
-    100% { opacity: 0;   transform: scale(1.4); }
+    100% { opacity: 0; transform: scale(1.4); }
   }
 
-  /* ============================================ */
-  /* TOOLS GRID                                     */
-  /* ============================================ */
-  .tools-grid {
+  /* LEADERBOARD */
+  .leaderboard-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent2);
+    overflow: hidden;
+  }
+  .lb-scroll { max-height: 600px; overflow-y: auto; }
+  .lb-scroll::-webkit-scrollbar { width: 8px; }
+  .lb-scroll::-webkit-scrollbar-track { background: var(--bg2); }
+  .lb-scroll::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
+  .lb-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,107,0,0.05);
+  }
+  .lb-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--accent2); letter-spacing: 2px; }
+  .lb-live { font-family: var(--mono); font-size: 10px; color: var(--accent3); letter-spacing: 2px; }
+  .lb-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; }
+  .lb-table th {
+    text-align: left; padding: 12px 28px;
+    font-size: 10px; letter-spacing: 2px; color: var(--dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(0,0,0,0.2);
+    position: sticky; top: 0; z-index: 1;
+  }
+  .lb-table td {
+    padding: 16px 28px;
+    border-bottom: 1px solid rgba(30,45,61,0.5);
+    color: var(--text);
+  }
+  .lb-table tr:hover td { background: rgba(0,212,255,0.03); }
+  .lb-table tr:last-child td { border-bottom: none; }
+  .rank-1 { color: #ffd700; }
+  .rank-2 { color: #c0c0c0; }
+  .rank-3 { color: #cd7f32; }
+  .score-val { color: var(--accent2); font-weight: bold; }
+  .lb-loading, .lb-empty {
+    text-align: center; padding: 60px;
+    font-family: var(--mono); font-size: 12px; color: var(--dim);
+  }
+
+  /* TECH/TOOLS GRID */
+  .tech-grid, .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
   }
-
-  .tool-item {
+  .tech-item, .tool-item {
     background: var(--panel);
     padding: 28px 24px;
-    text-decoration: none;
-    color: var(--text);
-    transition: background 0.2s, transform 0.2s;
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s;
     display: block;
-    position: relative;
   }
-
-  .tool-item:hover {
-    background: var(--bg2);
-  }
-
-  .tool-icon {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 2px;
+  .tech-item:hover, .tool-item:hover { background: var(--bg2); }
+  .tech-icon, .tool-icon {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent); letter-spacing: 2px;
     margin-bottom: 16px;
   }
-
-  .tool-name {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 6px;
+  .tech-name, .tool-name {
+    font-family: var(--display); font-size: 16px;
+    font-weight: 700; color: #fff; margin-bottom: 6px;
   }
-
   .tool-role {
-    font-family: var(--body);
-    font-size: 13px;
-    color: var(--accent2);
-    margin-bottom: 12px;
+    font-family: var(--body); font-size: 13px;
+    color: var(--accent2); margin-bottom: 12px;
   }
-
-  .tool-desc {
-    font-family: var(--body);
-    font-size: 13px;
-    color: var(--dim);
-    line-height: 1.5;
+  .tech-desc, .tool-desc {
+    font-family: var(--body); font-size: 13px;
+    color: var(--dim); line-height: 1.5;
   }
-
   .tool-link {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--dim);
-    letter-spacing: 2px;
-    margin-top: 12px;
-    display: inline-block;
+    font-family: var(--mono); font-size: 9px;
+    color: var(--dim); letter-spacing: 2px;
+    margin-top: 12px; display: inline-block;
   }
+  .tool-item:hover .tool-link { color: var(--accent); }
 
-  .tool-item:hover .tool-link {
-    color: var(--accent);
-  }
-
-  /* TECH GRID (existing) */
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .tech-item {
+  /* ROADMAP */
+  .roadmap {
     background: var(--panel);
-    padding: 32px 28px;
+    border: 1px solid var(--border);
+    padding: 0;
+  }
+  .roadmap-item {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 100px 30px 1fr;
+    gap: 20px;
+    align-items: center;
     transition: background 0.2s;
   }
-
-  .tech-item:hover { background: var(--bg2); }
-
-  .tech-icon {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
+  .roadmap-item:last-child { border-bottom: none; }
+  .roadmap-item:hover { background: var(--bg2); }
+  .roadmap-phase {
+    font-family: var(--mono); font-size: 11px;
     letter-spacing: 2px;
-    margin-bottom: 16px;
   }
+  .phase-now    { color: var(--accent3); }
+  .phase-next   { color: var(--accent); }
+  .phase-later  { color: var(--accent2); }
+  .phase-future { color: var(--dim); }
+  .roadmap-icon { font-size: 20px; text-align: center; }
+  .roadmap-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .roadmap-desc { font-family: var(--body); font-size: 13px; color: var(--dim); }
 
-  .tech-name {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-
-  .tech-desc {
-    font-family: var(--body);
-    font-size: 13px;
-    color: var(--dim);
-    line-height: 1.6;
-  }
-
+  /* CREDITS */
   .credits-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
   }
-
-  @media (max-width: 600px) {
-    .credits-grid { grid-template-columns: 1fr; }
-  }
-
+  @media (max-width: 600px) { .credits-grid { grid-template-columns: 1fr; } }
   .credit-card {
     background: var(--panel);
     border: 1px solid var(--border);
     padding: 28px;
   }
-
   .credit-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 2px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--dim); letter-spacing: 2px;
     margin-bottom: 8px;
   }
-
   .credit-value {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
+    font-family: var(--display); font-size: 16px;
+    font-weight: 700; color: #fff;
   }
-
-  .credit-value a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
+  .credit-value a { color: var(--accent); text-decoration: none; }
   .credit-value a:hover { text-decoration: underline; }
 
   footer {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     border-top: 1px solid var(--border);
     padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--dim);
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
   }
-
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
@@ -829,26 +608,21 @@
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0; transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
-    .nav-links { gap: 20px; }
+    .nav-links { gap: 16px; }
     section { padding: 80px 20px; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
     .coffee-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
     .coffee-section { padding: 0 20px; }
     .coffee-card { padding: 40px 24px; }
+    .roadmap-item { grid-template-columns: 1fr; gap: 8px; }
   }
 </style>
 </head>
@@ -857,53 +631,77 @@
 <nav>
   <a href="#top" class="nav-logo">ALASTIS<span> // </span>DEV</a>
   <div class="nav-links">
+    <a href="#about">ABOUT</a>
     <a href="#games">GAMES</a>
+    <a href="#biomes">BIOMES</a>
     <a href="#leaderboard">LEADERBOARD</a>
-    <a href="#technology">TECH</a>
+    <a href="#roadmap">ROADMAP</a>
     <a href="#tools">TOOLS</a>
-    <a href="#credits">CREDITS</a>
     <a href="privacy-policy.html">PRIVACY</a>
   </div>
 </nav>
 
 <div class="hero" id="top">
-  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v3.2.0</div>
+  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.0.0</div>
   <h1>ALASTIS <span class="slash">//</span> DEV</h1>
   <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
-  <p class="hero-desc">Precision-coded mobile mechanics. Built for OLED screens, optimised for one-handed play, engineered in pure GML.</p>
+  <p class="hero-desc">Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.</p>
   <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-primary" target="_blank">
     ▶ PLAY SHADOW BLOCKS
   </a>
   <div class="terminal">
     <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Graphics pipeline initialized</div>
     <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LIVE</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">IN_DEV</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">IN_DEV</span></div>
-    <div class="terminal-line">LATENCY: <span class="val">0.04ms</span> // UPTIME: <span class="val">99.9%</span><span class="terminal-cursor"></span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">LIVE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">PROTOTYPE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Operation Shadow — <span class="val">PLANNED</span></div>
+    <div class="terminal-line">UPTIME: <span class="val">99.9%</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
   </div>
 </div>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-tag">// FOUNDER_PROFILE</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">About the Studio</div>
+  <p class="section-subtitle">SOLO DEVELOPMENT // SUNDERLAND, UK</p>
+
+  <div class="about-card fade-in">
+    <div class="about-icon">A<span class="slash">/</span>D</div>
+    <div class="about-text">
+      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. Founded by a developer balancing autism, depression and full-time fatherhood — every line of code is written between school runs and bedtime stories. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
+    </div>
+  </div>
+</section>
+
+<!-- GAMES -->
 <section id="games">
   <div class="section-header">
     <div class="section-tag">// ACTIVE_DEPLOYMENTS</div>
     <div class="section-line"></div>
   </div>
-  <div class="section-title" style="margin-bottom:48px;">Project Portfolio</div>
+  <div class="section-title">Project Portfolio</div>
+  <p class="section-subtitle">3 ACTIVE PROJECTS // 1 PLANNED HIT</p>
 
   <div class="games-grid">
 
+    <!-- SHADOW BLOCKS -->
     <div class="game-card shadow-blocks fade-in">
-      <div class="card-id">// SHADOW_BLOCKS_v3.2.0</div>
-      <div class="card-status status-live"><span class="status-dot"></span>LIVE</div>
+      <div class="card-image">
+        <div class="card-image-placeholder">◆</div>
+      </div>
+      <div class="card-id">// SHADOW_BLOCKS_v4.0.0</div>
+      <div class="card-status status-live"><span class="status-dot"></span>LIVE ON PLAY STORE</div>
       <div class="card-title">Shadow Blocks</div>
-      <p class="card-desc">Minimalist Match-3 puzzle engine built for rapid tactile feedback and low-latency interaction. Designed for OLED efficiency. 80 handcrafted levels across 8 atmospheric worlds.</p>
+      <p class="card-desc">Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with AI-rendered 4K animated backgrounds. Tells a wordless story of escape from a cursed castle.</p>
       <div class="card-tags">
         <span class="tag">MATCH-3</span>
         <span class="tag">ANDROID</span>
-        <span class="tag">GML</span>
         <span class="tag">80 LEVELS</span>
-        <span class="tag">8 WORLDS</span>
+        <span class="tag">8 BIOMES</span>
+        <span class="tag">6 LANGUAGES</span>
       </div>
       <div class="card-progress">
         <div class="progress-label"><span>COMPLETION</span><span>100%</span></div>
@@ -911,58 +709,142 @@
       </div>
       <div class="card-links">
         <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-card primary" target="_blank">▶ GOOGLE PLAY</a>
+        <a href="#biomes" class="btn-card secondary">VIEW BIOMES</a>
       </div>
     </div>
 
+    <!-- SHADOW SLASH -->
     <div class="game-card shadow-slash fade-in">
+      <div class="card-image">
+        <div class="card-image-placeholder">⚡</div>
+      </div>
       <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
-      <div class="card-status status-slash">⚡ IN DEVELOPMENT</div>
+      <div class="card-status status-slash">⚡ LIVE IN SHADOW BLOCKS</div>
       <div class="card-title">Shadow Slash</div>
-      <p class="card-desc">Skill-based mini game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the skull — one wrong cut ends your run. Compete for global top 100.</p>
+      <p class="card-desc">Skill-based mini-game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the cursed skull — one wrong cut ends your run. Compete on the global TOP 100.</p>
       <div class="card-tags">
-        <span class="tag">MINI GAME</span>
+        <span class="tag">MINI-GAME</span>
         <span class="tag">SKILL</span>
         <span class="tag">LEADERBOARD</span>
-        <span class="tag">ANDROID</span>
-        <span class="tag">GML</span>
+        <span class="tag">GLOBAL</span>
       </div>
       <div class="card-progress">
-        <div class="progress-label"><span>COMPILATION</span><span>70%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        <div class="progress-label"><span>STATUS</span><span>LIVE</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
       </div>
       <div class="card-links">
-        <a href="#leaderboard" class="btn-card primary">⚡ LEADERBOARD</a>
-        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-card secondary" target="_blank">GET THE GAME</a>
+        <a href="#leaderboard" class="btn-card primary">⚡ TOP 100</a>
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-card secondary" target="_blank">PLAY NOW</a>
       </div>
     </div>
 
+    <!-- SHADOW RAID -->
     <div class="game-card shadow-raid fade-in">
-      <div class="card-id">// SHADOW_RAID_v0.4.0</div>
-      <div class="card-status status-dev">◈ IN DEVELOPMENT</div>
+      <div class="card-image">
+        <img src="images/shadow-raid-boss.png" alt="Shadow Raid Boss" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="card-image-placeholder" style="display:none;">🛸</div>
+      </div>
+      <div class="card-id">// SHADOW_RAID_v0.05</div>
+      <div class="card-status status-dev"><span class="status-dot"></span>PROTOTYPE PHASE</div>
       <div class="card-title">Shadow Raid</div>
-      <p class="card-desc">High-velocity vertical space shooter pushing the limits of the Antigravity mobile framework. Precision flight in pure darkness. 144Hz optimised.</p>
+      <p class="card-desc">Top-down vertical space shooter. Modern evolution of the arcade classics — narrow passages, asteroid storms, hostile sectors. A hacker-pilot infiltrates The Shadow Core. Built on the modular ALASTIS CORE 2.0 engine.</p>
       <div class="card-tags">
         <span class="tag">SHOOTER</span>
-        <span class="tag">ANDROID</span>
-        <span class="tag">GML</span>
+        <span class="tag">SCI-FI</span>
         <span class="tag">144HZ</span>
-        <span class="tag">ANTIGRAVITY</span>
+        <span class="tag">GLSL SHADERS</span>
+        <span class="tag">VERTICAL</span>
       </div>
       <div class="card-progress">
-        <div class="progress-label"><span>COMPILATION</span><span>65%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+        <div class="progress-label"><span>DEVELOPMENT</span><span>5%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
       </div>
       <div class="card-links">
-        <a href="#" class="btn-card secondary">COMING SOON</a>
+        <a href="#" class="btn-card secondary">PROTOTYPE — TBA</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- COFFEE SECTION - DEV TRAPPED IN CODING HELL   -->
-<!-- ============================================ -->
+<!-- BIOMES GALLERY -->
+<section id="biomes">
+  <div class="section-header">
+    <div class="section-tag">// SHADOW_BLOCKS // WORLD_MAP</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">8 Biomes / 80 Levels</div>
+  <p class="section-subtitle">ESCAPE FROM THE CURSED CASTLE // 4K ANIMATED BACKGROUNDS</p>
+
+  <div class="biome-grid fade-in">
+    <div class="biome-card">
+      <img src="images/biomes/prison.jpg" alt="Prison" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">PRISON</div>
+      <div class="biome-overlay">
+        <div class="biome-name">PRISON</div>
+        <div class="biome-range">LEVELS 1-10</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/dungeon.jpg" alt="Dungeon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">DUNGEON</div>
+      <div class="biome-overlay">
+        <div class="biome-name">DUNGEON</div>
+        <div class="biome-range">LEVELS 11-20</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/grave.jpg" alt="Grave" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">GRAVE</div>
+      <div class="biome-overlay">
+        <div class="biome-name">GRAVE</div>
+        <div class="biome-range">LEVELS 21-30</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/torture.jpg" alt="Torture Chamber" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">TORTURE</div>
+      <div class="biome-overlay">
+        <div class="biome-name">TORTURE CHAMBER</div>
+        <div class="biome-range">LEVELS 31-40</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/corridor.jpg" alt="Corridor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">CORRIDOR</div>
+      <div class="biome-overlay">
+        <div class="biome-name">CORRIDOR</div>
+        <div class="biome-range">LEVELS 41-50</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/skeleton-king.jpg" alt="King Skeleton" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">SKELETON KING</div>
+      <div class="biome-overlay">
+        <div class="biome-name">KING SKELETON</div>
+        <div class="biome-range">LEVELS 51-60 // BOSS</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/bridge.jpg" alt="Bridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">BRIDGE</div>
+      <div class="biome-overlay">
+        <div class="biome-name">BRIDGE</div>
+        <div class="biome-range">LEVELS 61-70</div>
+      </div>
+    </div>
+    <div class="biome-card">
+      <img src="images/biomes/desert.jpg" alt="Desert" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="biome-placeholder" style="display:none;">DESERT</div>
+      <div class="biome-overlay">
+        <div class="biome-name">DESERT</div>
+        <div class="biome-range">LEVELS 71-80</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COFFEE -->
 <div class="coffee-section fade-in">
   <div class="coffee-card">
     <div class="coffee-warning">⚠ EMERGENCY BROADCAST ⚠</div>
@@ -971,18 +853,19 @@
     <div class="coffee-line1">EACH COFFEE UNLOCKS ONE HOUR OF ESCAPE</div>
     <div class="coffee-line2">Your support keeps the developer alive. Literally.</div>
     <a href="https://buymeacoffee.com/alastis.dev" class="btn-coffee" target="_blank">
-      <span class="coffee-emoji">☕</span> SEND COFFEE
+      <span>☕</span> SEND COFFEE
     </a>
   </div>
 </div>
 
+<!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="section-header">
     <div class="section-tag">// SHADOW_SLASH_RANKINGS</div>
     <div class="section-line"></div>
   </div>
-  <div class="section-title" style="margin-bottom:12px;">Global Leaderboard</div>
-  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">TOP 100 // SHADOW SLASH // ALL TIME</p>
+  <div class="section-title">Global Leaderboard</div>
+  <p class="section-subtitle">TOP 100 // SHADOW SLASH // ALL TIME</p>
 
   <div class="leaderboard-wrap fade-in">
     <div class="lb-header">
@@ -995,47 +878,100 @@
   </div>
 </section>
 
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-header">
+    <div class="section-tag">// PRODUCTION_TIMELINE</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">Roadmap</div>
+  <p class="section-subtitle">WHERE WE ARE // WHERE WE'RE GOING</p>
+
+  <div class="roadmap fade-in">
+    <div class="roadmap-item">
+      <div class="roadmap-phase phase-now">NOW</div>
+      <div class="roadmap-icon">◆</div>
+      <div>
+        <div class="roadmap-title">Shadow Blocks v4.0.0 — LIVE</div>
+        <div class="roadmap-desc">8 biomes, 80 levels, online leaderboard, 6 languages. The flagship product.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase phase-now">NOW</div>
+      <div class="roadmap-icon">⚡</div>
+      <div>
+        <div class="roadmap-title">Shadow Slash — Mini-game LIVE</div>
+        <div class="roadmap-desc">Skill-based slasher with global TOP 100 leaderboard. Built into Shadow Blocks.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase phase-next">NEXT</div>
+      <div class="roadmap-icon">🛸</div>
+      <div>
+        <div class="roadmap-title">Shadow Raid — Prototype Demo</div>
+        <div class="roadmap-desc">Top-down vertical shooter. Asteroid mechanics, enemy ships, narrow passages. Built on ALASTIS CORE 2.0.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase phase-later">LATER</div>
+      <div class="roadmap-icon">🎮</div>
+      <div>
+        <div class="roadmap-title">Operation: Shadow — 2D Action Platformer</div>
+        <div class="roadmap-desc">Story-driven platformer inspired by Code Name: Viper. Dark themes, dramatic narrative. The future flagship.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase phase-future">FUTURE</div>
+      <div class="roadmap-icon">▣</div>
+      <div>
+        <div class="roadmap-title">Classified Project — Dark RPG</div>
+        <div class="roadmap-desc">Open-world top-down RPG. Story-rich, ambitious scope. Details when ready.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
 <section id="technology">
   <div class="section-header">
     <div class="section-tag">// ENGINEERING_SPECS</div>
     <div class="section-line"></div>
   </div>
-  <div class="section-title" style="margin-bottom:48px;">The Machine Under the Hood</div>
+  <div class="section-title">The Machine Under the Hood</div>
+  <p class="section-subtitle">PRECISION ENGINEERING // MOBILE-FIRST DESIGN</p>
 
   <div class="tech-grid fade-in">
     <div class="tech-item">
       <div class="tech-icon">// ENGINE</div>
       <div class="tech-name">GameMaker Studio 2</div>
-      <div class="tech-desc">Leveraging the raw power of GML for pixel-perfect collision and high-performance sprite manipulation.</div>
+      <div class="tech-desc">Pure GML codebase. Pixel-perfect collision. High-performance sprite rendering. Professional license.</div>
     </div>
     <div class="tech-item">
       <div class="tech-icon">// FORMAT</div>
       <div class="tech-name">9:16 Native</div>
-      <div class="tech-desc">Native portrait development for seamless one-handed mobile engagement and ergonomic controls.</div>
+      <div class="tech-desc">Portrait-first development. One-handed mobile play. Ergonomic controls.</div>
     </div>
     <div class="tech-item">
       <div class="tech-icon">// EFFICIENCY</div>
       <div class="tech-name">Eco-Logic Coding</div>
-      <div class="tech-desc">Subtractive rendering cycles to ensure minimal thermal output and maximum battery longevity.</div>
+      <div class="tech-desc">Subtractive rendering. Minimal thermal output. Maximum battery life. Optimized for OLED.</div>
     </div>
     <div class="tech-item">
       <div class="tech-icon">// INPUT</div>
       <div class="tech-name">Zero Latency</div>
-      <div class="tech-desc">Dedicated input buffers designed for competitive frame-perfect interaction on high-refresh screens.</div>
+      <div class="tech-desc">Dedicated input buffers. Frame-perfect touch response. 144Hz screen optimization.</div>
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- TOOLS I USE                                    -->
-<!-- ============================================ -->
+<!-- TOOLS -->
 <section id="tools">
   <div class="section-header">
     <div class="section-tag">// PRODUCTION_STACK</div>
     <div class="section-line"></div>
   </div>
-  <div class="section-title" style="margin-bottom:12px;">Tools I Use</div>
-  <p style="font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:40px;letter-spacing:1px;">BATTLE-TESTED // WHAT POWERS ALASTIS DEV</p>
+  <div class="section-title">Tools I Use</div>
+  <p class="section-subtitle">BATTLE-TESTED // WHAT POWERS ALASTIS DEV</p>
 
   <div class="tools-grid fade-in">
 
@@ -1067,7 +1003,7 @@
       <div class="tool-icon">// VIDEO_AI</div>
       <div class="tool-name">Google Veo</div>
       <div class="tool-role">Video Generation</div>
-      <div class="tool-desc">Every animated background in Shadow Blocks. 8 unique biomes, all AI-rendered.</div>
+      <div class="tool-desc">Every animated background in Shadow Blocks. 8 biomes, all AI-rendered.</div>
       <div class="tool-link">→ deepmind.google</div>
     </a>
 
@@ -1083,7 +1019,7 @@
       <div class="tool-icon">// AI_REVIEWER</div>
       <div class="tool-name">Claude</div>
       <div class="tool-role">Senior Code Review</div>
-      <div class="tool-desc">Anthropic's AI. Catches bugs, suggests architecture, debugs production issues.</div>
+      <div class="tool-desc">Anthropic's AI. Catches bugs, suggests architecture, debugs production.</div>
       <div class="tool-link">→ claude.ai</div>
     </a>
 
@@ -1091,7 +1027,7 @@
       <div class="tool-icon">// AI_ARCHITECT</div>
       <div class="tool-name">Gemini</div>
       <div class="tool-role">Daily GML Partner</div>
-      <div class="tool-desc">Google's AI. Day-to-day GML coding, planning, project memory.</div>
+      <div class="tool-desc">Google's AI. Day-to-day coding, planning, project memory.</div>
       <div class="tool-link">→ gemini.google.com</div>
     </a>
 
@@ -1106,12 +1042,14 @@
   </div>
 </section>
 
+<!-- CREDITS -->
 <section id="credits">
   <div class="section-header">
     <div class="section-tag">// SYSTEM_CREDITS</div>
     <div class="section-line"></div>
   </div>
-  <div class="section-title" style="margin-bottom:48px;">Credits</div>
+  <div class="section-title">Credits & Contact</div>
+  <p class="section-subtitle">REACH OUT // FOLLOW THE BUILD</p>
 
   <div class="credits-grid fade-in">
     <div class="credit-card">
@@ -1119,38 +1057,37 @@
       <div class="credit-value">Alastis Dev</div>
     </div>
     <div class="credit-card">
-      <div class="credit-label">// STUDIO</div>
-      <div class="credit-value">Alastis Dev</div>
+      <div class="credit-label">// LOCATION</div>
+      <div class="credit-value">Sunderland, UK</div>
     </div>
     <div class="credit-card">
       <div class="credit-label">// CONTACT</div>
       <div class="credit-value"><a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a></div>
     </div>
     <div class="credit-card">
-      <div class="credit-label">// WEBSITE</div>
-      <div class="credit-value"><a href="https://alastis.dev" target="_blank">alastis.dev</a></div>
+      <div class="credit-label">// SUPPORT</div>
+      <div class="credit-value"><a href="https://buymeacoffee.com/alastis.dev" target="_blank">Buy Me a Coffee</a></div>
     </div>
     <div class="credit-card">
       <div class="credit-label">// ENGINE</div>
-      <div class="credit-value">GameMaker Studio 2</div>
+      <div class="credit-value">GameMaker Studio 2 Pro</div>
     </div>
     <div class="credit-card">
-      <div class="credit-label">// LOCATION</div>
-      <div class="credit-value">Sunderland, UK</div>
+      <div class="credit-label">// EST.</div>
+      <div class="credit-value">2024</div>
     </div>
   </div>
 </section>
 
 <footer>
   <div>© 2026 Alastis Dev. All rights reserved.</div>
-  <div style="display:flex;gap:24px;">
+  <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
     <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="mailto:alastisdev@gmail.com">alastisdev@gmail.com</a>
-    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Buy Me a Coffee</a>
+    <a href="mailto:alastisdev@gmail.com">Contact</a>
+    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
   </div>
 </footer>
 
-<!-- FLOATING COFFEE BUTTON -->
 <a href="https://buymeacoffee.com/alastis.dev" target="_blank" class="coffee-float">
   ☕ COFFEE?
 </a>
@@ -1163,14 +1100,7 @@
     let html = `
       <div class="lb-scroll">
       <table class="lb-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>PLAYER</th>
-            <th>SCORE</th>
-            <th>DATE</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>PLAYER</th><th>SCORE</th><th>DATE</th></tr></thead>
         <tbody>
     `;
     data.forEach((row, i) => {
@@ -1211,7 +1141,6 @@
           '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
         return;
       }
-
       renderTable(top100);
     } catch (error) {
       console.error('Leaderboard error:', error);
@@ -1232,7 +1161,6 @@
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
