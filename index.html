@@ -689,6 +689,62 @@
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+/* LATEST DEVLOG */
+  .latest-post {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .latest-post::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .latest-post:hover { 
+    border-color: var(--accent); 
+    transform: translateX(4px);
+  }
+  .latest-post:hover::before { width: 6px; }
+
+  .latest-post-link {
+    display: block;
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .latest-post-meta {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--dim); letter-spacing: 2px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .latest-post-date { color: var(--accent); }
+  .latest-post-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .latest-post-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 700; color: #fff;
+    margin-bottom: 16px; line-height: 1.3;
+  }
+
+  .latest-post-excerpt {
+    font-family: var(--body); font-size: 15px;
+    color: var(--dim); line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .latest-post-readmore {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 2px;
+  }
+  
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
@@ -926,6 +982,41 @@
   </div>
 </section>
 
+</section>
+
+<!-- LATEST DEVLOG -->
+<section id="latest-devlog">
+  <div class="section-header">
+    <div class="section-tag">// LATEST_FROM_BLOG</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">From the Devlog</div>
+  <p class="section-subtitle">BEHIND THE SCENES // SOLO INDIE DEVELOPMENT</p>
+
+  <div class="latest-post fade-in">
+    <a href="/devlog/2026-04-27-battery-saver.html" class="latest-post-link">
+      <div class="latest-post-meta">
+        <span class="latest-post-date">2026.04.27</span>
+        <div class="latest-post-tags">
+          <span class="post-tag">v4.1.0</span>
+          <span class="post-tag">FEATURE</span>
+          <span class="post-tag">OPTIMIZATION</span>
+        </div>
+      </div>
+      <h3 class="latest-post-title">Battery Saver Mode — When Animated Backgrounds Drain Your Phone</h3>
+      <p class="latest-post-excerpt">Adding a quality-of-life feature one day after launch. How I replaced video backgrounds with static sprites without breaking anything, and why I built it as a LIVE toggle instead of a room restart.</p>
+      <span class="latest-post-readmore">READ_FULL_POST →</span>
+    </a>
+  </div>
+
+  <div style="text-align: center; margin-top: 32px;">
+    <a href="/devlog/" class="btn-card secondary" style="display: inline-flex;">VIEW_ALL_POSTS →</a>
+  </div>
+</section>
+
+<!-- COFFEE -->
+<div class="coffee-section fade-in">
+  
 <!-- COFFEE -->
 <div class="coffee-section fade-in">
   <div class="coffee-card">
