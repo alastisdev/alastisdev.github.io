@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Raid Dev Update #1 // ALASTIS DEV</title>
+<meta name="description" content="13 hours of solo dev grind. Foundation, lore, and the first tutorial system for Shadow Raid — a vertical shooter in development.">
+
+<meta name="author" content="Marek Banaś / Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-05-01-shadow-raid-dev-update-01.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-05-01-shadow-raid-dev-update-01.html">
+<meta property="og:title" content="Shadow Raid Dev Update #1 — Foundation, Lore & First Tutorial">
+<meta property="og:description" content="Solo indie dev story. 13 hours of building. Eight systems shipped. One vertical shooter taking shape.">
+<meta property="og:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+<meta property="article:published_time" content="2026-05-01">
+<meta property="article:author" content="Marek Banaś">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow Raid Dev Update #1 — Foundation, Lore & First Tutorial">
+<meta name="twitter:description" content="Solo indie dev. 13 hours. Eight systems. One vertical shooter taking shape.">
+<meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080a0e'/><text x='50' y='70' font-family='monospace' font-size='70' font-weight='900' fill='%2300d4ff' text-anchor='middle'>A</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080a0e; --bg2: #0d1117; --panel: #111820;
+    --border: #1e2d3d; --accent: #00d4ff; --accent2: #ff6b00;
+    --accent3: #7fff00; --text: #c8d6e5; --dim: #4a6278;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Orbitron', sans-serif;
+    --body: 'Rajdhani', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 17px; line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,10,14,0.92); border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px; text-decoration: none;
+  }
+  .nav-logo span { color: var(--dim); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 1px; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .post-back {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); letter-spacing: 2px;
+    text-decoration: none; margin-bottom: 40px;
+    display: inline-block; transition: color 0.2s;
+  }
+  .post-back:hover { color: var(--accent); }
+
+  .post-meta {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .post-date { color: var(--accent); }
+  .post-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .post-tag {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 1px; padding: 2px 8px;
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.2);
+    color: var(--accent2);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900; color: #fff;
+    line-height: 1.2; letter-spacing: -0.5px;
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 22px; font-weight: 700;
+    color: var(--accent); margin: 48px 0 16px;
+    letter-spacing: 1px;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-size: 16px; font-weight: 700;
+    color: var(--accent2); margin: 32px 0 12px;
+    letter-spacing: 1px;
+  }
+
+  p { margin-bottom: 20px; color: var(--text); }
+  p strong { color: var(--accent); font-weight: 600; }
+
+  ul, ol {
+    margin: 0 0 24px 24px; color: var(--text);
+  }
+  li { margin-bottom: 8px; }
+
+  .lead {
+    font-size: 19px; color: var(--text);
+    border-left: 2px solid var(--accent);
+    padding-left: 20px; margin: 32px 0;
+    font-style: italic;
+  }
+
+  blockquote {
+    background: var(--panel);
+    border-left: 3px solid var(--accent2);
+    padding: 20px 24px; margin: 24px 0;
+    font-style: italic; color: var(--dim);
+  }
+
+  code {
+    font-family: var(--mono);
+    background: var(--panel);
+    padding: 2px 6px; border-radius: 2px;
+    color: var(--accent3); font-size: 0.9em;
+  }
+
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    padding: 20px; margin: 24px 0;
+    overflow-x: auto;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--text);
+  }
+
+  hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  .post-cta {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent2);
+    padding: 32px; margin: 48px 0 0;
+    text-align: center;
+  }
+  .post-cta-title {
+    font-family: var(--display); font-size: 18px;
+    color: #fff; margin-bottom: 12px;
+  }
+  .post-cta-desc {
+    font-family: var(--body); font-size: 14px;
+    color: var(--dim); margin-bottom: 24px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #000;
+    font-family: var(--display); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 14px 28px; text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s;
+  }
+  .btn:hover { background: #fff; transform: translateY(-2px); }
+
+  .systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px; margin: 32px 0;
+  }
+  .system-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    padding: 16px 20px;
+  }
+  .system-card-status {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--accent3); letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .system-card-title {
+    font-family: var(--display); font-size: 14px;
+    color: #fff; font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .system-card-desc {
+    font-family: var(--body); font-size: 13px;
+    color: var(--dim); line-height: 1.5;
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    article { padding: 100px 20px 60px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
+  <div class="nav-links">
+    <a href="/#about">ABOUT</a>
+    <a href="/#games">GAMES</a>
+    <a href="/devlog/" class="active">DEVLOG</a>
+    <a href="/#leaderboard">LEADERBOARD</a>
+    <a href="/#tools">TOOLS</a>
+  </div>
+</nav>
+
+<article>
+
+  <a href="/devlog/" class="post-back">← BACK_TO_DEVLOG</a>
+
+  <div class="post-meta">
+    <span class="post-date">2026.05.01</span>
+    <div class="post-tags">
+      <span class="post-tag">SHADOW_RAID</span>
+      <span class="post-tag">v0.2.5</span>
+      <span class="post-tag">SOLO_DEV</span>
+      <span class="post-tag">DEV_UPDATE</span>
+    </div>
+  </div>
+
+  <h1>Shadow Raid Dev Update #1 — Foundation, Lore & First Tutorial</h1>
+
+  <p class="lead">13 hours of solo dev grind. Eight major systems shipped in a single day. One vertical shooter taking shape. Here's what happened.</p>
+
+  <h2>The Project</h2>
+
+  <p>For those just joining — <strong>Shadow Raid</strong> is my second mobile game, currently in development under the Alastis Dev banner. It's a vertical shooter inspired by classics like <em>River Raid</em> and modern hits like <em>Sky Force</em>. Top-down, touch controls, dark sci-fi aesthetic, four-act campaign.</p>
+
+  <p>And it's coming to Google Play later this year — alongside Shadow Blocks (which launched last week and you can grab on the Play Store right now).</p>
+
+  <h2>Today's Shipping List</h2>
+
+  <p>One day. Eight systems. Here's the breakdown:</p>
+
+  <div class="systems-grid">
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">HUD POLISH</div>
+      <div class="system-card-desc">HP bar, fuel meter with critical pulse, score, coins. All icons and proportions finalized.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">GAME OVER SCREEN</div>
+      <div class="system-card-desc">Three-star scoring, 5-tier system, high score persistence, replay & menu buttons with hover states.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">LORE DOCUMENT</div>
+      <div class="system-card-desc">Full story bible. Four acts. Plot twist designed. Character arcs mapped. Ready for narrative beats.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">BRIEFING SYSTEM</div>
+      <div class="system-card-desc">Separate room, portrait + dialog cloud + typewriter text. Save flag — seen once, skipped automatically next run.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">PARALLAX REFACTOR</div>
+      <div class="system-card-desc">One background object. Per-room configuration. Slow contemplative menu, fast adrenaline gameplay. Same code.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">TUTORIAL FOUNDATION</div>
+      <div class="system-card-desc">Eight-step interactive tutorial. Manager + popup architecture. Pause guards across six game objects.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">CHARACTER PORTRAITS</div>
+      <div class="system-card-desc">Five hand-designed faces. Old Captain, Krev, Cyber, Vex, Pilot. With one subtle visual easter egg.</div>
+    </div>
+    <div class="system-card">
+      <div class="system-card-status">// SHIPPED</div>
+      <div class="system-card-title">VERSION CONTROL</div>
+      <div class="system-card-desc">Git initialized. GitHub private repo. 618 files backed up. No more "what if my SSD dies?" anxiety.</div>
+    </div>
+  </div>
+
+  <h2>The Story I'm Telling</h2>
+
+  <p>Here's where it gets interesting. <strong>Shadow Raid isn't a story-light arcade game.</strong> It's structured around four acts with a plot twist I've been quietly designing for weeks.</p>
+
+  <p>The setup: You're a recruit. An old captain — battle-scarred, cyber-eye, military medals — recruits you into the Black Ops Consortium. He's neutral, professional, almost fatherly. He sends you on missions across the galaxy.</p>
+
+  <h3>Act 1 — The Pirate</h3>
+  <p>Captain Krev. Pirate cyborg. Well-armed, missile-equipped, dangerous. But not the hardest fight you'll face.</p>
+
+  <h3>Act 2 — The Cyber Boss</h3>
+  <p>Weak alone. But his fleet support is massive. Multiple ship levels, escort waves, defensive armada. The boss isn't the challenge — surviving long enough to reach him is.</p>
+
+  <h3>Act 3 — The Alien Empire</h3>
+  <p>Vex. Hidden behind an asteroid belt. UFO drone swarms. Narrow corridors. Pure skill check. Pure agility. Pure focus.</p>
+
+  <h3>Act 4 — The Captain</h3>
+  <p>Yes. <em>That</em> captain. The one who recruited you. He removes his mask in the final mission and the truth comes out — he was the most powerful enemy from the very start. Every boss before him tried to warn you. You didn't listen.</p>
+
+  <p>It's a <strong>Code Name Viper-style reveal</strong>, executed through subtle visual storytelling rather than exposition. Players will see things, sense things, but never quite be sure — until the mask comes off.</p>
+
+  <h2>The Tech Behind the Day</h2>
+
+  <p>Solo indie dev means making smart choices. Same stack as Shadow Blocks:</p>
+
+  <ul>
+    <li><strong>GameMaker Studio 2</strong> — pure GML, runtime 2024.14.4.268</li>
+    <li><strong>MacBook Air M1</strong> — primary dev machine</li>
+    <li><strong>Pixel 7A</strong> — Android target device</li>
+    <li><strong>Photopea</strong> — sprites, portraits, UI assets (free Photoshop alt)</li>
+    <li><strong>Claude + Gemini</strong> — AI-augmented workflow (Claude reviews architecture, Gemini handles daily GML)</li>
+    <li><strong>NotebookLM</strong> — project lore & design docs</li>
+    <li><strong>Git + GitHub</strong> — version control with private remote backup</li>
+  </ul>
+
+  <h2>What Almost Killed The Day</h2>
+
+  <h3>The Tutorial Loop Bug</h3>
+  <p>Around 8pm I hit a wall. The tutorial manager was being created in an infinite loop — 15 instances, all trying to pause the game simultaneously. Game frozen. Console flooding with debug messages.</p>
+  <p>The cause? A copy-paste mistake. The Alarm 0 event had Create event code pasted into it, including the line that <em>resets Alarm 0</em>. Recursive infinite loop. Five minutes to find, one line to fix. Welcome to programming.</p>
+
+  <h3>The Brain Wall</h3>
+  <p>Thirteen hours is a lot. Around hour 10, my autistic brain hit serious diminishing returns. Typos in code. Missing punctuation. Slower problem-solving. <strong>Knowing when to stop is a skill.</strong> Tomorrow the tutorial gets finished — with a fresh mind, in 30 minutes.</p>
+
+  <h2>What's Next</h2>
+
+  <p>Tomorrow's roadmap is short and clear:</p>
+
+  <ul>
+    <li>Wire up tutorial triggers (steps 1-7) — captain reacts when you destroy your first drone, dodge your first asteroid, run low on fuel</li>
+    <li>Mini-boss with 5 HP — ends the prologue</li>
+    <li>Begin Boss Krev properly — 5-stage animations, 200 HP, 3 attack patterns</li>
+    <li>First Pixel 7A device test of the new build</li>
+  </ul>
+
+  <p>Release target for v1.0 is still being calibrated, but the goal is clear — <strong>release Shadow Raid v1.0 on Google Play with four full acts, polished gameplay, and a story that makes you want to replay.</strong></p>
+
+  <h2>Why I'm Doing This</h2>
+
+  <p>Indie game development is brutal. I'm a solo developer working from Sunderland, UK, juggling depression, autistic burnout, and parenting two amazing autistic boys. There's no team. There's no investor. There's just me, my MacBook Air, and a stubborn belief that <em>if smaller studios can ship games, so can one person with a laptop and good tools.</em></p>
+
+  <p>But every system that ships, every line of code that compiles, every portrait that comes to life — that's a small win. <strong>And small wins compound.</strong></p>
+
+  <p>If you want to follow the journey — Shadow Blocks is on Google Play right now, and Shadow Raid updates will keep landing here every few days. Indie devs survive on community.</p>
+
+  <p>More updates soon.</p>
+
+  <hr>
+
+  <div class="post-cta">
+    <div class="post-cta-title">PLAY SHADOW BLOCKS</div>
+    <div class="post-cta-desc">My first mobile game. 80 levels. 8 biomes. Free on Google Play.</div>
+    <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn" target="_blank">▶ DOWNLOAD NOW</a>
+  </div>
+
+</article>
+
+<footer>
+  <div>© 2026 Alastis Dev. All rights reserved.</div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:alastisdev@gmail.com">Contact</a>
+    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+
+</body>
+</html>
