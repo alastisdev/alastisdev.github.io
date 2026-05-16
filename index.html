@@ -689,7 +689,13 @@
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* LATEST DEVLOG */
+/* LATEST DEVLOG - DUAL CARDS */
+  .latest-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 24px;
+  }
+  
   .latest-post {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -704,10 +710,14 @@
     background: var(--accent);
     transition: width 0.3s;
   }
+  .latest-post.shadow-raid::before { background: var(--accent); }
+  .latest-post.shadow-blocks::before { background: var(--accent3); }
+  
   .latest-post:hover { 
     border-color: var(--accent); 
     transform: translateX(4px);
   }
+  .latest-post.shadow-blocks:hover { border-color: var(--accent3); }
   .latest-post:hover::before { width: 6px; }
 
   .latest-post-link {
@@ -725,17 +735,25 @@
     flex-wrap: wrap;
   }
   .latest-post-date { color: var(--accent); }
+  .latest-post.shadow-blocks .latest-post-date { color: var(--accent3); }
   .latest-post-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .post-tag {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 1px; padding: 2px 8px;
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.2);
+    color: var(--accent2);
+  }
 
   .latest-post-title {
     font-family: var(--display);
-    font-size: clamp(20px, 3vw, 26px);
+    font-size: clamp(18px, 2.5vw, 22px);
     font-weight: 700; color: #fff;
     margin-bottom: 16px; line-height: 1.3;
   }
 
   .latest-post-excerpt {
-    font-family: var(--body); font-size: 15px;
+    font-family: var(--body); font-size: 14px;
     color: var(--dim); line-height: 1.7;
     margin-bottom: 20px;
   }
@@ -744,6 +762,7 @@
     font-family: var(--mono); font-size: 11px;
     color: var(--accent); letter-spacing: 2px;
   }
+  .latest-post.shadow-blocks .latest-post-readmore { color: var(--accent3); }
   
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
@@ -775,7 +794,7 @@
 </nav>
 
 <div class="hero" id="top">
-  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.1.0</div>
+  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.2.0</div>
   <h1>ALASTIS <span class="slash">//</span> DEV</h1>
   <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
   <p class="hero-desc">Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.</p>
@@ -786,7 +805,7 @@
     <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
     <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LIVE</span></div>
     <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">LIVE</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">PROTOTYPE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">SPRINT_ACTIVE</span></div>
     <div class="terminal-line"><span class="ok">[OK]</span> Operation Shadow — <span class="val">PLANNED</span></div>
     <div class="terminal-line">UPTIME: <span class="val">99.9%</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
   </div>
@@ -827,7 +846,7 @@
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">◆</div>
       </div>
-      <div class="card-id">// SHADOW_BLOCKS_v4.1.0</div>
+      <div class="card-id">// SHADOW_BLOCKS_v4.2.0</div>
       <div class="card-status status-live"><span class="status-dot"></span>LIVE ON PLAY STORE</div>
       <div class="card-title">Shadow Blocks</div>
       <p class="card-desc">Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with AI-rendered 4K animated backgrounds. Tells a wordless story of escape from a cursed castle.</p>
@@ -882,8 +901,8 @@
         <img src="images/shadow-raid-boss.png" alt="Shadow Raid Boss" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">🛸</div>
       </div>
-      <div class="card-id">// SHADOW_RAID_v0.05</div>
-      <div class="card-status status-dev"><span class="status-dot"></span>PROTOTYPE PHASE</div>
+      <div class="card-id">// SHADOW_RAID_v0.3.0</div>
+      <div class="card-status status-dev"><span class="status-dot"></span>SPRINT ACTIVE // JULY 2026</div>
       <div class="card-title">Shadow Raid</div>
       <p class="card-desc">Top-down vertical space shooter. Modern evolution of the arcade classics — narrow passages, asteroid storms, hostile sectors. A hacker-pilot infiltrates The Shadow Core. Built on the modular ALASTIS CORE 2.0 engine.</p>
       <div class="card-tags">
@@ -894,11 +913,11 @@
         <span class="tag">VERTICAL</span>
       </div>
       <div class="card-progress">
-        <div class="progress-label"><span>DEVELOPMENT</span><span>5%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
+        <div class="progress-label"><span>DEVELOPMENT</span><span>25%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
       </div>
       <div class="card-links">
-        <a href="#" class="btn-card secondary">PROTOTYPE — TBA</a>
+        <a href="/devlog/2026-05-16-shadow-raid-dev-update-02.html" class="btn-card secondary">▶ DEV UPDATE #2</a>
       </div>
     </div>
 
@@ -991,20 +1010,42 @@
   <div class="section-title">From the Devlog</div>
   <p class="section-subtitle">BEHIND THE SCENES // SOLO INDIE DEVELOPMENT</p>
 
-  <div class="latest-post fade-in">
-    <a href="/devlog/2026-05-16-shadow-blocks-crazygames-submission.html" class="latest-post-link">
-      <div class="latest-post-meta">
-        <span class="latest-post-date">2026.05.16</span>
-        <div class="latest-post-tags">
-          <span class="post-tag">SHADOW_BLOCKS</span>
-          <span class="post-tag">v4.2.0</span>
-          <span class="post-tag">DISTRIBUTION</span>
+  <div class="latest-posts-grid">
+
+    <!-- Shadow Raid Dev Update #2 -->
+    <div class="latest-post shadow-raid fade-in">
+      <a href="/devlog/2026-05-16-shadow-raid-dev-update-02.html" class="latest-post-link">
+        <div class="latest-post-meta">
+          <span class="latest-post-date">2026.05.16</span>
+          <div class="latest-post-tags">
+            <span class="post-tag">SHADOW_RAID</span>
+            <span class="post-tag">v0.3.0</span>
+            <span class="post-tag">SPRINT</span>
+          </div>
         </div>
-      </div>
-      <h3 class="latest-post-title">Shadow Blocks Goes Global — From Play Store to CrazyGames</h3>
-      <p class="latest-post-excerpt">Eight hours of platform-expansion marathon. Two web portals submitted. 8.0/10 QA rating from CrazyGames testers. Inside story.</p>
-      <span class="latest-post-readmore">READ_FULL_POST →</span>
-    </a>
+        <h3 class="latest-post-title">Shadow Raid Dev Update #2 — Pre-Sprint Status & The 11-Week Path</h3>
+        <p class="latest-post-excerpt">Two weeks since Update #1. Tutorial scripted flow complete. Tank balanced. Sprites standardized. Monday morning, the main sprint begins. Eleven weeks until launch day.</p>
+        <span class="latest-post-readmore">READ_FULL_POST →</span>
+      </a>
+    </div>
+
+    <!-- Shadow Blocks CG Submission -->
+    <div class="latest-post shadow-blocks fade-in">
+      <a href="/devlog/2026-05-16-shadow-blocks-crazygames-submission.html" class="latest-post-link">
+        <div class="latest-post-meta">
+          <span class="latest-post-date">2026.05.16</span>
+          <div class="latest-post-tags">
+            <span class="post-tag">SHADOW_BLOCKS</span>
+            <span class="post-tag">v4.2.0</span>
+            <span class="post-tag">DISTRIBUTION</span>
+          </div>
+        </div>
+        <h3 class="latest-post-title">Shadow Blocks Goes Global — From Play Store to CrazyGames</h3>
+        <p class="latest-post-excerpt">Eight hours of platform-expansion marathon. Two web portals submitted. 8.0/10 QA rating from CrazyGames testers. Inside story of going global.</p>
+        <span class="latest-post-readmore">READ_FULL_POST →</span>
+      </a>
+    </div>
+
   </div>
 
   <div style="text-align: center; margin-top: 32px;">
@@ -1060,8 +1101,8 @@
       <div class="roadmap-phase phase-now">NOW</div>
       <div class="roadmap-icon">◆</div>
       <div>
-        <div class="roadmap-title">Shadow Blocks v4.1.0 — LIVE</div>
-        <div class="roadmap-desc">8 biomes, 80 levels, online leaderboard, 6 languages, Battery Saver Mode. The flagship product.</div>
+        <div class="roadmap-title">Shadow Blocks v4.2.0 — LIVE + EXPANDING</div>
+        <div class="roadmap-desc">Play Store live. CrazyGames + GameDistribution submitted (QA review). 8.0/10 rating from CG testers. 50M potential users on the web.</div>
       </div>
     </div>
     <div class="roadmap-item">
@@ -1076,8 +1117,8 @@
       <div class="roadmap-phase phase-next">NEXT</div>
       <div class="roadmap-icon">🛸</div>
       <div>
-        <div class="roadmap-title">Shadow Raid — Prototype Demo</div>
-        <div class="roadmap-desc">Top-down vertical shooter. Asteroid mechanics, enemy ships, narrow passages. Built on ALASTIS CORE 2.0.</div>
+        <div class="roadmap-title">Shadow Raid — July 2026 Launch</div>
+        <div class="roadmap-desc">Top-down vertical shooter. Eleven-week sprint to launch. Four-act campaign. Tutorial complete, tank balanced, sprite standardization done. v0.3.0 in active development.</div>
       </div>
     </div>
     <div class="roadmap-item">
