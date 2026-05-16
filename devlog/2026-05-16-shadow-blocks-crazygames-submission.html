@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Blocks Goes Global // ALASTIS DEV</title>
+    
+    <link rel="canonical" href="https://alastis.dev/devlog/2026-05-16-shadow-blocks-crazygames-submission.html">
+    
+    <meta name="author" content="Marek Banaś / Alastis Dev">
+    <meta name="description" content="8 hours of marathon submission. Shadow Blocks goes from Google Play to GameDistribution and CrazyGames. 8.0/10 QA rating. Here's the inside story.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="article:author" content="Marek Banaś">
+    <meta property="article:published_time" content="2026-05-16">
+    
+    <meta property="og:title" content="Shadow Blocks Goes Global — From Play Store to CrazyGames">
+    <meta property="og:description" content="Solo indie dev story. Day 2 of platform expansion. CrazyGames QA gave us 8.0/10. Pillarboxes, kursors, and lessons from the trenches.">
+    <meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alastis.dev/devlog/2026-05-16-shadow-blocks-crazygames-submission.html">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shadow Blocks Goes Global — Day 2 of Platform Expansion">
+    <meta name="twitter:description" content="From Google Play to CrazyGames. 8 hours marathon. 8.0/10 QA rating. Solo indie dev journey continues.">
+    <meta name="twitter:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
+</head>
+<body>
+
+<nav>
+    <a href="https://alastis.dev/">ALASTIS // DEV</a>
+    <a href="https://alastis.dev/#about">ABOUT</a>
+    <a href="https://alastis.dev/#games">GAMES</a>
+    <a href="https://alastis.dev/devlog/">DEVLOG</a>
+    <a href="https://alastis.dev/#leaderboard">LEADERBOARD</a>
+    <a href="https://alastis.dev/#tools">TOOLS</a>
+</nav>
+
+<a href="https://alastis.dev/devlog/">← BACK_TO_DEVLOG</a>
+
+<div class="meta">2026.05.16</div>
+<div class="tags">SHADOW_BLOCKS v4.2.0 DISTRIBUTION CRAZYGAMES SOLO_DEV</div>
+
+<h1>Shadow Blocks Goes Global — From Play Store to CrazyGames</h1>
+
+<p class="lead">Eight hours of platform-expansion marathon. Two web portals submitted. One 8.0/10 QA rating from CrazyGames testers. Here's the inside story of what it takes to take a mobile match-3 game global.</p>
+
+<h2>The Setup</h2>
+
+<p>Two weeks ago, Shadow Blocks went live on Google Play. Twenty installs. 5.00 star rating. 60% retention (12 monthly active users out of 20 installs — for a casual match-3 game, that's <em>twelve times</em> the industry average).</p>
+
+<p>The metrics were beautiful. The visibility was zero.</p>
+
+<p>Twenty installs in a month, out of 1.5 billion Play Store users, means my discoverability hovered somewhere around 0.000001%. That's the reality of solo indie development without a marketing budget — your game can be perfect, but if nobody sees it, nobody plays it.</p>
+
+<p>Solution: go where the players already are. <strong>HTML5 web portals.</strong></p>
+
+<h2>The Plan: Two Portals, Two Weeks</h2>
+
+<p>HTML5 game portals are the unsung heroes of casual gaming. CrazyGames alone has 50 million monthly users. GameDistribution feeds dozens of partner sites. They don't take a marketing budget — they take a working HTML5 build, polished assets, and a submission process that's deceptively brutal.</p>
+
+<p>Friday (May 15): GameDistribution submitted. Request Activation sent. Two-week QA review begins.</p>
+
+<p>Saturday (May 16): CrazyGames. The marathon.</p>
+
+<h2>Today's Shipping List</h2>
+
+<div class="shipped">
+
+<h3>// SHIPPED — CrazyGames SDK Integration</h3>
+<p>Dedicated extension (<code>ext_CrazyGames</code>), JavaScript bridge with 10 SDK functions, gameplay event hooks. Same modular ALASTIS CORE approach as Shadow Blocks's AdMob system.</p>
+
+<h3>// SHIPPED — Critical Anti-Redirect Fix</h3>
+<p>The GameDistribution SDK has a block-and-redirect mechanism that kicks players off "foreign" domains. Without intervention, CrazyGames players would load Shadow Blocks, see the menu, and get instantly redirected to gamedistribution.com. Game over before it began.</p>
+<p>Fix: try/catch detection of CrazyGames at GD initialization. If CG is detected, GD SDK is skipped entirely. Clean separation, zero conflicts.</p>
+
+<h3>// SHIPPED — Three Cover Images</h3>
+<p>1920×1080 landscape, 800×1200 portrait, 800×800 square. Generated via Google Flow. Title positioned bottom-center (because CrazyGames overlays its label in the top-left corner — a detail I learned <em>after</em> wasting an hour with the title in the wrong spot).</p>
+
+<h3>// SHIPPED — Two Preview Videos</h3>
+<p>OBS Studio for screen recording. DaVinci Resolve for editing. Three takes, four hours of fighting with cursor visibility on a 2K monitor (macOS forces the cursor onto external displays — no app can hide it). Solution: trackpad-only input, mouse parked off-screen.</p>
+
+<h3>// SHIPPED — QA Submission Complete</h3>
+<p>All requirements passed. Initial download size: 34 MB (well under the 50 MB cap). Gameplay events firing correctly. Mobile orientation locked to portrait. Privacy policy N/A (game collects nothing). Submit button clicked at approximately 14:00 BST.</p>
+
+<h3>// SHIPPED — QA Rating Returned</h3>
+<p><strong>8.0 / 10 from five CrazyGames testers.</strong> Above the threshold for Basic Launch eligibility. These are people who play hundreds of submissions a week. Average submissions score 5-6. Eight is recognition that the gameplay loop, art direction, and polish work.</p>
+
+</div>
+
+<h2>The Five Hours That Almost Broke Me</h2>
+
+<p>I'd love to tell you the submission went smoothly. It did not.</p>
+
+<h3>Hour 1 — The GD Redirect</h3>
+<p>First CrazyGames preview: menu loads, click "Play," and the game disappears. Replaced by a CrazyGames default screen saying "SHADOW BLOCKS: MYSTICAL MATCH IS NOT AVAILABLE HERE." GameDistribution's SDK was hijacking the page.</p>
+<p>Initial fix attempt: <code>script_exists(CG_IsCrazyGames)</code>. This was wrong — <code>script_exists()</code> only checks for GML scripts, and <code>CG_IsCrazyGames()</code> is a JavaScript function exposed by the extension. The check always returned false. GD kept hijacking.</p>
+<p>Real fix: wrap the call in try/catch. If <code>CG_IsCrazyGames()</code> returns 1, we're on CrazyGames — skip GD entirely. If it throws (because the extension isn't loaded), continue with normal GD init. Five lines of code. One hour to find.</p>
+
+<h3>Hour 2-3 — The OBS Rabbit Hole</h3>
+<p>OBS Studio is a phenomenal tool that has approximately 47 ways to fail silently. Black screens (Screen Recording permission). Cropped recordings (canvas resolution vs monitor resolution mismatch on a 2K display). No audio (Desktop Audio requires BlackHole on macOS, which CrazyGames forbids anyway because they require muted previews).</p>
+<p>Every problem felt like the last problem. None of them were.</p>
+
+<h3>Hour 4 — The Cursor War</h3>
+<p>CrazyGames forbids the default mouse cursor in preview videos. OBS has a "Show Cursor" toggle that should fix this. On a 2K external monitor, that toggle does nothing — macOS draws the cursor directly to the display hardware. Screenflick, OBS, QuickTime, all helpless.</p>
+<p>Workaround: shrink the gameplay area, park the cursor in a corner outside the recording region, never touch the mouse during the 20-second capture. Use the trackpad for the single required click. Eventually it worked.</p>
+
+<h3>Hour 5 — The Pillarbox Question</h3>
+<p>Shadow Blocks is portrait. CrazyGames requires a landscape (16:9) preview video as mandatory. Portrait gameplay in a landscape frame leaves... black bars on the sides. Pillarboxing.</p>
+<p>CrazyGames documentation says: "Avoid black bars top &amp; bottom." Notice the wording — <em>top &amp; bottom</em>, not <em>left &amp; right</em>. After 30 minutes reading docs, FAQ, and submission guidelines, I confirmed: <strong>side pillarboxes for portrait games are explicitly allowed.</strong> Letterboxes (bars top/bottom on a stretched landscape) are not.</p>
+<p>The video uploaded with pillarboxes. The QA team rated it 8.0.</p>
+
+<h2>What Eight-Point-Zero Means</h2>
+
+<p>Five testers play your game. Each scores it 1-10. Eight is well above average for first-submission casual puzzle games. It means the testers thought:</p>
+
+<ul>
+<li>The gameplay loop is satisfying (match-3 with slide mechanics, not generic three-in-a-row)</li>
+<li>The art direction is consistent (dark fantasy across all 80 levels)</li>
+<li>The polish level is appropriate (animations, transitions, audio cues)</li>
+<li>The onboarding works (you understand the game in 30 seconds)</li>
+<li>The variety holds up (10 different worlds, different gem types, increasing difficulty)</li>
+</ul>
+
+<p>It also means I'm likely to clear Basic Launch (the two-week soft launch period where CrazyGames measures real-world engagement metrics). After Basic Launch comes Full Launch — with monetization enabled and promotional placement across their network.</p>
+
+<h2>The Distribution Reality</h2>
+
+<p>Solo indie dev means choosing platforms strategically. Here's where Shadow Blocks lives now, and where it doesn't:</p>
+
+<table>
+<tr><th>Platform</th><th>Status</th><th>Reach Potential</th></tr>
+<tr><td>Google Play (Android)</td><td>LIVE — 5.00★</td><td>Discovery-limited</td></tr>
+<tr><td>GameDistribution</td><td>QA Review (15 May)</td><td>Network of partner sites</td></tr>
+<tr><td>CrazyGames</td><td>QA Review (16 May, 8.0/10)</td><td>50M monthly users</td></tr>
+<tr><td>Steam</td><td>Not pursuing</td><td>Bad fit for match-3</td></tr>
+<tr><td>iOS App Store</td><td>Not pursuing</td><td>Low ROI without Android traction</td></tr>
+</table>
+
+<p>The strategy: <strong>let the web portals do the discovery work</strong>. Match-3 is a casual genre — players want to play in a browser tab during a coffee break, not download a 30 MB app. The mobile market is brutal without paid acquisition. The web market rewards good gameplay.</p>
+
+<h2>Lessons For Solo Devs</h2>
+
+<p>If you're reading this and considering web portal submission yourself, here's what I learned the hard way:</p>
+
+<ol>
+<li><strong>Read the technical requirements three times.</strong> Then read the FAQ. Then read it again. Every detail matters. <em>Pillarbox vs letterbox</em> is the kind of thing that decides whether your submission gets accepted or rejected.</li>
+
+<li><strong>Build a separate HTML5 index file per portal.</strong> CrazyGames requires their SDK and forbids others. GameDistribution requires their SDK and forbids competitors. Don't try to share one build between portals — make platform-specific entry points.</li>
+
+<li><strong>Cover art positioning is real.</strong> Portals overlay labels on covers ("NEW," "TOP RATED," "HOT"). Keep your title and key elements out of the top-left corner.</li>
+
+<li><strong>Preview videos are marketing, not documentation.</strong> Twenty seconds. Show variety. Avoid cursors, text overlays, intros, audio. Less is more.</li>
+
+<li><strong>Submit even when it's not perfect.</strong> CrazyGames QA gave Shadow Blocks 8.0/10 even though the preview video has visible pillarboxes (which I'll improve later). Done is better than perfect, and reviewers are reasonable humans.</li>
+
+<li><strong>Backup before every major sprint.</strong> Today, before celebrating, I committed Shadow Blocks v4.2.0 to GitHub, copied both Shadow projects to OneDrive cloud, and wrote this devlog post. Three locations for everything that matters.</li>
+</ol>
+
+<h2>What's Next</h2>
+
+<p>Two weeks of waiting. CrazyGames QA review takes about 14 days. GameDistribution similar. The verdict comes back as either Basic Launch (good news — go live with limited audience to test metrics) or Required Changes (medium news — fix specific issues and resubmit).</p>
+
+<p>While I wait:</p>
+
+<ul>
+<li><strong>Monday, May 18 — Shadow Raid sprint resumes.</strong> Tutorial system polish, mini-boss, Act 1 boss design (Captain Krev). Eleven weeks to release.</li>
+<li><strong>Ongoing — Shadow Blocks maintenance.</strong> Quarterly content updates planned. Festival events for Halloween and Christmas. No major rewrites.</li>
+<li><strong>If CrazyGames approves — Full Launch prep.</strong> Optimize initial download size for mobile homepage eligibility (currently 34 MB, need under 20 MB for mobile featured slots). Better preview videos in DaVinci with blur backgrounds instead of pillarboxes.</li>
+</ul>
+
+<h2>Why I Keep Doing This</h2>
+
+<p>Solo indie dev means doing everything: code, art, audio, marketing, distribution, customer support, taxes. Today I learned to use OBS Studio and DaVinci Resolve from scratch — two tools I'd never opened before this morning. Eight hours of stress later, I have new skills that will pay off across every project for the rest of my career.</p>
+
+<p>It also means parenting in the background. My oldest, Erick, has chickenpox right now. My youngest, Brandon, was being managed by my wife Judyta while I fought with portrait video aspect ratios. There's no separation between "work" and "life" — there's just the day, and what you can fit into it.</p>
+
+<p>Shadow Blocks now lives on three platforms (with two pending QA approval). Two weeks ago I was a developer with one Android game and 20 installs. Today I'm a developer with one game across an entire web portal network and 50 million potential players waiting on the other side of a two-week review.</p>
+
+<p>Compound progress. Small wins stacking up. The journey continues Monday with Shadow Raid.</p>
+
+<hr>
+
+<div class="cta">
+<h3>PLAY SHADOW BLOCKS</h3>
+<p>My first mobile game. 80 levels. 10 dark fantasy worlds. Free on Google Play.</p>
+<a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks">▶ DOWNLOAD NOW</a>
+</div>
+
+<footer>
+    <p>© 2026 Alastis Dev. All rights reserved.</p>
+    <a href="https://alastis.dev/privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:alastisdev@gmail.com">Contact</a>
+    <a href="https://buymeacoffee.com/alastis.dev">Coffee ☕</a>
+</footer>
+
+</body>
+</html>
