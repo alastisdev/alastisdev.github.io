@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Raid Dev Update #2 // ALASTIS DEV</title>
+<meta name="description" content="Two weeks of tutorial polish, tank balancing, sprite standardization. Shadow Raid v0.3.0 ready for the 11-week sprint to launch.">
+
+<!-- SEO -->
+<meta name="keywords" content="shadow raid, vertical shooter, indie devlog, GameMaker Studio 2, tutorial system, mobile game, solo dev, sprint planning">
+<meta name="author" content="Marek Banaś / Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html">
+
+<!-- Article meta -->
+<meta property="article:author" content="Marek Banaś">
+<meta property="article:published_time" content="2026-05-16">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html">
+<meta property="og:title" content="Shadow Raid Dev Update #2 — Pre-Sprint Status & The 11-Week Path">
+<meta property="og:description" content="Two weeks of progress. Tutorial scripted flow complete. Tank balanced. 11 weeks to launch. Solo indie dev journey continues.">
+<meta property="og:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow Raid Dev Update #2 — Pre-Sprint Status">
+<meta name="twitter:description" content="11 weeks to launch. Tutorial complete. Tank polished. Roadmap public. Indie dev accountability.">
+<meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080a0e'/><text x='50' y='70' font-family='monospace' font-size='70' font-weight='900' fill='%2300d4ff' text-anchor='middle'>A</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080a0e; --bg2: #0d1117; --panel: #111820;
+    --border: #1e2d3d; --accent: #00d4ff; --accent2: #ff6b00;
+    --accent3: #7fff00; --text: #c8d6e5; --dim: #4a6278;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Orbitron', sans-serif;
+    --body: 'Rajdhani', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 17px; line-height: 1.7;
+    overflow-x: hidden; min-height: 100vh;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none; z-index: 0;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,10,14,0.92); border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px; text-decoration: none;
+  }
+  .nav-logo span { color: var(--dim); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 1px; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  .back-link {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+    padding: 100px 40px 0;
+  }
+  .back-link a {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 2px; transition: color 0.2s;
+  }
+  .back-link a:hover { color: var(--accent); }
+
+  .article {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .article-meta {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); letter-spacing: 2px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .article-date { color: var(--accent); }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .article-tag {
+    padding: 3px 10px;
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.2);
+    color: var(--accent2);
+    font-size: 9px;
+  }
+
+  .article h1 {
+    font-family: var(--display);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900; line-height: 1.1;
+    color: #fff; letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+
+  .article-lead {
+    font-family: var(--body); font-size: 19px;
+    color: var(--text); line-height: 1.6;
+    margin-bottom: 48px;
+    padding-left: 16px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .article h2 {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700; color: #fff;
+    margin: 56px 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .article h3 {
+    font-family: var(--display);
+    font-size: 20px; font-weight: 700;
+    color: var(--accent); margin: 36px 0 16px;
+  }
+
+  .article p {
+    font-family: var(--body); font-size: 17px;
+    color: var(--text); line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .article strong {
+    color: var(--accent); font-weight: 600;
+  }
+
+  .article em {
+    color: var(--accent2); font-style: italic;
+  }
+
+  .article ul, .article ol {
+    margin: 20px 0 28px; padding-left: 32px;
+    color: var(--text);
+  }
+  .article li {
+    margin-bottom: 12px; line-height: 1.7;
+  }
+  .article li::marker { color: var(--accent); }
+
+  .article code {
+    font-family: var(--mono); font-size: 14px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--accent3);
+    padding: 2px 8px;
+  }
+
+  .shipped-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .shipped-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent3);
+    padding: 24px;
+    transition: border-color 0.3s;
+  }
+  .shipped-card:hover { border-color: var(--accent3); }
+  .shipped-label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent3); letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .shipped-title {
+    font-family: var(--display); font-size: 16px;
+    font-weight: 700; color: #fff;
+    margin-bottom: 10px;
+  }
+  .shipped-desc {
+    font-family: var(--body); font-size: 14px;
+    color: var(--dim); line-height: 1.5;
+  }
+
+  /* Roadmap timeline */
+  .roadmap-timeline {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    margin: 28px 0;
+    padding: 0;
+  }
+  .roadmap-week {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .roadmap-week:last-child { border-bottom: none; }
+  .roadmap-week:hover { background: var(--bg2); }
+  .roadmap-week-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 2px;
+  }
+  .roadmap-week-num.current { color: var(--accent3); }
+  .roadmap-week-num.crunch { color: var(--accent2); }
+  .roadmap-week-content {
+    font-family: var(--body); font-size: 15px;
+  }
+  .roadmap-week-title {
+    font-family: var(--display); font-size: 14px;
+    font-weight: 700; color: #fff;
+    margin-bottom: 4px;
+  }
+  .roadmap-week-desc {
+    color: var(--dim); font-size: 13px;
+  }
+
+  .stats-table {
+    width: 100%; border-collapse: collapse;
+    margin: 28px 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+  .stats-table th, .stats-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono); font-size: 13px;
+    text-align: left;
+  }
+  .stats-table th {
+    background: rgba(0,212,255,0.05);
+    color: var(--accent);
+    font-size: 11px; letter-spacing: 2px;
+  }
+  .stats-table td:first-child {
+    color: var(--text); font-weight: 600;
+  }
+  .stats-table tr:last-child td { border-bottom: none; }
+  .status-done { color: var(--accent3); }
+  .status-progress { color: var(--accent); }
+  .status-pending { color: var(--dim); }
+
+  .cta-box {
+    background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(255,107,0,0.04));
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 40px;
+    text-align: center;
+    margin: 60px 0 0;
+  }
+  .cta-title {
+    font-family: var(--display); font-size: 24px;
+    font-weight: 900; color: #fff;
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .cta-desc {
+    font-family: var(--body); font-size: 15px;
+    color: var(--dim); margin-bottom: 24px;
+  }
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #000;
+    font-family: var(--display); font-size: 13px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 16px 32px; text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s;
+  }
+  .btn-cta:hover { background: #fff; transform: translateY(-2px); }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 60px 0;
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  .coffee-float {
+    position: fixed; bottom: 24px; right: 24px;
+    z-index: 200;
+    background: var(--accent2); color: #000;
+    font-family: var(--display); font-size: 13px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 14px 22px; text-decoration: none;
+    border: 2px solid #000;
+    box-shadow: 0 4px 16px rgba(255,107,0,0.4);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s;
+  }
+  .coffee-float:hover {
+    background: #ff8533; transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .back-link, .article { padding-left: 20px; padding-right: 20px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .coffee-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
+    .cta-box { padding: 28px 20px; }
+    .roadmap-week { grid-template-columns: 1fr; gap: 8px; padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
+  <div class="nav-links">
+    <a href="/#about">ABOUT</a>
+    <a href="/#games">GAMES</a>
+    <a href="/devlog/" class="active">DEVLOG</a>
+    <a href="/#leaderboard">LEADERBOARD</a>
+    <a href="/#tools">TOOLS</a>
+  </div>
+</nav>
+
+<div class="back-link">
+  <a href="/devlog/">← BACK_TO_DEVLOG</a>
+</div>
+
+<article class="article">
+
+  <div class="article-meta">
+    <span class="article-date">2026.05.16</span>
+    <div class="article-tags">
+      <span class="article-tag">SHADOW_RAID</span>
+      <span class="article-tag">v0.3.0</span>
+      <span class="article-tag">DEV_UPDATE</span>
+      <span class="article-tag">SPRINT</span>
+    </div>
+  </div>
+
+  <h1>Shadow Raid Dev Update #2 — Pre-Sprint Status & The 11-Week Path</h1>
+
+  <p class="article-lead">Two weeks since Dev Update #1. The tutorial is now a <strong>seven-step scripted flow</strong>. The tank is balanced. Sprites are standardized. Monday morning, the main sprint begins. <em>Eleven weeks until launch day.</em> Here's where Shadow Raid stands and what comes next.</p>
+
+  <h2>Where We Left Off</h2>
+
+  <p>If you missed it, <strong>Dev Update #1</strong> covered the foundation day — thirteen hours of solo grinding that shipped HUD polish, the game over screen, the lore document, briefing system, parallax refactor, the first tutorial draft, character portraits, and version control. Eight systems in a single day.</p>
+
+  <p>That was the foundation. Today's update is about what happens when you actually <em>build the house on top of it</em>.</p>
+
+  <h2>What Shipped in Two Weeks</h2>
+
+  <div class="shipped-grid">
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Tutorial Scripted Flow</div>
+      <div class="shipped-desc">Seven steps. Captain dialogue. Spawner mode switching (meteor → soldier → tank → pickups → final test). Announce-before-action paradigm. Zero placeholder triggers.</div>
+    </div>
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Tank Enemy (Soldier_02)</div>
+      <div class="shipped-desc">HP 3. Move speed 2.5. Rocket launcher. Auto HP bar via parent inheritance. The proper armored threat — three shots to kill, dodges that matter.</div>
+    </div>
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Bullet vs Rocket Collision</div>
+      <div class="shipped-desc">Player can shoot down incoming missiles mid-flight. +5 score bonus. Adds skill expression — dodge or destroy, your call.</div>
+    </div>
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Sprite Standardization</div>
+      <div class="shipped-desc">Every sprite at native size. <code>image_xscale = 1.0</code> everywhere. Precise (Per Frame) collision masks. The chaos of inconsistent scaling — gone.</div>
+    </div>
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Spawner Mode Engine</div>
+      <div class="shipped-desc">Ten distinct modes: off, meteor_only, wait_meteor_pass, soldier_only, wait_soldier_kill, tank_only, wait_tank_kill, pickups_only, wait_pickups, normal. Tutorial gets full surgical control.</div>
+    </div>
+
+    <div class="shipped-card">
+      <div class="shipped-label">// SHIPPED</div>
+      <div class="shipped-title">Ghost Tank Bug Fix</div>
+      <div class="shipped-desc">Refactor broke <code>event_inherited()</code> in Soldier_02 Step. Tank spawned invisible above-screen, blocked the spawner forever. Fix: one line restored. Lesson: parents matter.</div>
+    </div>
+
+  </div>
+
+  <h2>The Tutorial Story</h2>
+
+  <p>Tutorials are where indie games die. Too long — players quit. Too short — players don't learn. Too rigid — players feel handheld. Too loose — players feel lost.</p>
+
+  <p>Shadow Raid's tutorial is now a <strong>seven-step scripted flow</strong> built around a paradigm called <em>announce-before-action</em>. The Captain doesn't react to what you just did. He <em>tells you what's coming</em> before it happens. The game pauses. You read. The action starts. You apply.</p>
+
+  <h3>The Seven Steps</h3>
+
+  <ol>
+    <li><strong>Step 0 — Introduction.</strong> "So you're the new recruit. Show me what you've got." Game pauses. Player ship spawns after dismiss. First control test begins.</li>
+    <li><strong>Step 1 — Asteroids.</strong> "Asteroid incoming! Your bullets won't break it. Rockets can destroy some types — but not all. Learn to dodge." Single meteor spawns. Player practices evasion.</li>
+    <li><strong>Step 2 — Soldier-class enemy.</strong> "Enemy fighter. Fast but fragile. Two shots and it's done. Take it down." Soldier_01 spawns. Player practices offense.</li>
+    <li><strong>Step 3 — Tank-class.</strong> "Heavy armor, missile launcher. Their rockets hurt — dodge or shoot them down in flight." Tank spawns. Player learns the rocket interception mechanic.</li>
+    <li><strong>Step 4 — Pickups.</strong> "Collect what you find. Coins are your pay. Hearts restore health. Fuel keeps you flying." Three pickups in sequence: Coin, Heart, Fuel.</li>
+    <li><strong>Step 5 — Final test.</strong> "Eliminate 20 hostiles. Then we'll talk real contracts." Spawner switches to normal mode. Twenty kills required.</li>
+    <li><strong>Step 6 — Graduation.</strong> "Excellent work. Return to base. Your first contract is waiting." Tutorial complete flag saved. Player returns to menu.</li>
+  </ol>
+
+  <p>Total tutorial length: roughly two minutes if you're competent, four minutes if you're cautious. <strong>Skippable on second run</strong> via the save flag.</p>
+
+  <h2>The Monetization Decision</h2>
+
+  <p>Today I made a strategic call that will define the entire economy of Shadow Raid: <strong>zero interruptive ads during gameplay</strong>.</p>
+
+  <p>No banner ads cluttering the HUD. No interstitials mid-action breaking flow. No timed video ads between levels.</p>
+
+  <p>Instead, the model is hybrid free-to-play:</p>
+
+  <ul>
+    <li><strong>Rewarded ads (opt-in only):</strong> Continue after death. Double coins after level complete. Extra life after boss kill. Fuel refill when running low. Daily reward boost. The player chooses.</li>
+    <li><strong>In-app purchases:</strong> No-ads premium ($2.99). Coin packs ($0.99 / $4.99 / $9.99). Starter pack ($4.99 — no ads + coins + ship skin). Vanity items in future updates.</li>
+  </ul>
+
+  <p>The philosophy is simple: <em>interruptive ads kill vertical shooters.</em> The genre lives on flow state — fast reflexes, escalating tension, clutch dodges. Breaking that with a 30-second video ad after a near-miss boss fight is how players uninstall.</p>
+
+  <p>Rewarded ads work because they're a <strong>player-initiated transaction</strong>. The player chooses to watch in exchange for value. That's not interruption — that's an economy.</p>
+
+  <h2>The 11-Week Path to Launch</h2>
+
+  <p>The deadline is hard: <strong>31 July 2026, Shadow Raid LIVE on Google Play.</strong> That's eleven weeks from today.</p>
+
+  <p>Here's how those weeks break down:</p>
+
+  <div class="roadmap-timeline">
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num current">WEEK 1</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Tutorial Polish + Mini-Boss</div>
+        <div class="roadmap-week-desc">Full F5 test of tutorial flow. Drone mini-boss (HP 5) triggered after score ≥ 200. Code cleanup. Pixel 7A device test.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 2</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 1 — Captain Krev</div>
+        <div class="roadmap-week-desc">Boss Krev (HP 200, 3 phases). 5-frame sprite animation. Pre-boss narrow corridors. First boss fight room.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 3</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 1 Content — Five Levels (W1L1–W1L5)</div>
+        <div class="roadmap-week-desc">Five gameplay levels feeding into Krev. Enemy wave progression. Difficulty curve tuned. Pickup density balanced.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 4</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 2 — The Cyber Boss</div>
+        <div class="roadmap-week-desc">Horde mechanic. Escort waves. Boss weak alone, deadly with fleet support. Survival challenge.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 5</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 2 Content — Five Levels (W2L1–W2L5)</div>
+        <div class="roadmap-week-desc">Multi-enemy waves. Defensive armada patterns. Approach corridors to Cyber's command ship.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 6</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 3 — Vex & The Alien Empire</div>
+        <div class="roadmap-week-desc">UFO drone swarms. Asteroid belt approach. Narrow corridors. Pure skill check — agility over firepower.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num">WEEK 7</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Act 4 — The Captain (The Twist)</div>
+        <div class="roadmap-week-desc">Final boss. Mask reveal cinematic. Code Name Viper-style storytelling. Five gameplay levels feeding into the climax.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num crunch">WEEK 8</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Monetization Integration</div>
+        <div class="roadmap-week-desc">AdMob rewarded ads. Google IAP (no-ads, coin packs, starter pack). Shop UI. Daily reward system. Receipt validation.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num crunch">WEEK 9</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Beta Testing — Pixel 7A</div>
+        <div class="roadmap-week-desc">Daily device testing. Performance tuning. Battery profiling. Bug fix sprint. Real-world balance pass.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num crunch">WEEK 10</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Play Store Submission Prep</div>
+        <div class="roadmap-week-desc">Store assets (icon, screenshots, feature graphic). Trailer (OBS + DaVinci). Privacy policy. Data safety form. ASO copy in 6 languages.</div>
+      </div>
+    </div>
+
+    <div class="roadmap-week">
+      <div class="roadmap-week-num crunch">WEEK 11</div>
+      <div class="roadmap-week-content">
+        <div class="roadmap-week-title">Soft Launch → LAUNCH DAY</div>
+        <div class="roadmap-week-desc">Staged rollout 1% → 10% → 50% → 100%. Crashlytics monitoring. Crisis response ready. 31 July 2026 — LIVE.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>The State of the Build</h2>
+
+  <table class="stats-table">
+    <thead>
+      <tr><th>SYSTEM</th><th>STATUS</th><th>NOTES</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Player ship + dual fire</td><td class="status-done">✓ DONE</td><td>LVL 1 red ship, twin cinematic flames</td></tr>
+      <tr><td>Soldier_01 (drone enemy)</td><td class="status-done">✓ DONE</td><td>HP 1, 3-burst shooting AI</td></tr>
+      <tr><td>Soldier_02 (tank enemy)</td><td class="status-done">✓ DONE</td><td>HP 3, rockets, HP bar</td></tr>
+      <tr><td>Bullet + rocket systems</td><td class="status-done">✓ DONE</td><td>Anti-rocket bullet collision</td></tr>
+      <tr><td>Spawner mode engine</td><td class="status-done">✓ DONE</td><td>10 modes, distance check, 75/25 split</td></tr>
+      <tr><td>Tutorial scripted flow</td><td class="status-done">✓ DONE</td><td>7 steps, end-to-end</td></tr>
+      <tr><td>HUD + pickups</td><td class="status-done">✓ DONE</td><td>HP, fuel, score, coins, heart/fuel/coin pickups</td></tr>
+      <tr><td>Save system</td><td class="status-done">✓ DONE</td><td>Tutorial flag, progress, settings</td></tr>
+      <tr><td>Briefing + dialog system</td><td class="status-done">✓ DONE</td><td>Captain portraits, typewriter text</td></tr>
+      <tr><td>Mini-boss</td><td class="status-pending">⏳ WEEK 1</td><td>Triggered at score ≥ 200</td></tr>
+      <tr><td>Boss Krev (Act 1)</td><td class="status-pending">⏳ WEEK 2</td><td>HP 200, 3 phases, 5-frame sprite</td></tr>
+      <tr><td>Acts 2–4 bosses</td><td class="status-pending">⏳ WEEK 4–7</td><td>Cyber, Vex, Captain reveal</td></tr>
+      <tr><td>20 levels content</td><td class="status-pending">⏳ WEEK 3–7</td><td>5 per act, difficulty curve</td></tr>
+      <tr><td>Monetization (ads + IAP)</td><td class="status-pending">⏳ WEEK 8</td><td>Rewarded ads, no-ads premium</td></tr>
+      <tr><td>Play Store launch</td><td class="status-pending">⏳ WEEK 11</td><td>31 July 2026 — HARD DEADLINE</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Honest Talk About Eleven Weeks</h2>
+
+  <p>Eleven weeks is <em>tight</em>. Not impossible — but tight enough that there's no slack for personal crisis, no buffer for unexpected bugs, no room for scope creep.</p>
+
+  <p>I know this because I'm not pretending it's a marketing exercise. This roadmap is the plan I'm betting on. If I miss week 3, week 4 has to compress. If I miss week 7, the whole monetization phase compresses, which means lower polish, which means worse retention, which means lower revenue, which means the entire effort doesn't pay back.</p>
+
+  <p>The way to make this work:</p>
+
+  <ul>
+    <li><strong>One major system per week.</strong> Not two. Not three. One. Polished. Tested. Shipped.</li>
+    <li><strong>Daily builds on Pixel 7A.</strong> Catch performance issues early, not in week 9.</li>
+    <li><strong>No scope additions after week 5.</strong> If it's not in the design by week 5, it's not in v1.0.</li>
+    <li><strong>Backup before every sprint.</strong> Git push + OneDrive copy. Three locations always.</li>
+    <li><strong>Saturday + Sunday recovery.</strong> Burnout destroys solo devs. The deadline is real, but so is the body.</li>
+  </ul>
+
+  <h2>Why the July Deadline Matters</h2>
+
+  <p>This isn't an arbitrary date. It's the gap between Shadow Blocks settling into its CrazyGames/GameDistribution distribution and the start of the autumn season when mobile game competition spikes hardest.</p>
+
+  <p>August is when global Shadow Blocks revenue should start arriving (web portals take six to ten weeks from submission to Full Launch with monetization). Shadow Raid launching at the start of August catches that momentum — both games visible at the same time, both products of the same studio, both pieces of the same Shadows Universe.</p>
+
+  <p>It also matters personally. My wife Judyta has been carrying the load of two boys with autism while I've been building games at the kitchen table. <strong>Shadow Raid launching this summer means revenue arriving in autumn. Revenue arriving in autumn means choices we couldn't make before.</strong> Where to live. How much to work. How much to rest.</p>
+
+  <p>That's the real engine behind eleven weeks of structured work. Not a market window. Not a calendar. A family that deserves more than I've been able to give them.</p>
+
+  <h2>What Monday Looks Like</h2>
+
+  <p>Monday morning, the laptop opens. The coffee gets made. GameMaker boots up. The first F5 of the week tests the tutorial end-to-end. Bugs get logged. The mini-boss gets designed. Five HP. One spawn trigger. Score ≥ 200 condition.</p>
+
+  <p>And so it begins.</p>
+
+  <p>I'll be back here in two weeks with Dev Update #3 — by then Krev should be implemented, his 5-frame animations should be running, and we'll know whether the difficulty curve in Act 1 is fun or punishing.</p>
+
+  <p>If you want to follow the build, the devlog updates every 1–2 weeks. Shadow Blocks is on Google Play right now if you want to see the engineering style that's going into Shadow Raid. Both games come from the same studio, the same engine, the same one person at a MacBook in Sunderland.</p>
+
+  <p>Indie devs survive on community. Thanks for being part of mine.</p>
+
+  <hr class="divider">
+
+  <div class="cta-box">
+    <div class="cta-title">PLAY SHADOW BLOCKS</div>
+    <div class="cta-desc">My first mobile game. 80 levels. 10 dark fantasy worlds. Free on Google Play. The foundation that Shadow Raid is built on.</div>
+    <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn-cta" target="_blank">▶ DOWNLOAD NOW</a>
+  </div>
+
+</article>
+
+<footer>
+  <div>© 2026 Alastis Dev. All rights reserved.</div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:alastisdev@gmail.com">Contact</a>
+    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
+  </div>
+</footer>
+
+<a href="https://buymeacoffee.com/alastis.dev" target="_blank" class="coffee-float">
+  ☕ COFFEE?
+</a>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+
+</body>
+</html>
