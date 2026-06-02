@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Raid Dev Update #4 — Mapping Out the Desert // ALASTIS DEV</title>
+
+<meta name="description" content="Sprint week two. Shadow Raid gets a full level map with a star system, level unlocks, and a desert world that changes as you fly through it. Inside the build of Act 1's structure.">
+<meta name="keywords" content="shadow raid, indie devlog, GameMaker Studio 2, vertical shooter, level map, star system, desert level, solo dev, alastis dev, GML">
+<meta name="author" content="Marek Banaś / Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-06-02-shadow-raid-dev-update-04.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-06-02-shadow-raid-dev-update-04.html">
+<meta property="og:title" content="Shadow Raid Dev Update #4 — Mapping Out the Desert">
+<meta property="og:description" content="A full level map with stars and unlocks, and a desert world that shifts beneath you. Building the shape of Act 1.">
+<meta property="og:image" content="https://alastis.dev/images/shadow-raid-boss.png">
+<meta property="og:site_name" content="Alastis Dev">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow Raid Dev Update #4 — Mapping Out the Desert">
+<meta name="twitter:description" content="A level map with stars and unlocks, plus a shifting desert world. The shape of Act 1 takes form.">
+<meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-boss.png">
+
+<link rel="icon" type="image/png" sizes="512x512" href="/images/AlastisDev_icon_512.png">
+<link rel="shortcut icon" href="/images/AlastisDev_favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #080a0e;
+    --bg2:       #0d1117;
+    --panel:     #111820;
+    --border:    #1e2d3d;
+    --accent:    #00d4ff;
+    --accent2:   #ff6b00;
+    --accent3:   #7fff00;
+    --accent-red:#ff3b4e;
+    --text:      #c8d6e5;
+    --dim:       #4a6278;
+    --mono:      'Share Tech Mono', monospace;
+    --display:   'Orbitron', sans-serif;
+    --body:      'Rajdhani', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+    pointer-events: none; z-index: 0;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,10,14,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px; text-decoration: none;
+  }
+  .nav-logo span { color: var(--dim); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 1px; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .article-wrap {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .breadcrumb {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); letter-spacing: 1px; margin-bottom: 32px;
+  }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .article-meta {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .article-meta .date { color: var(--accent); }
+  .article-meta .tag {
+    padding: 3px 10px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900; line-height: 1.1;
+    color: #fff; letter-spacing: -0.5px;
+    margin-bottom: 28px;
+  }
+
+  .lede {
+    font-family: var(--body);
+    font-size: clamp(18px, 2.5vw, 22px);
+    color: var(--text);
+    border-left: 3px solid var(--accent);
+    padding-left: 24px;
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent);
+    margin: 56px 0 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2::before { content: '// '; color: var(--dim); }
+
+  p { margin-bottom: 22px; font-family: var(--body); }
+  strong { color: #fff; font-weight: 600; }
+  em { color: var(--accent); font-style: normal; }
+
+  .fig {
+    margin: 36px 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    overflow: hidden;
+  }
+  .fig img { width: 100%; display: block; }
+  .fig figcaption {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--dim); letter-spacing: 1px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .shipped {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent3);
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .shipped-title {
+    font-family: var(--display);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent3); margin-bottom: 20px;
+  }
+  .shipped ul { list-style: none; }
+  .shipped li {
+    font-family: var(--body); font-size: 16px;
+    padding: 8px 0 8px 26px; position: relative;
+    color: var(--text);
+  }
+  .shipped li::before {
+    content: '▶'; position: absolute; left: 0; top: 11px;
+    color: var(--accent3); font-size: 10px;
+  }
+
+  .quote {
+    font-family: var(--display);
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700; line-height: 1.3;
+    color: var(--accent-red);
+    text-align: center;
+    margin: 44px 0;
+    padding: 28px;
+    border-top: 1px solid rgba(255,59,78,0.2);
+    border-bottom: 1px solid rgba(255,59,78,0.2);
+  }
+
+  .cta {
+    margin-top: 60px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(255,107,0,0.04));
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 40px; text-align: center;
+  }
+  .cta p {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--dim); letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #000;
+    font-family: var(--display); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px;
+    padding: 14px 32px; text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+
+  .sign {
+    margin-top: 48px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--dim);
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+  .sign strong { color: var(--accent2); }
+
+  .back-link {
+    display: inline-block; margin-top: 40px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 2px;
+    text-decoration: none;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; color: var(--dim);
+    max-width: 1200px; margin: 0 auto;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 14px; }
+    .article-wrap { padding: 100px 20px 60px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Shadow Raid Dev Update #4 — Mapping Out the Desert",
+  "alternativeHeadline": "Building Act 1's level map, star system, and shifting desert world",
+  "datePublished": "2026-06-02",
+  "dateModified": "2026-06-02",
+  "author": {
+    "@type": "Person",
+    "name": "Marek Banaś",
+    "url": "https://alastis.dev/",
+    "jobTitle": "Solo Indie Game Developer"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Alastis Dev",
+    "url": "https://alastis.dev",
+    "logo": { "@type": "ImageObject", "url": "https://alastis.dev/images/shadow-blocks-hero.jpeg" }
+  },
+  "image": { "@type": "ImageObject", "url": "https://alastis.dev/images/shadow-raid-boss.png", "width": 1200, "height": 630 },
+  "url": "https://alastis.dev/devlog/2026-06-02-shadow-raid-dev-update-04.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://alastis.dev/devlog/2026-06-02-shadow-raid-dev-update-04.html" },
+  "description": "Sprint week two. Shadow Raid gets a full level map with a star system, level unlocks, and a desert world that changes as you fly through it.",
+  "keywords": "shadow raid, indie devlog, GameMaker Studio 2, vertical shooter, level map, star system, desert level, solo dev, GML",
+  "articleSection": "Dev Update",
+  "inLanguage": "en",
+  "about": { "@type": "VideoGame", "name": "Shadow Raid", "url": "https://alastis.dev/#shadow-raid" }
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
+  <div class="nav-links">
+    <a href="/#about">ABOUT</a>
+    <a href="/#games">GAMES</a>
+    <a href="/devlog/">DEVLOG</a>
+    <a href="/#roadmap">ROADMAP</a>
+    <a href="/#tools">TOOLS</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+
+  <nav class="breadcrumb">
+    <a href="/">ALASTIS_DEV</a> / <a href="/devlog/">DEVLOG</a> / DEV_UPDATE_04
+  </nav>
+
+  <div class="article-meta">
+    <span class="date">2026.06.02</span>
+    <span class="tag">SHADOW_RAID</span>
+    <span class="tag">LEVEL_MAP</span>
+    <span class="tag">SPRINT_WEEK_2</span>
+  </div>
+
+  <h1>Dev Update #4 — Mapping Out the Desert</h1>
+
+  <p class="lede">
+    A boss is only as good as the journey that earns it. This week I built the road that leads there — a level map, a star system, and a desert that never quite repeats itself.
+  </p>
+
+  <p>
+    Last update was all about the fight. This one is about the shape around it. With AETHELRED working, the next job was giving Act 1 a real structure — somewhere to fly <em>from</em> and <em>to</em>, with a reason to keep going. That meant two things came together this week: how the player moves through the act, and what they see while they do it.
+  </p>
+
+  <h2>The Level Map</h2>
+
+  <p>
+    Shadow Raid now has a proper world map. Stages sit on a winding path, and you pick where to fly next. Clear a level and you earn between <strong>one and three stars</strong> based on how well you did — and clearing it unlocks the next stage on the path. Beat it, bank your stars, push forward.
+  </p>
+
+  <p>
+    Each level scores you differently depending on what it asks. The opening asteroid run rates you on <em>survival</em> — how much hull you keep as you thread the rocks. The combat stages rate you on <em>score</em> — how hard you hit back. The idea is that three stars always means mastery, whatever the level is actually testing.
+  </p>
+
+  <p>
+    Under the hood, progress is saved between sessions, so your stars and unlocks stick. Win or lose, you land back on the map — retry the stage on the spot, or step back and pick another. No dead ends, no forced restarts from the top.
+  </p>
+
+  <h2>A Desert That Shifts</h2>
+
+  <p>
+    The other half of the week was the world itself. Act 1 carries the player across a desert, and a single repeating backdrop would have killed the sense of travel fast. So instead of one texture looping forever, the act moves through <strong>distinct environments</strong> as you go.
+  </p>
+
+  <p>
+    Early stages run over dry, cracked dunes scattered with cacti and weathered rock formations. Push deeper and the land changes — hidden oasis pools, ringed with palms and green, break up the sand. Every stretch has its own character, so flying through Act 1 feels like crossing real ground rather than circling the same patch of desert.
+  </p>
+
+  <p>
+    Up in space, the opening asteroid field got the same treatment — distant planets drift past on a slower parallax layer, sitting behind the action to give the void some depth.
+  </p>
+
+  <div class="shipped">
+    <div class="shipped-title">Shipped This Week</div>
+    <ul>
+      <li>Level map — winding path, level select, progress saved between sessions</li>
+      <li>Star system — 1-3 stars per stage, scored by survival or combat depending on the level</li>
+      <li>Level unlocks — clearing a stage opens the next on the path</li>
+      <li>Win / lose flow — land back on the map, retry on the spot or pick another stage</li>
+      <li>Desert environments — dry dunes, rock formations, and hidden oasis pools</li>
+      <li>Parallax planets — distant worlds drifting behind the asteroid field</li>
+      <li>Level pacing + balance pass across the opening Act 1 stages</li>
+    </ul>
+  </div>
+
+  <h2>Pacing the Run</h2>
+
+  <p>
+    Building the levels back to back made one thing obvious: they were too long. A stage that drags stops being tense and starts being a chore. So the opening levels got tightened — shorter, sharper, quicker to the action. A vertical shooter lives on momentum, and a minute of dead air at the start of a level is a minute the player spends getting bored instead of getting hooked.
+  </p>
+
+  <p>
+    I also pulled the healing pickups out of the asteroid run. If you can top your hull back up mid-flight, then "how much health you finished with" means nothing — and the whole star rating falls apart. Strip the heals, and survival becomes a real test again. Fuel still drops, so you can keep flying. You just can't undo your mistakes.
+  </p>
+
+  <h2>What's Next</h2>
+
+  <p>
+    The map is laid out for the full arc of Act 1 — seven stages in all. Asteroid field, desert combat zones, a run that ends at the gates of an underground base, a maze of corridors patrolled by flying turrets, and AETHELRED waiting at the end. Three stages are playable now. The rest get built over the coming week, then the whole act gets a full pass on real hardware. The clock is still ticking.
+  </p>
+
+  <div class="cta">
+    <p>// WHILE SHADOW RAID IS IN THE WORKSHOP</p>
+    <a href="/shadow-blocks-web/index.html" class="btn-primary">▶ PLAY SHADOW BLOCKS</a>
+  </div>
+
+  <div class="sign">
+    — <strong>Marek</strong>, Alastis Dev<br>
+    Solo dev, Sunderland UK. Building a studio one game at a time.
+  </div>
+
+  <a href="/devlog/" class="back-link">← BACK_TO_DEVLOG</a>
+
+</article>
+
+<footer>
+  <div>© 2026 Alastis Dev. All rights reserved.</div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:alastisdev@gmail.com">Contact</a>
+    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
+  </div>
+</footer>
+
+</body>
+</html>
