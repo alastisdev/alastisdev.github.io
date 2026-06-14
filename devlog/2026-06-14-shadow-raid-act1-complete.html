@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow Raid Act 1 Complete — The Boss Who Survives // ALASTIS DEV</title>
+  <meta name="description" content="Shadow Raid's first act is done. Seven levels, one story arc, and a boss fight that ends with an alliance instead of a kill. Here's how Act 1 came together.">
+  <link rel="canonical" href="https://alastis.dev/devlog/2026-06-14-shadow-raid-act1-complete.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://alastis.dev/devlog/2026-06-14-shadow-raid-act1-complete.html">
+  <meta property="og:title" content="Shadow Raid Act 1 Complete — The Boss Who Survives">
+  <meta property="og:description" content="Seven levels, one story arc, and a boss fight that ends with an alliance instead of a kill.">
+  <meta property="og:image" content="https://alastis.dev/images/shadow-raid-boss.png">
+  <meta property="article:published_time" content="2026-06-14">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shadow Raid Act 1 Complete — The Boss Who Survives">
+  <meta name="twitter:description" content="Seven levels, one story arc, and a boss fight that ends with an alliance instead of a kill.">
+  <meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-boss.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛸</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080a0e;
+      --bg2: #0d1117;
+      --panel: #111820;
+      --border: #1e2d3d;
+      --accent: #00d4ff;
+      --accent2: #ff6b00;
+      --accent3: #7fff00;
+      --text: #c8d6e5;
+      --dim: #4a6278;
+      --mono: 'Share Tech Mono', monospace;
+      --display: 'Orbitron', sans-serif;
+      --body: 'Rajdhani', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(8,10,14,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand {
+      font-family: var(--display);
+      font-size: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--dim);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* MAIN */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 100px 2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* POST HEADER */
+    .post-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .post-date {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--dim);
+    }
+
+    .post-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.2rem 0.6rem;
+      letter-spacing: 0.1em;
+    }
+
+    .post-tag.orange { color: var(--accent2); border-color: var(--accent2); }
+    .post-tag.green { color: var(--accent3); border-color: var(--accent3); }
+
+    h1 {
+      font-family: var(--display);
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 500;
+      border-left: 3px solid var(--accent2);
+      padding-left: 1.2rem;
+    }
+
+    /* POST CONTENT */
+    .post-content h2 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      color: var(--accent2);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .post-content h2::before {
+      content: '// ';
+      color: var(--dim);
+    }
+
+    .post-content p {
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+
+    .post-content strong { color: var(--accent); }
+
+    .post-content code {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.4rem;
+      color: var(--accent3);
+    }
+
+    .highlight-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .highlight-box.orange { border-left-color: var(--accent2); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* CTA */
+    .post-cta {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+    }
+
+    .btn-secondary:hover { background: var(--accent2); color: var(--bg); }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--dim);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--dim);
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.4rem; }
+      main { padding: 80px 1rem 3rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">ALASTIS_DEV</a>
+  <ul class="nav-links">
+    <li><a href="/#about">ABOUT</a></li>
+    <li><a href="/#games">GAMES</a></li>
+    <li><a href="/devlog/">DEVLOG</a></li>
+    <li><a href="/#leaderboard">LEADERBOARD</a></li>
+    <li><a href="/#roadmap">ROADMAP</a></li>
+    <li><a href="/#tools">TOOLS</a></li>
+    <li><a href="/privacy-policy.html">PRIVACY</a></li>
+  </ul>
+</nav>
+
+<main>
+  <a href="/devlog/" class="back-link">← DEVLOG</a>
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="post-date">2026.06.14</span>
+        <span class="post-tag orange">MILESTONE</span>
+        <span class="post-tag">SHADOW_RAID</span>
+        <span class="post-tag green">ACT_1</span>
+      </div>
+      <h1>Shadow Raid Act 1 Complete — The Boss Who Survives</h1>
+      <p class="lead">Seven levels, one story arc, and a boss fight that ends with an alliance instead of a kill. Act 1 of Shadow Raid is done.</p>
+    </header>
+
+    <div class="post-content">
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">7</span>
+          <span class="stat-label">LEVELS COMPLETE</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">1</span>
+          <span class="stat-label">BOSS ENCOUNTER</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">5</span>
+          <span class="stat-label">ACT STORY ARC</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">47d</span>
+          <span class="stat-label">TO LAUNCH</span>
+        </div>
+      </div>
+
+      <h2>WHERE IT STARTED</h2>
+      <p>When I began Shadow Raid, the plan was simple: a vertical shooter with escalating difficulty and a four-act campaign. What I didn't plan was how much the story would change things. Act 1 was supposed to end with a kill. It doesn't.</p>
+
+      <p>Seven levels take you from an asteroid field above the planet, through desert combat zones, into an enemy base via a canyon corridor — and finally to Lieutenant Vance, the man you were sent to destroy.</p>
+
+      <h2>THE CANYON — LEVEL 6</h2>
+      <p>Level 6 was the hardest design problem in the act. The original concept had a middle wall dividing the corridor into two lanes with wall-mounted cannons on each side. The problem: it felt punishing and unclear. Players didn't understand why they were taking damage.</p>
+
+      <p>The rework removed the middle wall entirely. Now the canyon is open — two bounding walls, cannons mounted on each side. The critical change: <strong>cannons only fire when you're below them</strong>. Pass one and it's safe. The lane choice becomes meaningful without being invisible.</p>
+
+      <div class="highlight-box orange">
+        Cannon rule: <code>if (_py >= y)</code> — fires only at targets below. Pass it, you're clear. The decision is visible, the consequence is fair.
+      </div>
+
+      <h2>THE BOSS WHO SURVIVES</h2>
+      <p>Every shooter has a final boss. Shadow Raid's Act 1 boss is Lieutenant Vance — and the twist is that he doesn't die.</p>
+
+      <p>The mission briefing tells you Vance is a traitor. You fight through seven levels to reach him. You win. And then he says: <em>"Be careful who you trust. The truth might surprise you."</em></p>
+
+      <p>He becomes your ally. The upgrade system — ship improvements between acts — gets its narrative justification. Vance runs the hangar. He improves your ship. And the real question of the story shifts: who gave you the mission, and why?</p>
+
+      <div class="highlight-box">
+        General Calder — the mission commander — is never seen face to face. Only heard. The reveal is five acts away.
+      </div>
+
+      <h2>THE ARCHITECTURE OF ENDINGS</h2>
+      <p>One of the cleaner technical decisions in this act was unifying how levels end. Every level now uses the same pattern:</p>
+
+      <div class="highlight-box">
+        <code>global.victory_stars = _stars;</code><br>
+        <code>global.game_state = 1;</code>
+      </div>
+
+      <p>State 1 triggers the Victory popup in the HUD manager. Stars are calculated per level — HP-based for L1 and L7, score-based for the combat levels. The popup shows the result, offers Menu or Next, and <code>scr_GoNextLevel</code> handles the routing. Seven levels, one system.</p>
+
+      <h2>WHAT I ALMOST GOT WRONG</h2>
+      <p>Level 6's star thresholds were copied from Level 5 without adjustment. The scores were unreachable in the redesigned open corridor — players were failing to three-star a level that was mechanically simpler than what came before. Fixed: thresholds dropped to match the actual difficulty curve.</p>
+
+      <p>The boss dialogue position was also wrong initially — the speaker name overlapped the portrait. A single Y-offset fix (<code>_name_y = 880</code>) solved it, but it took three test runs to spot.</p>
+
+      <h2>WHERE THIS LEADS</h2>
+      <p>Act 1 is complete: playable end to end, balanced, with a story beat that sets up four more acts. Next is a full hardware playtest on the Pixel 7A — touch controls, frame rate, difficulty feel on an actual screen.</p>
+
+      <p>After that: the hangar scene, the coin economy, and Act 2. A pirate fleet. A separate antagonist with their own agenda. And a trail of evidence that points back to Calder.</p>
+
+      <p>July 2026. Solo. GameMaker Studio 2. Pure GML.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--dim); margin-bottom: 1.5rem;">SHADOW BLOCKS IS LIVE NOW — WHILE SHADOW RAID IS IN DEVELOPMENT</p>
+      <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn btn-primary" target="_blank">PLAY SHADOW BLOCKS</a>
+      <a href="/devlog/" class="btn btn-secondary">ALL DEVLOGS</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <p>ALASTIS DEV &copy; 2026 | Sunderland, UK | <a href="/privacy-policy.html" style="color: var(--dim);">PRIVACY</a></p>
+</footer>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+
+</body>
+</html>
