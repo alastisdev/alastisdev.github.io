@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALASTIS DEV // INDUSTRIAL GAME SYSTEMS</title>
 <meta name="description" content="Indie game studio from Sunderland, UK. Building dark fantasy mobile games with engineering precision.">
-
 <!-- SEO -->
 <meta name="keywords" content="indie game dev, mobile games, match-3, dark fantasy, GameMaker Studio 2, Sunderland UK, Shadow Blocks, Alastis Dev">
-<meta name="author" content="Marek Banaś / Alastis Dev">
+<meta name="author" content="Marek Banas / Alastis Dev">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alastis.dev/">
-
 <!-- Open Graph (Facebook, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alastis.dev/">
@@ -19,14 +17,12 @@
 <meta property="og:description" content="Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.">
 <meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
 <meta property="og:site_name" content="Alastis Dev">
-
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://alastis.dev/">
 <meta name="twitter:title" content="ALASTIS DEV // INDUSTRIAL GAME SYSTEMS">
 <meta name="twitter:description" content="Solo indie studio building dark fantasy mobile games. Shadow Blocks LIVE on Google Play.">
 <meta name="twitter:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
-
 <!-- Favicon -->
 <!-- Favicons - multiple formats for max compatibility -->
 <link rel="icon" type="image/png" sizes="512x512" href="/images/AlastisDev_icon_512.png">
@@ -34,7 +30,7 @@
 <link rel="icon" type="image/x-icon" href="/images/AlastisDev_favicon.ico">
 <link rel="apple-touch-icon" sizes="512x512" href="/images/AlastisDev_icon_512.png">
 <link rel="shortcut icon" href="/images/AlastisDev_favicon.ico">
-  
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -52,10 +48,8 @@
     --display:   'Orbitron', sans-serif;
     --body:      'Rajdhani', sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -64,7 +58,6 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
-
   body::before {
     content: '';
     position: fixed;
@@ -76,7 +69,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   body::after {
     content: '';
     position: fixed;
@@ -88,7 +80,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
@@ -98,7 +89,6 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px; height: 60px;
   }
-
   .nav-logo {
     font-family: var(--display);
     font-size: 13px; font-weight: 700;
@@ -113,14 +103,12 @@
     letter-spacing: 1px; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
   .status-dot {
     display: inline-block; width: 6px; height: 6px;
     background: var(--accent3); border-radius: 50%;
     margin-right: 8px; animation: pulse 2s infinite;
   }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
   .hero {
     position: relative; z-index: 1;
     min-height: 100vh;
@@ -128,14 +116,12 @@
     align-items: center; justify-content: center;
     text-align: center; padding: 80px 40px 60px;
   }
-
   .hero-tag {
     font-family: var(--mono); font-size: 11px;
     color: var(--accent); letter-spacing: 4px;
     margin-bottom: 24px;
     opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
   }
-
   .hero h1 {
     font-family: var(--display);
     font-size: clamp(32px, 6vw, 80px);
@@ -144,7 +130,6 @@
     opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
   }
   .hero h1 .slash { color: var(--accent); }
-
   .hero-sub {
     font-family: var(--display);
     font-size: clamp(14px, 2vw, 20px);
@@ -152,14 +137,12 @@
     letter-spacing: 6px; margin-bottom: 48px;
     opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
   }
-
   .hero-desc {
     font-family: var(--body); font-size: 16px;
     color: var(--text); max-width: 500px;
     margin-bottom: 40px;
     opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
   }
-
   .btn-primary {
     display: inline-flex; align-items: center; gap: 10px;
     background: var(--accent); color: #000;
@@ -171,7 +154,6 @@
     opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
   .btn-primary:hover { background: #fff; transform: translateY(-2px); }
-
   .terminal {
     position: relative; z-index: 1;
     margin: 20px auto 0; max-width: 480px;
@@ -191,13 +173,11 @@
     vertical-align: middle; margin-left: 4px;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
   section {
     position: relative; z-index: 1;
     max-width: 1200px; margin: 0 auto;
     padding: 100px 40px;
   }
-
   .section-header {
     display: flex; align-items: center; gap: 16px;
     margin-bottom: 60px;
@@ -221,7 +201,6 @@
     color: var(--dim); letter-spacing: 1px;
     margin-bottom: 40px;
   }
-
   /* ABOUT SECTION */
   .about-card {
     background: var(--panel);
@@ -247,14 +226,12 @@
     color: var(--text); line-height: 1.7;
   }
   .about-text strong { color: var(--accent); font-weight: 600; }
-
   /* GAMES GRID */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
   }
-
   .game-card {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -275,7 +252,6 @@
   .game-card.shadow-blocks { --card-accent: var(--accent3); }
   .game-card.shadow-slash  { --card-accent: var(--accent2); }
   .game-card.shadow-raid   { --card-accent: var(--accent); }
-
   .card-image {
     width: calc(100% + 64px);
     margin: -32px -32px 24px -32px;
@@ -294,7 +270,6 @@
     color: var(--card-accent, var(--accent));
     opacity: 0.3;
   }
-
   .card-status {
     display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--mono); font-size: 10px;
@@ -304,11 +279,9 @@
   .status-live  { color: var(--accent3); border-color: rgba(127,255,0,0.3); background: rgba(127,255,0,0.05); }
   .status-dev   { color: var(--accent);  border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.05); }
   .status-slash { color: var(--accent2); border-color: rgba(255,107,0,0.3); background: rgba(255,107,0,0.05); }
-
   .card-id { font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 2px; margin-bottom: 12px; }
   .card-title { font-family: var(--display); font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 16px; }
   .card-desc { font-family: var(--body); font-size: 15px; color: var(--dim); line-height: 1.7; margin-bottom: 28px; }
-
   .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .tag {
     font-family: var(--mono); font-size: 9px;
@@ -316,7 +289,6 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border); color: var(--dim);
   }
-
   .card-progress { margin-bottom: 24px; }
   .progress-label {
     display: flex; justify-content: space-between;
@@ -325,7 +297,6 @@
   }
   .progress-bar { height: 2px; background: var(--border); position: relative; }
   .progress-fill { height: 100%; background: var(--card-accent, var(--accent)); transition: width 1s ease; }
-
   .card-links { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-card {
     display: inline-flex; align-items: center; gap: 8px;
@@ -347,7 +318,6 @@
     border-color: var(--card-accent, var(--accent));
     color: var(--card-accent, var(--accent));
   }
-
   /* BIOM GALLERY */
   .biome-grid {
     display: grid;
@@ -391,7 +361,28 @@
     font-family: var(--mono); font-size: 10px;
     color: var(--accent2); letter-spacing: 2px;
   }
-
+  /* FEEDBACK FORM */
+  .feedback-form {
+    display: flex; flex-direction: column; gap: 16px;
+    max-width: 600px; margin: 0 auto;
+  }
+  .feedback-form input,
+  .feedback-form textarea {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono); font-size: 14px;
+    padding: 14px;
+  }
+  .feedback-form input:focus,
+  .feedback-form textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .feedback-form textarea { resize: vertical; }
+  .feedback-form button {
+    border: none; cursor: pointer; justify-content: center;
+    opacity: 1; animation: none;
+  }
   /* COFFEE SECTION */
   .coffee-section {
     position: relative; z-index: 1;
@@ -452,7 +443,6 @@
     background: #ff8533; transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(255,107,0,0.3);
   }
-
   /* FLOATING COFFEE */
   .coffee-float {
     position: fixed; bottom: 24px; right: 24px;
@@ -487,7 +477,6 @@
     0%   { opacity: 0.6; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.4); }
   }
-
   /* FLOATING FEEDBACK */
   .feedback-float {
     position: fixed; bottom: 24px; left: 24px;
@@ -522,7 +511,6 @@
     0%   { opacity: 0.6; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.4); }
   }
-
   /* LEADERBOARD */
   .leaderboard-wrap {
     background: var(--panel);
@@ -565,7 +553,6 @@
     text-align: center; padding: 60px;
     font-family: var(--mono); font-size: 12px; color: var(--dim);
   }
-
   /* TECH/TOOLS GRID */
   .tech-grid, .tools-grid {
     display: grid;
@@ -605,7 +592,6 @@
     margin-top: 12px; display: inline-block;
   }
   .tool-item:hover .tool-link { color: var(--accent); }
-
   /* ROADMAP */
   .roadmap {
     background: var(--panel);
@@ -634,7 +620,6 @@
   .roadmap-icon { font-size: 20px; text-align: center; }
   .roadmap-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
   .roadmap-desc { font-family: var(--body); font-size: 13px; color: var(--dim); }
-
   /* CREDITS */
   .credits-grid {
     display: grid;
@@ -658,7 +643,6 @@
   }
   .credit-value a { color: var(--accent); text-decoration: none; }
   .credit-value a:hover { text-decoration: underline; }
-
   /* DEDICATION */
   .dedication-section {
     position: relative; z-index: 1;
@@ -708,7 +692,6 @@
     letter-spacing: 3px;
     font-weight: 700;
   }
-
   footer {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
@@ -718,7 +701,6 @@
   }
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -728,14 +710,13 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
-
 /* LATEST DEVLOG - DUAL CARDS */
   .latest-posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 24px;
   }
-  
+
   .latest-post {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -752,21 +733,19 @@
   }
   .latest-post.shadow-raid::before { background: var(--accent); }
   .latest-post.shadow-blocks::before { background: var(--accent3); }
-  
-  .latest-post:hover { 
-    border-color: var(--accent); 
+
+  .latest-post:hover {
+    border-color: var(--accent);
     transform: translateX(4px);
   }
   .latest-post.shadow-blocks:hover { border-color: var(--accent3); }
   .latest-post:hover::before { width: 6px; }
-
   .latest-post-link {
     display: block;
     padding: 32px;
     text-decoration: none;
     color: inherit;
   }
-
   .latest-post-meta {
     display: flex; align-items: center; gap: 16px;
     font-family: var(--mono); font-size: 10px;
@@ -784,26 +763,23 @@
     border: 1px solid rgba(255,107,0,0.2);
     color: var(--accent2);
   }
-
   .latest-post-title {
     font-family: var(--display);
     font-size: clamp(18px, 2.5vw, 22px);
     font-weight: 700; color: #fff;
     margin-bottom: 16px; line-height: 1.3;
   }
-
   .latest-post-excerpt {
     font-family: var(--body); font-size: 14px;
     color: var(--dim); line-height: 1.7;
     margin-bottom: 20px;
   }
-
   .latest-post-readmore {
     font-family: var(--mono); font-size: 11px;
     color: var(--accent); letter-spacing: 2px;
   }
   .latest-post.shadow-blocks .latest-post-readmore { color: var(--accent3); }
-  
+
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
@@ -818,7 +794,6 @@
     .dedication-card { padding: 40px 24px; }
   }
 </style>
-
 <!-- Organization Schema -->
 <script type="application/ld+json">
 {
@@ -830,7 +805,7 @@
   "logo": "https://alastis.dev/images/shadow-blocks-hero.jpeg",
   "founder": {
     "@type": "Person",
-    "name": "Marek Banaś",
+    "name": "Marek Banas",
     "jobTitle": "Solo Indie Game Developer",
     "nationality": "Polish"
   },
@@ -848,12 +823,11 @@
   "knowsAbout": ["Game Development", "GameMaker Studio 2", "Mobile Games", "Match-3 Puzzle", "Vertical Shooter", "AI-Augmented Development"],
   "sameAs": [
     "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks",
-    "https://buymeacoffee.com/alastis.dev"
+    "https://ko-fi.com/alastisdev"
   ],
   "email": "alastisdev@gmail.com"
 }
 </script>
-
 <!-- Shadow Blocks VideoGame Schema -->
 <script type="application/ld+json">
 {
@@ -877,7 +851,7 @@
   },
   "author": {
     "@type": "Person",
-    "name": "Marek Banaś"
+    "name": "Marek Banas"
   },
   "datePublished": "2026-04-26",
   "softwareVersion": "4.2.0",
@@ -899,7 +873,6 @@
   }
 }
 </script>
-
 <!-- Shadow Raid VideoGame Schema -->
 <script type="application/ld+json">
 {
@@ -921,7 +894,7 @@
   },
   "author": {
     "@type": "Person",
-    "name": "Marek Banaś"
+    "name": "Marek Banas"
   },
   "softwareVersion": "0.3.0",
   "releaseNotes": "v0.3.0 - Sprint Active. July 2026 Launch target. Tutorial complete, tank balanced, sprite standardization done.",
@@ -929,7 +902,6 @@
   "inLanguage": "en"
 }
 </script>
-
 <!-- WebSite Schema (enables sitelinks searchbox in Google) -->
 <script type="application/ld+json">
 {
@@ -945,13 +917,12 @@
   "inLanguage": "en"
 }
 </script>
-
 <!-- Person Schema (Marek as author/founder) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Marek Banaś",
+  "name": "Marek Banas",
   "url": "https://alastis.dev",
   "jobTitle": "Indie Game Developer",
   "worksFor": {
@@ -968,11 +939,10 @@
   "knowsAbout": ["Game Development", "GameMaker Studio 2", "GML Programming", "Mobile Game Design", "Solo Indie Development"],
   "email": "alastisdev@gmail.com",
   "sameAs": [
-    "https://buymeacoffee.com/alastis.dev"
+    "https://ko-fi.com/alastisdev"
   ]
 }
 </script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -983,7 +953,7 @@
   "dateModified": "2026-05-16",
   "author": {
     "@type": "Person",
-    "name": "Marek Banaś",
+    "name": "Marek Banas",
     "url": "https://alastis.dev/",
     "jobTitle": "Solo Indie Game Developer"
   },
@@ -1019,13 +989,10 @@
   }
 }
 </script>
-
-
 <!-- ============================================ -->
 <!-- DLA: devlog/2026-05-16-shadow-blocks-crazygames-submission.html -->
 <!-- WSTAW PRZED </head>                            -->
 <!-- ============================================ -->
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1036,7 +1003,7 @@
   "dateModified": "2026-05-16",
   "author": {
     "@type": "Person",
-    "name": "Marek Banaś",
+    "name": "Marek Banas",
     "url": "https://alastis.dev/",
     "jobTitle": "Solo Indie Game Developer"
   },
@@ -1073,10 +1040,8 @@
 }
 </script>
 
-  
 </head>
 <body>
-
 <nav>
   <a href="#top" class="nav-logo">ALASTIS<span> // </span>DEV</a>
   <div class="nav-links">
@@ -1089,14 +1054,13 @@
     <a href="privacy-policy.html">PRIVACY</a>
   </div>
 </nav>
-
 <div class="hero" id="top">
   <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.2.0</div>
   <h1>ALASTIS <span class="slash">//</span> DEV</h1>
   <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
   <p class="hero-desc">Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.</p>
-  <a href="https://alastis.dev/shadow-blocks-web/index.html" class="btn-primary">
-    ▶ PLAY SHADOW BLOCKS
+  <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-primary">
+    ▶ GET ON GOOGLE PLAY
   </a>
   <div class="terminal">
     <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
@@ -1107,7 +1071,6 @@
     <div class="terminal-line">UPTIME: <span class="val">99.9%</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
   </div>
 </div>
-
 <!-- ABOUT -->
 <section id="about">
   <div class="section-header">
@@ -1116,15 +1079,13 @@
   </div>
   <div class="section-title">About the Studio</div>
   <p class="section-subtitle">SOLO DEVELOPMENT // SUNDERLAND, UK</p>
-
   <div class="about-card fade-in">
     <div class="about-icon">A<span class="slash">/</span>D</div>
     <div class="about-text">
-      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. <strong>Founded by Marek Banaś</strong> — self-taught developer based in Sunderland, UK. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
+      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. <strong>Founded by Marek Banas</strong> — self-taught developer based in Sunderland, UK. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
     </div>
   </div>
 </section>
-
 <!-- GAMES -->
 <section id="games">
   <div class="section-header">
@@ -1133,13 +1094,11 @@
   </div>
   <div class="section-title">Project Portfolio</div>
   <p class="section-subtitle">3 ACTIVE PROJECTS // 1 PLANNED HIT</p>
-
   <div class="games-grid">
-
     <!-- SHADOW BLOCKS -->
     <div class="game-card shadow-blocks fade-in">
       <div class="card-image">
-        <img src="images/shadow-blocks-hero.jpeg" alt="Shadow Blocks" 
+        <img src="images/shadow-blocks-hero.jpeg" alt="Shadow Blocks"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">◆</div>
       </div>
@@ -1160,11 +1119,10 @@
         <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
       </div>
      <div class="card-links">
-        <a href="https://alastis.dev/shadow-blocks-web/index.html" class="btn-card primary">▶ PLAY ONLINE</a>
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card primary">▶ GOOGLE PLAY</a>
         <a href="#biomes" class="btn-card secondary">VIEW BIOMES</a>
       </div>
     </div>
-
     <!-- SHADOW SLASH -->
     <div class="game-card shadow-slash fade-in">
       <div class="card-image">
@@ -1188,10 +1146,9 @@
       </div>
     <div class="card-links">
         <a href="#leaderboard" class="btn-card primary">⚡ TOP 100</a>
-        <a href="https://alastis.dev/shadow-blocks-web/index.html" class="btn-card secondary">PLAY NOW</a>
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card secondary">GOOGLE PLAY</a>
       </div>
     </div>
-
     <!-- SHADOW RAID -->
     <div class="game-card shadow-raid fade-in">
       <div class="card-image">
@@ -1217,10 +1174,8 @@
        <a href="/devlog/2026-06-14-shadow-raid-act1-complete.html" class="btn-card secondary">▶ ACT 1 COMPLETE</a>
       </div>
     </div>
-
   </div>
 </section>
-
 <!-- BIOMES GALLERY -->
 <section id="biomes">
   <div class="section-header">
@@ -1229,7 +1184,6 @@
   </div>
   <div class="section-title">8 Biomes / 80 Levels</div>
   <p class="section-subtitle">ESCAPE FROM THE CURSED CASTLE // 4K ANIMATED BACKGROUNDS</p>
-
   <div class="biome-grid fade-in">
     <div class="biome-card">
       <img src="images/biomes/prison.jpg" alt="Prison" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -1297,7 +1251,6 @@
     </div>
   </div>
 </section>
-
 <!-- LATEST DEVLOG -->
 <section id="latest-devlog">
   <div class="section-header">
@@ -1306,9 +1259,7 @@
   </div>
   <div class="section-title">From the Devlog</div>
   <p class="section-subtitle">BEHIND THE SCENES // SOLO INDIE DEVELOPMENT</p>
-
   <div class="latest-posts-grid">
-
   <!-- Act 1 Complete - NAJNOWSZY -->
   <div class="latest-post shadow-raid fade-in">
     <a href="/devlog/2026-06-14-shadow-raid-act1-complete.html" class="latest-post-link">
@@ -1325,7 +1276,6 @@
       <span class="latest-post-readmore">READ_FULL_POST →</span>
     </a>
   </div>
-
   <!-- Dev Update #4 -->
   <div class="latest-post shadow-raid fade-in">
     <a href="/devlog/2026-06-02-shadow-raid-dev-update-04.html" class="latest-post-link">
@@ -1342,7 +1292,6 @@
       <span class="latest-post-readmore">READ_FULL_POST →</span>
     </a>
   </div>
-
   <!-- Dev Update #3 -->
   <div class="latest-post shadow-raid fade-in">
     <a href="/devlog/2026-05-22-shadow-raid-dev-update-03.html" class="latest-post-link">
@@ -1359,14 +1308,26 @@
       <span class="latest-post-readmore">READ_FULL_POST →</span>
     </a>
   </div>
-
 </div>
-
   <div style="text-align: center; margin-top: 32px;">
     <a href="/devlog/" class="btn-card secondary" style="display: inline-flex;">VIEW_ALL_POSTS →</a>
   </div>
 </section>
-  
+
+<!-- FEEDBACK -->
+<section id="feedback">
+  <div class="section-header">
+    <div class="section-tag">// TRANSMISSION</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">Send Feedback</div>
+  <p class="section-subtitle">BUGS // IDEAS // JUST SAY HI</p>
+  <form class="feedback-form fade-in" action="https://formspree.io/f/mvzyzlby" method="POST">
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+    <button type="submit" class="btn-primary">▶ SEND TRANSMISSION</button>
+  </form>
+</section>
 <!-- COFFEE -->
 <div class="coffee-section fade-in">
   <div class="coffee-card">
@@ -1375,12 +1336,11 @@
     <div class="coffee-divider"></div>
     <div class="coffee-line1">EACH COFFEE UNLOCKS ONE HOUR OF ESCAPE</div>
     <div class="coffee-line2">Your support keeps the developer alive. Literally.</div>
-    <a href="https://buymeacoffee.com/alastis.dev" class="btn-coffee" target="_blank">
+    <a href="https://ko-fi.com/alastisdev" class="btn-coffee" target="_blank">
       <span>☕</span> SEND COFFEE
     </a>
   </div>
 </div>
-
 <!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="section-header">
@@ -1389,7 +1349,6 @@
   </div>
   <div class="section-title">Global Leaderboard</div>
   <p class="section-subtitle">TOP 100 // SHADOW SLASH // ALL TIME</p>
-
   <div class="leaderboard-wrap fade-in">
     <div class="lb-header">
       <div class="lb-title">⚡ SHADOW SLASH // TOP 100</div>
@@ -1400,7 +1359,6 @@
     </div>
   </div>
 </section>
-
 <!-- ROADMAP -->
 <section id="roadmap">
   <div class="section-header">
@@ -1409,7 +1367,6 @@
   </div>
   <div class="section-title">Roadmap</div>
   <p class="section-subtitle">WHERE WE ARE // WHERE WE'RE GOING</p>
-
   <div class="roadmap fade-in">
     <div class="roadmap-item">
       <div class="roadmap-phase phase-now">NOW</div>
@@ -1453,7 +1410,6 @@
     </div>
   </div>
 </section>
-
 <!-- TECH -->
 <section id="technology">
   <div class="section-header">
@@ -1462,7 +1418,6 @@
   </div>
   <div class="section-title">The Machine Under the Hood</div>
   <p class="section-subtitle">PRECISION ENGINEERING // MOBILE-FIRST DESIGN</p>
-
   <div class="tech-grid fade-in">
     <div class="tech-item">
       <div class="tech-icon">// ENGINE</div>
@@ -1486,7 +1441,6 @@
     </div>
   </div>
 </section>
-
 <!-- TOOLS -->
 <section id="tools">
   <div class="section-header">
@@ -1495,9 +1449,7 @@
   </div>
   <div class="section-title">Tools I Use</div>
   <p class="section-subtitle">BATTLE-TESTED // WHAT POWERS ALASTIS DEV</p>
-
   <div class="tools-grid fade-in">
-
     <a href="https://gamemaker.io" target="_blank" class="tool-item">
       <div class="tool-icon">// ENGINE</div>
       <div class="tool-name">GameMaker Studio 2</div>
@@ -1505,7 +1457,6 @@
       <div class="tool-desc">The backbone. Pure GML, fast iteration, mobile-first.</div>
       <div class="tool-link">→ gamemaker.io</div>
     </a>
-
     <a href="https://firebase.google.com" target="_blank" class="tool-item">
       <div class="tool-icon">// BACKEND</div>
       <div class="tool-name">Firebase</div>
@@ -1513,7 +1464,6 @@
       <div class="tool-desc">Powers the global leaderboard. Free tier, zero downtime.</div>
       <div class="tool-link">→ firebase.google.com</div>
     </a>
-
     <a href="https://pages.github.com" target="_blank" class="tool-item">
       <div class="tool-icon">// HOSTING</div>
       <div class="tool-name">GitHub Pages</div>
@@ -1521,7 +1471,6 @@
       <div class="tool-desc">This site lives here. Free, fast, version-controlled.</div>
       <div class="tool-link">→ pages.github.com</div>
     </a>
-
     <a href="https://deepmind.google/technologies/veo/" target="_blank" class="tool-item">
       <div class="tool-icon">// VIDEO_AI</div>
       <div class="tool-name">Google Veo</div>
@@ -1529,7 +1478,6 @@
       <div class="tool-desc">Every animated background in Shadow Blocks. 8 biomes, all AI-rendered.</div>
       <div class="tool-link">→ deepmind.google</div>
     </a>
-
     <a href="https://www.photopea.com" target="_blank" class="tool-item">
       <div class="tool-icon">// GRAPHICS</div>
       <div class="tool-name">Photopea</div>
@@ -1537,7 +1485,6 @@
       <div class="tool-desc">Free Photoshop alternative. Sprites, UI, marketing assets.</div>
       <div class="tool-link">→ photopea.com</div>
     </a>
-
     <a href="https://claude.ai" target="_blank" class="tool-item">
       <div class="tool-icon">// AI_REVIEWER</div>
       <div class="tool-name">Claude</div>
@@ -1545,7 +1492,6 @@
       <div class="tool-desc">Anthropic's AI. Catches bugs, suggests architecture, debugs production.</div>
       <div class="tool-link">→ claude.ai</div>
     </a>
-
     <a href="https://gemini.google.com" target="_blank" class="tool-item">
       <div class="tool-icon">// AI_ARCHITECT</div>
       <div class="tool-name">Gemini</div>
@@ -1553,7 +1499,6 @@
       <div class="tool-desc">Google's AI. Day-to-day coding, planning, project memory.</div>
       <div class="tool-link">→ gemini.google.com</div>
     </a>
-
     <a href="https://notebooklm.google.com" target="_blank" class="tool-item">
       <div class="tool-icon">// AI_RESEARCH</div>
       <div class="tool-name">NotebookLM</div>
@@ -1561,10 +1506,8 @@
       <div class="tool-desc">Project documentation, lore tracking, design decisions.</div>
       <div class="tool-link">→ notebooklm.google.com</div>
     </a>
-
   </div>
 </section>
-
 <!-- CREDITS -->
 <section id="credits">
   <div class="section-header">
@@ -1573,11 +1516,10 @@
   </div>
   <div class="section-title">Credits & Contact</div>
   <p class="section-subtitle">REACH OUT // FOLLOW THE BUILD</p>
-
   <div class="credits-grid fade-in">
     <div class="credit-card">
       <div class="credit-label">// FOUNDER</div>
-      <div class="credit-value">Marek Banaś</div>
+      <div class="credit-value">Marek Banas</div>
     </div>
     <div class="credit-card">
       <div class="credit-label">// STUDIO</div>
@@ -1597,11 +1539,10 @@
     </div>
     <div class="credit-card">
       <div class="credit-label">// SUPPORT</div>
-      <div class="credit-value"><a href="https://buymeacoffee.com/alastis.dev" target="_blank">Buy Me a Coffee</a></div>
+      <div class="credit-value"><a href="https://ko-fi.com/alastisdev" target="_blank">Ko-fi</a></div>
     </div>
   </div>
 </section>
-
 <!-- DEDICATION -->
 <section class="dedication-section">
   <div class="dedication-card fade-in">
@@ -1613,27 +1554,22 @@
     <div class="dedication-signature">— Marek</div>
   </div>
 </section>
-
 <footer>
   <div>© 2026 Alastis Dev. All rights reserved.</div>
   <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="mailto:alastisdev@gmail.com">Contact</a>
-    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
+    <a href="https://ko-fi.com/alastisdev" target="_blank">Coffee ☕</a>
   </div>
 </footer>
-
-<a href="https://buymeacoffee.com/alastis.dev" target="_blank" class="coffee-float">
+<a href="https://ko-fi.com/alastisdev" target="_blank" class="coffee-float">
   ☕ COFFEE?
 </a>
-
-<a href="https://bsky.app/profile/alastis.dev/post/3mm4tig3quc2m" target="_blank" class="feedback-float">
+<a href="#feedback" class="feedback-float">
   💬 FEEDBACK?
 </a>
-
 <script>
   const FIREBASE_URL = "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app/slash_scores.json";
-
   function renderTable(data) {
     const medals = ['🥇','🥈','🥉'];
     let html = `
@@ -1657,24 +1593,20 @@
     html += '</tbody></table></div>';
     document.getElementById('lb-content').innerHTML = html;
   }
-
   async function loadLeaderboard() {
     try {
       const response = await fetch(FIREBASE_URL);
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
-
       if (!data || Object.keys(data).length === 0) {
         document.getElementById('lb-content').innerHTML =
           '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
         return;
       }
-
       const scores = Object.values(data);
       const validScores = scores.filter(s => s && typeof s.score === 'number' && s.name);
       validScores.sort((a, b) => b.score - a.score);
       const top100 = validScores.slice(0, 100);
-
       if (top100.length === 0) {
         document.getElementById('lb-content').innerHTML =
           '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
@@ -1687,11 +1619,9 @@
         '<div class="lb-empty">// CONNECTION ERROR. RETRY LATER.</div>';
     }
   }
-
   loadLeaderboard();
   setInterval(loadLeaderboard, 30000);
 </script>
-
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -1702,10 +1632,8 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
-
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
 <!-- End Cloudflare Web Analytics -->
-
 </body>
 </html>
