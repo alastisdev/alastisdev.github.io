@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALASTIS DEV // INDUSTRIAL GAME SYSTEMS</title>
-<meta name="description" content="Indie game studio from Sunderland, UK. Building dark fantasy mobile games with engineering precision.">
+<meta name="description" content="Indie game studio from Sunderland, UK. Building dark fantasy games with engineering precision. Free, no ads, no in-app purchases.">
 <!-- SEO -->
-<meta name="keywords" content="indie game dev, mobile games, match-3, dark fantasy, GameMaker Studio 2, Sunderland UK, Shadow Blocks, Alastis Dev">
+<meta name="keywords" content="indie game dev, mobile games, match-3, dark fantasy, GameMaker Studio 2, Sunderland UK, Shadow Blocks, Alastis Dev, free games no ads">
 <meta name="author" content="Marek Banas / Alastis Dev">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alastis.dev/">
@@ -14,23 +14,21 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alastis.dev/">
 <meta property="og:title" content="ALASTIS DEV // INDUSTRIAL GAME SYSTEMS">
-<meta property="og:description" content="Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.">
+<meta property="og:description" content="Solo indie studio. Dark fantasy games on Windows and Android. Free, no ads, no in-app purchases. Pure GML, pure passion.">
 <meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
 <meta property="og:site_name" content="Alastis Dev">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://alastis.dev/">
 <meta name="twitter:title" content="ALASTIS DEV // INDUSTRIAL GAME SYSTEMS">
-<meta name="twitter:description" content="Solo indie studio building dark fantasy mobile games. Shadow Blocks LIVE on Google Play.">
+<meta name="twitter:description" content="Solo indie studio building dark fantasy games. Shadow Blocks LIVE on Microsoft Store and Google Play. Free, zero ads.">
 <meta name="twitter:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
-<!-- Favicon -->
 <!-- Favicons - multiple formats for max compatibility -->
 <link rel="icon" type="image/png" sizes="512x512" href="/images/AlastisDev_icon_512.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/images/AlastisDev_favicon.png">
 <link rel="icon" type="image/x-icon" href="/images/AlastisDev_favicon.ico">
 <link rel="apple-touch-icon" sizes="512x512" href="/images/AlastisDev_icon_512.png">
 <link rel="shortcut icon" href="/images/AlastisDev_favicon.ico">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -134,14 +132,27 @@
     font-family: var(--display);
     font-size: clamp(14px, 2vw, 20px);
     font-weight: 400; color: var(--dim);
-    letter-spacing: 6px; margin-bottom: 48px;
+    letter-spacing: 6px; margin-bottom: 32px;
     opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
   }
   .hero-desc {
     font-family: var(--body); font-size: 16px;
     color: var(--text); max-width: 500px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  /* NO-ADS HOOK */
+  .hero-hook {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--accent3); letter-spacing: 3px;
+    border: 1px solid rgba(127,255,0,0.25);
+    background: rgba(127,255,0,0.04);
+    padding: 8px 18px; margin-bottom: 36px;
+    opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+  }
+  .hero-buttons {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 10px;
@@ -151,12 +162,13 @@
     padding: 14px 32px; text-decoration: none;
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     transition: all 0.2s;
-    opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
   .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+  .btn-primary.alt { background: var(--accent3); }
+  .btn-primary.alt:hover { background: #fff; }
   .terminal {
     position: relative; z-index: 1;
-    margin: 20px auto 0; max-width: 480px;
+    margin: 32px auto 0; max-width: 480px;
     background: var(--panel); border: 1px solid var(--border);
     border-top: 2px solid var(--accent);
     padding: 20px 24px;
@@ -288,6 +300,11 @@
     letter-spacing: 1px; padding: 3px 10px;
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border); color: var(--dim);
+  }
+  .tag.highlight {
+    background: rgba(127,255,0,0.06);
+    border-color: rgba(127,255,0,0.3);
+    color: var(--accent3);
   }
   .card-progress { margin-bottom: 24px; }
   .progress-label {
@@ -716,7 +733,6 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 24px;
   }
-
   .latest-post {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -733,7 +749,6 @@
   }
   .latest-post.shadow-raid::before { background: var(--accent); }
   .latest-post.shadow-blocks::before { background: var(--accent3); }
-
   .latest-post:hover {
     border-color: var(--accent);
     transform: translateX(4px);
@@ -779,7 +794,6 @@
     color: var(--accent); letter-spacing: 2px;
   }
   .latest-post.shadow-blocks .latest-post-readmore { color: var(--accent3); }
-
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
@@ -792,6 +806,8 @@
     .roadmap-item { grid-template-columns: 1fr; gap: 8px; }
     .dedication-section { padding: 0 20px; margin: 60px auto 20px; }
     .dedication-card { padding: 40px 24px; }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-buttons .btn-primary { justify-content: center; }
   }
 </style>
 <!-- Organization Schema -->
@@ -819,10 +835,11 @@
       "addressCountry": "GB"
     }
   },
-  "description": "Solo indie game studio building dark fantasy mobile games with engineering precision. AI-augmented development workflow.",
-  "knowsAbout": ["Game Development", "GameMaker Studio 2", "Mobile Games", "Match-3 Puzzle", "Vertical Shooter", "AI-Augmented Development"],
+  "description": "Solo indie game studio building dark fantasy games with engineering precision. Free, no ads, no in-app purchases.",
+  "knowsAbout": ["Game Development", "GameMaker Studio 2", "Mobile Games", "Match-3 Puzzle", "Vertical Shooter"],
   "sameAs": [
     "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks",
+    "https://apps.microsoft.com/detail/9NS1ZFCL0J6K",
     "https://ko-fi.com/alastisdev"
   ],
   "email": "alastisdev@gmail.com"
@@ -833,14 +850,13 @@
 {
   "@context": "https://schema.org",
   "@type": "VideoGame",
-  "name": "Shadow Blocks: Mystical Match",
-  "alternateName": "Shadow Blocks",
+  "name": "Shadow Blocks",
   "url": "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks",
   "image": "https://alastis.dev/images/shadow-blocks-hero.jpeg",
-  "description": "Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with AI-rendered 4K animated backgrounds. Tells a wordless story of escape from a cursed castle.",
+  "description": "Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with animated 4K backgrounds. Tells a wordless story of escape from a cursed castle. Free with no ads and no in-app purchases.",
   "applicationCategory": "GameApplication",
-  "operatingSystem": ["Android", "Web Browser"],
-  "gamePlatform": ["Android", "HTML5", "CrazyGames", "GameDistribution"],
+  "operatingSystem": ["Android", "Windows"],
+  "gamePlatform": ["Android", "Windows"],
   "genre": ["Puzzle", "Match-3", "Casual", "Dark Fantasy"],
   "playMode": "SinglePlayer",
   "numberOfPlayers": "1",
@@ -854,8 +870,8 @@
     "name": "Marek Banas"
   },
   "datePublished": "2026-04-26",
-  "softwareVersion": "4.2.0",
-  "inLanguage": ["en", "pl", "de", "es", "fr", "it"],
+  "softwareVersion": "4.5.1",
+  "inLanguage": ["en", "pl", "de", "es", "fr", "pt"],
   "contentRating": "PEGI 3",
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -864,13 +880,22 @@
     "bestRating": "5",
     "worstRating": "1"
   },
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks"
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks"
+    },
+    {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://apps.microsoft.com/detail/9NS1ZFCL0J6K"
+    }
+  ]
 }
 </script>
 <!-- Shadow Raid VideoGame Schema -->
@@ -881,7 +906,7 @@
   "name": "Shadow Raid",
   "url": "https://alastis.dev/#shadow-raid",
   "image": "https://alastis.dev/images/shadow-raid-boss.png",
-  "description": "Top-down vertical space shooter inspired by River Raid and Sky Force. Modern evolution of the arcade classics with dark sci-fi aesthetic and four-act campaign with plot twist.",
+  "description": "Top-down vertical space shooter inspired by River Raid and Sky Force. Modern evolution of the arcade classics with dark sci-fi aesthetic and four-act campaign with plot twist. In production.",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Android",
   "gamePlatform": "Android",
@@ -896,9 +921,8 @@
     "@type": "Person",
     "name": "Marek Banas"
   },
-  "softwareVersion": "0.3.0",
-  "releaseNotes": "v0.3.0 - Sprint Active. July 2026 Launch target. Tutorial complete, tank balanced, sprite standardization done.",
-  "datePublished": "2026-07-31",
+  "softwareVersion": "0.2.0",
+  "releaseNotes": "In production. Act 1 complete — tutorial, tank balance, sprite standardization done. Ships when it's ready.",
   "inLanguage": "en"
 }
 </script>
@@ -909,7 +933,7 @@
   "@type": "WebSite",
   "name": "Alastis Dev",
   "url": "https://alastis.dev",
-  "description": "Solo indie game studio from Sunderland, UK. Building dark fantasy mobile games with engineering precision.",
+  "description": "Solo indie game studio from Sunderland, UK. Building dark fantasy games with engineering precision.",
   "publisher": {
     "@type": "Organization",
     "name": "Alastis Dev"
@@ -943,103 +967,6 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Shadow Raid Dev Update #2 — Pre-Sprint Status & The 11-Week Path",
-  "alternativeHeadline": "Solo Indie Dev Sprint Plan to July 2026 Launch",
-  "datePublished": "2026-05-16",
-  "dateModified": "2026-05-16",
-  "author": {
-    "@type": "Person",
-    "name": "Marek Banas",
-    "url": "https://alastis.dev/",
-    "jobTitle": "Solo Indie Game Developer"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Alastis Dev",
-    "url": "https://alastis.dev",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://alastis.dev/images/shadow-blocks-hero.jpeg"
-    }
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://alastis.dev/images/shadow-raid-hero.jpeg",
-    "width": 1200,
-    "height": 630
-  },
-  "url": "https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html"
-  },
-  "description": "Two weeks since Update #1. Tutorial scripted flow complete. Tank balanced. Sprites standardized. Monday morning, the main sprint begins. Eleven weeks until launch day.",
-  "keywords": "shadow raid, indie devlog, GameMaker Studio 2, vertical shooter, mobile game development, solo dev, sprint planning, july 2026 launch, alastis dev, GML programming, mobile game design",
-  "articleSection": "Dev Update",
-  "wordCount": 2400,
-  "inLanguage": "en",
-  "about": {
-    "@type": "VideoGame",
-    "name": "Shadow Raid",
-    "url": "https://alastis.dev/#shadow-raid"
-  }
-}
-</script>
-<!-- ============================================ -->
-<!-- DLA: devlog/2026-05-16-shadow-blocks-crazygames-submission.html -->
-<!-- WSTAW PRZED </head>                            -->
-<!-- ============================================ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Shadow Blocks Goes Global — From Play Store to CrazyGames",
-  "alternativeHeadline": "Multi-Platform Distribution Strategy for Indie Mobile Games",
-  "datePublished": "2026-05-16",
-  "dateModified": "2026-05-16",
-  "author": {
-    "@type": "Person",
-    "name": "Marek Banas",
-    "url": "https://alastis.dev/",
-    "jobTitle": "Solo Indie Game Developer"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Alastis Dev",
-    "url": "https://alastis.dev",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://alastis.dev/images/shadow-blocks-hero.jpeg"
-    }
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://alastis.dev/images/shadow-blocks-hero.jpeg",
-    "width": 1200,
-    "height": 630
-  },
-  "url": "https://alastis.dev/devlog/2026-05-16-shadow-blocks-crazygames-submission.html",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://alastis.dev/devlog/2026-05-16-shadow-blocks-crazygames-submission.html"
-  },
-  "description": "Eight hours of platform-expansion marathon. Two web portals submitted. 8.0/10 QA rating from CrazyGames testers. Inside story of taking a portrait mobile match-3 to 50 million users.",
-  "keywords": "crazygames submission, gamedistribution submission, html5 game portal, shadow blocks, indie distribution, web games, mobile to web, game portal submission guide, GameMaker HTML5, indie marketing, 8.0 QA rating",
-  "articleSection": "Distribution",
-  "wordCount": 2100,
-  "inLanguage": "en",
-  "about": {
-    "@type": "VideoGame",
-    "name": "Shadow Blocks: Mystical Match",
-    "url": "https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks"
-  }
-}
-</script>
-
 </head>
 <body>
 <nav>
@@ -1055,20 +982,26 @@
   </div>
 </nav>
 <div class="hero" id="top">
-  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.2.0</div>
+  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE // v4.5.1</div>
   <h1>ALASTIS <span class="slash">//</span> DEV</h1>
   <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
-  <p class="hero-desc">Solo indie studio. Dark fantasy mobile games engineered with AI-augmented workflow. Pure GML, pure passion.</p>
-  <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-primary">
-    ▶ GET ON GOOGLE PLAY
-  </a>
+  <p class="hero-desc">Solo indie studio. Dark fantasy games engineered on Windows and Android. Pure GML, pure passion.</p>
+  <div class="hero-hook">// FREE — NO ADS — NO IN-APP PURCHASES</div>
+  <div class="hero-buttons">
+    <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" target="_blank" class="btn-primary">
+      ▶ MICROSOFT STORE
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-primary alt">
+      ▶ GOOGLE PLAY
+    </a>
+  </div>
   <div class="terminal">
     <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LIVE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LIVE // WINDOWS + ANDROID</span></div>
     <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">LIVE</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">SPRINT_ACTIVE</span></div>
+    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">IN_PRODUCTION</span></div>
     <div class="terminal-line"><span class="ok">[OK]</span> Operation Shadow — <span class="val">PLANNED</span></div>
-    <div class="terminal-line">UPTIME: <span class="val">99.9%</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
+    <div class="terminal-line">ADS: <span class="val">0</span> // IAP: <span class="val">0</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
   </div>
 </div>
 <!-- ABOUT -->
@@ -1082,7 +1015,7 @@
   <div class="about-card fade-in">
     <div class="about-icon">A<span class="slash">/</span>D</div>
     <div class="about-text">
-      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy mobile games with engineering precision. <strong>Founded by Marek Banas</strong> — self-taught developer based in Sunderland, UK. The workflow combines GameMaker Studio 2 with AI-augmented development tools (Claude, Gemini, NotebookLM) to compete with bigger studios on a one-person budget. The mission: prove that <strong>limitations breed creativity</strong>, and that mobile games can be both atmospheric and accessible.
+      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy games with engineering precision. <strong>Founded by Marek Banas</strong> — self-taught developer based in Sunderland, UK. Every game ships <strong>free, with no ads and no in-app purchases</strong> — the only support is a Ko-fi link you have to go looking for. The mission: prove that <strong>limitations breed creativity</strong>, and that games can respect your attention instead of farming it.
     </div>
   </div>
 </section>
@@ -1102,23 +1035,26 @@
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">◆</div>
       </div>
-      <div class="card-id">// SHADOW_BLOCKS_v4.2.0</div>
-      <div class="card-status status-live"><span class="status-dot"></span>LIVE ON PLAY STORE</div>
+      <div class="card-id">// SHADOW_BLOCKS_v4.5.1</div>
+      <div class="card-status status-live"><span class="status-dot"></span>LIVE // WINDOWS + ANDROID</div>
       <div class="card-title">Shadow Blocks</div>
-      <p class="card-desc">Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with AI-rendered 4K animated backgrounds. Tells a wordless story of escape from a cursed castle.</p>
+      <p class="card-desc">Match-3 puzzle wrapped in cinematic dark fantasy. 80 handcrafted levels across 8 atmospheric biomes with animated 4K backgrounds. Tells a wordless story of escape from a cursed castle. No banners, no pop-ups, nothing to buy.</p>
       <div class="card-tags">
+        <span class="tag highlight">ZERO ADS</span>
+        <span class="tag highlight">ZERO IAP</span>
         <span class="tag">MATCH-3</span>
+        <span class="tag">WINDOWS</span>
         <span class="tag">ANDROID</span>
         <span class="tag">80 LEVELS</span>
         <span class="tag">8 BIOMES</span>
         <span class="tag">6 LANGUAGES</span>
-        <span class="tag">🔋 BATTERY SAVER</span>
       </div>
       <div class="card-progress">
         <div class="progress-label"><span>COMPLETION</span><span>100%</span></div>
         <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
       </div>
      <div class="card-links">
+        <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" target="_blank" class="btn-card primary">▶ MICROSOFT STORE</a>
         <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card primary">▶ GOOGLE PLAY</a>
         <a href="#biomes" class="btn-card secondary">VIEW BIOMES</a>
       </div>
@@ -1133,7 +1069,7 @@
       <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
       <div class="card-status status-slash">⚡ LIVE IN SHADOW BLOCKS</div>
       <div class="card-title">Shadow Slash</div>
-      <p class="card-desc">Skill-based mini-game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the cursed skull — one wrong cut ends your run. Compete on the global TOP 100.</p>
+      <p class="card-desc">Skill-based mini-game built into Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the cursed skull — one wrong cut ends your run. Same speed on every device, so the global TOP 100 actually means something.</p>
       <div class="card-tags">
         <span class="tag">MINI-GAME</span>
         <span class="tag">SKILL</span>
@@ -1146,6 +1082,7 @@
       </div>
     <div class="card-links">
         <a href="#leaderboard" class="btn-card primary">⚡ TOP 100</a>
+        <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" target="_blank" class="btn-card secondary">MICROSOFT STORE</a>
         <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card secondary">GOOGLE PLAY</a>
       </div>
     </div>
@@ -1155,8 +1092,8 @@
         <img src="images/shadow-raid-boss.png" alt="Shadow Raid Boss" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">🛸</div>
       </div>
-      <div class="card-id">// SHADOW_RAID_v0.3.0</div>
-      <div class="card-status status-dev"><span class="status-dot"></span>SPRINT ACTIVE // JULY 2026</div>
+      <div class="card-id">// SHADOW_RAID_v0.2.0</div>
+      <div class="card-status status-dev"><span class="status-dot"></span>IN PRODUCTION</div>
       <div class="card-title">Shadow Raid</div>
       <p class="card-desc">Top-down vertical space shooter. Modern evolution of the arcade classics — narrow passages, asteroid storms, hostile sectors. A hacker-pilot infiltrates The Shadow Core. Built on the modular ALASTIS CORE 2.0 engine.</p>
       <div class="card-tags">
@@ -1260,7 +1197,23 @@
   <div class="section-title">From the Devlog</div>
   <p class="section-subtitle">BEHIND THE SCENES // SOLO INDIE DEVELOPMENT</p>
   <div class="latest-posts-grid">
-  <!-- Act 1 Complete - NAJNOWSZY -->
+  <!-- Deleting Every Ad - NAJNOWSZY -->
+  <div class="latest-post shadow-blocks fade-in">
+    <a href="/devlog/2026-07-16-deleting-every-ad.html" class="latest-post-link">
+      <div class="latest-post-meta">
+        <span class="latest-post-date">2026.07.16</span>
+        <div class="latest-post-tags">
+          <span class="post-tag">v4.5.1</span>
+          <span class="post-tag">MILESTONE</span>
+          <span class="post-tag">SOLO_DEV</span>
+        </div>
+      </div>
+      <h3 class="latest-post-title">I Deleted Every Ad From My Game — 28,656 Lines Gone</h3>
+      <p class="latest-post-excerpt">People installed Shadow Blocks and never played it. So I removed every ad — then Google blocked the release because I didn't have ads.</p>
+      <span class="latest-post-readmore">READ_FULL_POST →</span>
+    </a>
+  </div>
+  <!-- Act 1 Complete -->
   <div class="latest-post shadow-raid fade-in">
     <a href="/devlog/2026-06-14-shadow-raid-act1-complete.html" class="latest-post-link">
       <div class="latest-post-meta">
@@ -1292,28 +1245,11 @@
       <span class="latest-post-readmore">READ_FULL_POST →</span>
     </a>
   </div>
-  <!-- Dev Update #3 -->
-  <div class="latest-post shadow-raid fade-in">
-    <a href="/devlog/2026-05-22-shadow-raid-dev-update-03.html" class="latest-post-link">
-      <div class="latest-post-meta">
-        <span class="latest-post-date">2026.05.22</span>
-        <div class="latest-post-tags">
-          <span class="post-tag">SHADOW_RAID</span>
-          <span class="post-tag">BOSS</span>
-          <span class="post-tag">SPRINT</span>
-        </div>
-      </div>
-      <h3 class="latest-post-title">Shadow Raid Dev Update #3 — The First Boss Talks Back</h3>
-      <p class="latest-post-excerpt">Most shoot-'em-up bosses are just a sprite with health. I built one that introduces himself first. Meet AETHELRED — plus shields, rapid fire, and a damage system rebuilt from scratch.</p>
-      <span class="latest-post-readmore">READ_FULL_POST →</span>
-    </a>
-  </div>
 </div>
   <div style="text-align: center; margin-top: 32px;">
     <a href="/devlog/" class="btn-card secondary" style="display: inline-flex;">VIEW_ALL_POSTS →</a>
   </div>
 </section>
-
 <!-- FEEDBACK -->
 <section id="feedback">
   <div class="section-header">
@@ -1335,7 +1271,7 @@
     <h2 class="coffee-title"><span class="red">DEV TRAPPED</span><br>IN CODING HELL</h2>
     <div class="coffee-divider"></div>
     <div class="coffee-line1">EACH COFFEE UNLOCKS ONE HOUR OF ESCAPE</div>
-    <div class="coffee-line2">Your support keeps the developer alive. Literally.</div>
+    <div class="coffee-line2">No ads, no IAP, no paywalls. This link is the entire business model.</div>
     <a href="https://ko-fi.com/alastisdev" class="btn-coffee" target="_blank">
       <span>☕</span> SEND COFFEE
     </a>
@@ -1372,8 +1308,8 @@
       <div class="roadmap-phase phase-now">NOW</div>
       <div class="roadmap-icon">◆</div>
       <div>
-        <div class="roadmap-title">Shadow Blocks v4.2.0 — LIVE + EXPANDING</div>
-        <div class="roadmap-desc">Play Store live. CrazyGames + GameDistribution submitted (QA review). 8.0/10 rating from CG testers. 50M potential users on the web.</div>
+        <div class="roadmap-title">Shadow Blocks v4.5.1 — LIVE ON TWO PLATFORMS</div>
+        <div class="roadmap-desc">Microsoft Store and Google Play. Every ad and in-app purchase stripped out — 28,656 lines deleted. Free, and it stays that way.</div>
       </div>
     </div>
     <div class="roadmap-item">
@@ -1381,15 +1317,15 @@
       <div class="roadmap-icon">⚡</div>
       <div>
         <div class="roadmap-title">Shadow Slash — Mini-game LIVE</div>
-        <div class="roadmap-desc">Skill-based slasher with global TOP 100 leaderboard. Built into Shadow Blocks.</div>
+        <div class="roadmap-desc">Skill-based slasher with global TOP 100 leaderboard. Built into Shadow Blocks. Frame-rate independent, so every player competes on equal terms.</div>
       </div>
     </div>
     <div class="roadmap-item">
       <div class="roadmap-phase phase-next">NEXT</div>
       <div class="roadmap-icon">🛸</div>
       <div>
-        <div class="roadmap-title">Shadow Raid — July 2026 Launch</div>
-        <div class="roadmap-desc">Top-down vertical shooter. Eleven-week sprint to launch. Four-act campaign. Tutorial complete, tank balanced, sprite standardization done. v0.3.0 in active development.</div>
+        <div class="roadmap-title">Shadow Raid — In Production</div>
+        <div class="roadmap-desc">Top-down vertical shooter. Four-act campaign. Act 1 complete — tutorial, boss fight, level map, desert world. It ships when it's good, not when a calendar says so.</div>
       </div>
     </div>
     <div class="roadmap-item">
@@ -1404,8 +1340,8 @@
       <div class="roadmap-phase phase-future">FUTURE</div>
       <div class="roadmap-icon">▣</div>
       <div>
-        <div class="roadmap-title">Classified Project — Dark RPG</div>
-        <div class="roadmap-desc">Open-world top-down RPG. Story-rich, ambitious scope. Details when ready.</div>
+        <div class="roadmap-title">Reign of Shadows — Dark Action RPG</div>
+        <div class="roadmap-desc">Top-down action RPG in the Diablo tradition. Story-rich, ambitious scope. Details when ready.</div>
       </div>
     </div>
   </div>
@@ -1435,9 +1371,9 @@
       <div class="tech-desc">Subtractive rendering. Minimal thermal output. Maximum battery life. Optimized for OLED.</div>
     </div>
     <div class="tech-item">
-      <div class="tech-icon">// INPUT</div>
-      <div class="tech-name">Zero Latency</div>
-      <div class="tech-desc">Dedicated input buffers. Frame-perfect touch response. 144Hz screen optimization.</div>
+      <div class="tech-icon">// TIMING</div>
+      <div class="tech-name">Frame-Rate Independent</div>
+      <div class="tech-desc">Delta-time movement. Identical speed on a 30 FPS phone and a 165 Hz PC. Fair leaderboards.</div>
     </div>
   </div>
 </section>
@@ -1472,10 +1408,10 @@
       <div class="tool-link">→ pages.github.com</div>
     </a>
     <a href="https://deepmind.google/technologies/veo/" target="_blank" class="tool-item">
-      <div class="tool-icon">// VIDEO_AI</div>
+      <div class="tool-icon">// VIDEO</div>
       <div class="tool-name">Google Veo</div>
-      <div class="tool-role">Video Generation</div>
-      <div class="tool-desc">Every animated background in Shadow Blocks. 8 biomes, all AI-rendered.</div>
+      <div class="tool-role">Background Generation</div>
+      <div class="tool-desc">Every animated background in Shadow Blocks. 8 biomes, 8 living scenes.</div>
       <div class="tool-link">→ deepmind.google</div>
     </a>
     <a href="https://www.photopea.com" target="_blank" class="tool-item">
@@ -1486,21 +1422,21 @@
       <div class="tool-link">→ photopea.com</div>
     </a>
     <a href="https://claude.ai" target="_blank" class="tool-item">
-      <div class="tool-icon">// AI_REVIEWER</div>
+      <div class="tool-icon">// CODE_REVIEW</div>
       <div class="tool-name">Claude</div>
       <div class="tool-role">Senior Code Review</div>
-      <div class="tool-desc">Anthropic's AI. Catches bugs, suggests architecture, debugs production.</div>
+      <div class="tool-desc">Catches bugs, suggests architecture, debugs production.</div>
       <div class="tool-link">→ claude.ai</div>
     </a>
     <a href="https://gemini.google.com" target="_blank" class="tool-item">
-      <div class="tool-icon">// AI_ARCHITECT</div>
+      <div class="tool-icon">// DAILY_DRIVER</div>
       <div class="tool-name">Gemini</div>
       <div class="tool-role">Daily GML Partner</div>
-      <div class="tool-desc">Google's AI. Day-to-day coding, planning, project memory.</div>
+      <div class="tool-desc">Day-to-day coding, planning, project memory.</div>
       <div class="tool-link">→ gemini.google.com</div>
     </a>
     <a href="https://notebooklm.google.com" target="_blank" class="tool-item">
-      <div class="tool-icon">// AI_RESEARCH</div>
+      <div class="tool-icon">// RESEARCH</div>
       <div class="tool-name">NotebookLM</div>
       <div class="tool-role">Knowledge Base</div>
       <div class="tool-desc">Project documentation, lore tracking, design decisions.</div>
