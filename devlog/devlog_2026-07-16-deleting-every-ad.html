@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I Deleted Every Ad // ALASTIS DEV</title>
+<meta name="description" content="Players installed Shadow Blocks and never played it. So I deleted 28,656 lines of ad code — and then Google blocked the release for not having ads.">
+<meta name="author" content="Marek Banaś / Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-07-16-deleting-every-ad.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-07-16-deleting-every-ad.html">
+<meta property="og:title" content="I Deleted Every Ad From My Game — 28,656 Lines Gone">
+<meta property="og:description" content="Then Google blocked the release for an incomplete advertising ID declaration. I don't have ads. That's the point.">
+<meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
+<meta property="article:author" content="Marek Banaś">
+<meta property="article:published_time" content="2026-07-16">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Deleted Every Ad From My Game — 28,656 Lines Gone">
+<meta name="twitter:description" content="It is genuinely harder to ship an app without ads than with them.">
+<meta name="twitter:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080a0e; --bg2:#0d1117; --panel:#111820; --border:#1e2d3d;
+  --accent:#00d4ff; --accent2:#ff6b00; --accent3:#7fff00;
+  --text:#c8d6e5; --dim:#4a6278;
+  --mono:'Share Tech Mono',monospace; --display:'Orbitron',sans-serif; --body:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--body); line-height:1.7;
+  background-image:
+    linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+a{color:var(--accent);text-decoration:none;transition:.2s}
+a:hover{color:var(--accent2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:rgba(8,10,14,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-family:var(--display);font-weight:900;font-size:1.05rem;color:var(--accent);letter-spacing:2px}
+.nav-links{display:flex;gap:20px;font-family:var(--mono);font-size:.8rem}
+.nav-links a{color:var(--dim)}
+.nav-links a:hover{color:var(--accent)}
+
+/* POST */
+.wrap{max-width:760px;margin:0 auto;padding:110px 24px 60px}
+.back{font-family:var(--mono);font-size:.8rem;color:var(--dim);display:inline-block;margin-bottom:30px}
+.post-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.post-date{font-family:var(--mono);font-size:.85rem;color:var(--accent)}
+.post-tag{font-family:var(--mono);font-size:.7rem;color:var(--dim);border:1px solid var(--border);
+          padding:3px 9px;letter-spacing:1px}
+h1{font-family:var(--display);font-weight:900;font-size:2.2rem;line-height:1.25;margin-bottom:22px;color:#fff}
+.lead{font-size:1.15rem;color:var(--dim);border-left:2px solid var(--accent2);padding-left:18px;margin-bottom:44px}
+h2{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--accent);margin:46px 0 16px;
+   padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-family:var(--body);font-weight:700;font-size:1.1rem;color:var(--accent2);margin:28px 0 10px}
+p{margin-bottom:16px}
+ul{margin:0 0 18px 22px}
+li{margin-bottom:8px}
+strong{color:#fff}
+code{font-family:var(--mono);background:var(--bg2);color:var(--accent3);padding:2px 6px;font-size:.9em;border:1px solid var(--border)}
+pre{background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--accent2);
+    padding:18px;overflow-x:auto;margin-bottom:20px}
+pre code{background:none;border:none;padding:0;color:var(--text);font-size:.85rem;line-height:1.6}
+.stat{background:var(--panel);border:1px solid var(--border);border-left:2px solid var(--accent3);
+      padding:20px 24px;margin:26px 0;font-family:var(--mono)}
+.stat-big{font-size:1.8rem;color:var(--accent3);display:block;margin-bottom:4px}
+.stat-label{font-size:.8rem;color:var(--dim)}
+blockquote{border-left:2px solid var(--accent);background:var(--bg2);padding:14px 20px;margin:22px 0;
+           font-family:var(--mono);font-size:.9rem;color:var(--accent)}
+
+/* CTA */
+.cta{background:var(--panel);border:1px solid var(--border);padding:34px;text-align:center;margin-top:56px}
+.cta-title{font-family:var(--display);font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:8px}
+.cta-sub{color:var(--dim);font-size:.95rem;margin-bottom:22px}
+.btn{display:inline-block;font-family:var(--mono);font-size:.85rem;padding:12px 24px;margin:5px;
+     border:1px solid var(--accent);color:var(--accent);letter-spacing:1px}
+.btn:hover{background:var(--accent);color:var(--bg)}
+.btn2{border-color:var(--accent2);color:var(--accent2)}
+.btn2:hover{background:var(--accent2);color:var(--bg)}
+
+footer{border-top:1px solid var(--border);margin-top:60px;padding:26px 24px;text-align:center;
+       font-family:var(--mono);font-size:.75rem;color:var(--dim)}
+footer a{color:var(--dim);margin:0 8px}
+
+@media (max-width:768px){
+  h1{font-size:1.5rem}
+  .wrap{padding:100px 18px 40px}
+  .nav-links{gap:12px;font-size:.7rem}
+  .lead{font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">ALASTIS // DEV</a>
+    <div class="nav-links">
+      <a href="/#about">ABOUT</a>
+      <a href="/#games">GAMES</a>
+      <a href="/devlog/">DEVLOG</a>
+      <a href="/#leaderboard">LEADERBOARD</a>
+      <a href="/#tools">TOOLS</a>
+    </div>
+  </div>
+</nav>
+
+<!-- POST -->
+<div class="wrap">
+  <a href="/devlog/" class="back">← BACK_TO_DEVLOG</a>
+
+  <div class="post-meta">
+    <span class="post-date">2026.07.16</span>
+    <span class="post-tag">v4.5.1</span>
+    <span class="post-tag">MILESTONE</span>
+    <span class="post-tag">SOLO_DEV</span>
+  </div>
+
+  <h1>I Deleted Every Ad From My Game — 28,656 Lines Gone</h1>
+
+  <p class="lead">People were installing Shadow Blocks and never playing it. So I removed every ad. Then Google blocked the release because I didn't have ads.</p>
+
+  <h2>The Problem</h2>
+
+  <p>The number that bothered me wasn't churn. It was that people installed Shadow Blocks, opened it once, and left.</p>
+
+  <p>For a while I told myself that's just mobile. Most installs are dead weight, everyone says so. Then I actually looked at what the game did to someone opening it for the first time.</p>
+
+  <p>Banner pinned to the bottom. Interstitial every three levels. A <strong>"WATCH AD TO GET A LIFE"</strong> button when you ran out. None of it was outrageous — and that's exactly the problem. It was <em>completely normal</em>. Normal is exhausting.</p>
+
+  <p>I'd built the thing everyone builds, and people were bouncing off it in under a minute.</p>
+
+  <h2>The Solution</h2>
+
+  <p>Delete all of it. Not tune it. Not reduce the frequency. Delete it.</p>
+
+  <p>What "all of it" turned out to mean:</p>
+
+  <ul>
+    <li><strong>AdMob</strong> — plus five mediation networks I'd added because a tutorial said to: AppLovin, IronSource, Meta, Pangle, Unity Ads</li>
+    <li><strong>Google Play Billing</strong> — an entire IAP system for a game with nothing to sell</li>
+    <li><strong>obj_IAP_Manager</strong> — a persistent object doing nothing but talking to a store</li>
+    <li><strong>Leftover bridges</strong> from two web portals I'd already given up on</li>
+  </ul>
+
+  <div class="stat">
+    <span class="stat-big">1,291 insertions · 28,656 deletions</span>
+    <span class="stat-label">// one commit. my game is a match-3 puzzle.</span>
+  </div>
+
+  <p>Twenty-eight thousand lines. Almost none of it had anything to do with matching gems.</p>
+
+  <h2>What I Found While Digging</h2>
+
+  <p>Two <strong>"WATCH AD"</strong> buttons — visible, styled, clickable — sitting in the fail popup and the out-of-lives popup. Both called into an ad SDK that wasn't active on native platforms.</p>
+
+  <p>They did nothing. Players tapped them and the game just sat there.</p>
+
+  <p>That had shipped. To real people. For months.</p>
+
+  <p>The fix was deleting them and moving the buttons underneath up. The popups are better now than they were with ads — <em>Play Shadow Slash to earn coins</em> and <em>Buy a life for 250 coins</em> are both real options that actually do something.</p>
+
+  <h2>The Part Where Google Said No</h2>
+
+  <p>I removed every ad, rebuilt, uploaded, and Play Console blocked the release:</p>
+
+  <blockquote>"Incomplete advertising ID declaration."</blockquote>
+
+  <p>I don't have ads. That's the entire point of the update.</p>
+
+  <p>It turns out <strong>Firebase Analytics silently adds the <code>AD_ID</code> permission to your manifest</strong>. I had never called a single Analytics function. Never opened the dashboard. The extension was sitting in the project doing nothing — but Gradle pulled the library in, the manifests merged, and Google's automated check saw the permission and demanded I explain what I needed an advertising ID for.</p>
+
+  <p>The trap: declaring <em>"yes, I use it"</em> would have been a lie <strong>and</strong> made things worse. Google's own warning says it plainly:</p>
+
+  <blockquote>"If you declare that your app uses the advertising ID, we will block releases that don't contain the AD_ID permission."</blockquote>
+
+  <p>Declare yes → Google demands the permission → my build doesn't have it → new block. On a false declaration.</p>
+
+  <p>So the only honest path was to rip out Analytics and Crashlytics entirely — neither of which I was using, verified by grepping all 27 of their exported functions and finding zero calls in my GML. Then rebuild, and check the manifest by hand:</p>
+
+  <pre><code>android.permission.ACCESS_NETWORK_STATE
+android.permission.BLUETOOTH
+android.permission.BLUETOOTH_CONNECT
+android.permission.DUMP
+android.permission.INTERNET
+
+AD_ID: not present</code></pre>
+
+  <p>Clean. Now "no" was true, and I could say it.</p>
+
+  <p><strong>It is genuinely harder to ship an app without ads than with them.</strong></p>
+
+  <h2>What I Almost Got Wrong</h2>
+
+  <h3>1. Declaring "yes" to get unblocked</h3>
+  <p>I nearly did it. An hour into fighting a red banner, "just tick the box and move on" is very tempting. It would have been false, and it would have created a permanent warning on every future release. Worth noting: the blocker I was fighting had <em>already cleared</em> — Play Console was showing me a stale validation result.</p>
+
+  <h3>2. Deleting the wrong Firebase extension</h3>
+  <p>Analytics and Crashlytics had to go. <code>FirebaseSetup</code> and <code>YYFirebaseRealTime</code> had to stay — the leaderboard runs on the Realtime Database. The dependencies were cleanly separated, so it worked, but if I'd removed one folder too many the leaderboard would have died silently.</p>
+
+  <h3>3. Assuming "not called in code" means "not in the build"</h3>
+  <p>This was the real lesson. I'd checked that no GML called Analytics and concluded it was inert. It wasn't. <strong>An extension sitting in your project ships its permissions whether you use it or not.</strong></p>
+
+  <h2>The Result</h2>
+
+  <p>Shadow Blocks v4.5.1 is live on Google Play. v1.0.2.0 is on the Microsoft Store — the first Alastis Dev game on Windows.</p>
+
+  <p>No banners. No pop-ups. No "watch a video to continue". No paywalls. No energy timers you can pay to skip. No in-app purchases at all.</p>
+
+  <p>The economy is closed and honest: earn coins by playing, spend them on lives. Nothing to buy. Nothing to skip.</p>
+
+  <p>The APK is smaller. The permission list is five entries long. The Data safety card says what it actually does: a nickname and a score, for the leaderboard, nothing else.</p>
+
+  <h2>Why This Matters</h2>
+
+  <p>Shadow Blocks was never going to make money. It's free, it has no ads and no IAP, and the only way anyone can give me anything is a Ko-fi link they have to go looking for.</p>
+
+  <p>That's the point. It's a calling card, not a revenue stream. And a calling card covered in banners isn't much of a calling card.</p>
+
+  <p>But the deeper thing I learned is that <strong>the default is not neutral</strong>. I didn't add ads because I'd thought it through — I added them because that's what the tutorials do, that's what the extensions are for, that's what everyone ships. Twenty-eight thousand lines arrived in my project through sheer momentum, and I never questioned any of it until the retention numbers made me.</p>
+
+  <p>Removing them took a day. Deciding to was the hard part.</p>
+
+  <div class="cta">
+    <div class="cta-title">PLAY SHADOW BLOCKS</div>
+    <div class="cta-sub">80 levels. 8 biomes. Zero ads, zero IAP. Free on both platforms.</div>
+    <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" class="btn">▶ GOOGLE PLAY</a>
+    <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" class="btn btn2">▶ MICROSOFT STORE</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 Alastis Dev. All rights reserved.<br>
+  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="mailto:alastis.dev@gmail.com">Contact</a>
+  <a href="https://ko-fi.com/alastisdev">Coffee ☕</a>
+</footer>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+</body>
+</html>
