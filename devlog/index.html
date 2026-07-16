@@ -5,23 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DEVLOG // ALASTIS DEV</title>
 <meta name="description" content="Development journal from Alastis Dev. Behind-the-scenes of solo indie game development.">
-
 <!-- SEO -->
 <meta name="keywords" content="indie devlog, gamedev blog, solo dev, game development journal, GameMaker Studio 2">
 <meta name="author" content="Marek Banaś / Alastis Dev">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alastis.dev/devlog/">
-
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alastis.dev/devlog/">
 <meta property="og:title" content="DEVLOG // ALASTIS DEV">
 <meta property="og:description" content="Development journal from solo indie studio. Real talk about building games alone.">
 <meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
-
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080a0e'/><text x='50' y='70' font-family='monospace' font-size='70' font-weight='900' fill='%2300d4ff' text-anchor='middle'>A</text></svg>">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -33,16 +29,13 @@
     --display: 'Orbitron', sans-serif;
     --body: 'Rajdhani', sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg); color: var(--text);
     font-family: var(--body); font-size: 16px; line-height: 1.6;
     overflow-x: hidden; min-height: 100vh;
   }
-
   body::before {
     content: ''; position: fixed; inset: 0;
     background-image:
@@ -51,7 +44,6 @@
     background-size: 40px 40px;
     pointer-events: none; z-index: 0;
   }
-
   body::after {
     content: ''; position: fixed; inset: 0;
     background: repeating-linear-gradient(
@@ -60,7 +52,6 @@
     );
     pointer-events: none; z-index: 0;
   }
-
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(8,10,14,0.92); border-bottom: 1px solid var(--border);
@@ -80,13 +71,11 @@
     letter-spacing: 1px; transition: color 0.2s;
   }
   .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
   .container {
     position: relative; z-index: 1;
     max-width: 900px; margin: 0 auto;
     padding: 120px 40px 80px;
   }
-
   .page-header { text-align: center; margin-bottom: 80px; }
   .page-tag {
     font-family: var(--mono); font-size: 11px;
@@ -104,9 +93,7 @@
     font-family: var(--mono); font-size: 12px;
     color: var(--dim); letter-spacing: 2px;
   }
-
   .post-list { display: flex; flex-direction: column; gap: 24px; }
-
   .post-card {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -125,7 +112,6 @@
   }
   .post-card:hover { border-color: var(--accent); transform: translateX(4px); }
   .post-card:hover::before { width: 6px; }
-
   .post-meta {
     display: flex; align-items: center; gap: 16px;
     font-family: var(--mono); font-size: 10px;
@@ -155,7 +141,6 @@
     font-family: var(--mono); font-size: 10px;
     color: var(--accent); letter-spacing: 2px;
   }
-
   footer {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
@@ -165,7 +150,6 @@
   }
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
-
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
@@ -175,7 +159,6 @@
 </style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
   <div class="nav-links">
@@ -183,19 +166,34 @@
     <a href="/#games">GAMES</a>
     <a href="/devlog/" class="active">DEVLOG</a>
     <a href="/#leaderboard">LEADERBOARD</a>
+    <a href="/#roadmap">ROADMAP</a>
     <a href="/#tools">TOOLS</a>
+    <a href="/privacy-policy.html">PRIVACY</a>
   </div>
 </nav>
-
 <div class="container">
-
   <div class="page-header">
     <div class="page-tag">// PRODUCTION_LOG</div>
     <h1 class="page-title">DEVLOG <span class="slash">//</span></h1>
     <div class="page-subtitle">SOLO INDIE DEVELOPMENT JOURNAL</div>
   </div>
-
  <div class="post-list">
+
+<a href="2026-07-16-deleting-every-ad.html" class="post-card">
+  <div class="post-meta">
+    <span class="post-date">2026.07.16</span>
+    <div class="post-tag-list">
+      <span class="post-tag">v4.5.1</span>
+      <span class="post-tag">MILESTONE</span>
+      <span class="post-tag">SHADOW_BLOCKS</span>
+      <span class="post-tag">SOLO_DEV</span>
+    </div>
+  </div>
+  <h2 class="post-title">I Deleted Every Ad From My Game — 28,656 Lines Gone</h2>
+  <p class="post-excerpt">People installed Shadow Blocks and never played it. So I removed every ad, every mediation network and the entire IAP system — then Google blocked the release because I didn't have ads.</p>
+  <span class="post-readmore">READ_MORE →</span>
+</a>
+
 <a href="2026-06-14-shadow-raid-act1-complete.html" class="post-card">
   <div class="post-meta">
     <span class="post-date">2026.06.14</span>
@@ -209,7 +207,7 @@
   <p class="post-excerpt">Seven levels, one story arc, and a boss fight that ends with an alliance instead of a kill. Act 1 of Shadow Raid is done — from asteroid fields to enemy base, end to end.</p>
   <span class="post-readmore">READ_MORE →</span>
 </a>
-   
+
    <a href="2026-06-02-shadow-raid-dev-update-04.html" class="post-card">
   <div class="post-meta">
     <span class="post-date">2026.06.02</span>
@@ -224,7 +222,6 @@
   <p class="post-excerpt">A boss is only as good as the journey that earns it. This week: a full level map with a star system and unlocks, plus a desert world that shifts beneath you — dry dunes, rock formations, and hidden oasis pools. The shape of Act 1 takes form.</p>
   <span class="post-readmore">READ_MORE →</span>
 </a>
-
 <a href="2026-05-22-shadow-raid-dev-update-03.html" class="post-card">
   <div class="post-meta">
     <span class="post-date">2026.05.22</span>
@@ -239,7 +236,6 @@
   <p class="post-excerpt">Most shoot-'em-up bosses are just a sprite with health. I built one that introduces himself first. Meet AETHELRED — plus a shield system, rapid fire, and a damage rewrite that finally makes the shield protect against everything.</p>
   <span class="post-readmore">READ_MORE →</span>
 </a>
-
 <a href="2026-05-16-shadow-raid-dev-update-02.html" class="post-card">
   <div class="post-meta">
     <span class="post-date">2026.05.16</span>
@@ -254,7 +250,7 @@
   <p class="post-excerpt">Two weeks since #1. Tutorial scripted flow complete. Tank balanced. Sprites standardized. Monday morning, the main sprint begins. Eleven weeks until launch day.</p>
   <span class="post-readmore">READ_MORE →</span>
 </a>
-    
+
 <a href="2026-05-16-shadow-blocks-crazygames-submission.html" class="post-card">
   <div class="post-meta">
     <span class="post-date">2026.05.16</span>
@@ -262,14 +258,14 @@
       <span class="post-tag">v4.2.0</span>
       <span class="post-tag">SHADOW_BLOCKS</span>
       <span class="post-tag">DISTRIBUTION</span>
-      <span class="post-tag">CRAZYGAMES</span>
+      <span class="post-tag">ARCHIVED</span>
     </div>
   </div>
   <h2 class="post-title">Shadow Blocks Goes Global — From Play Store to CrazyGames</h2>
-  <p class="post-excerpt">Eight hours of platform-expansion marathon. Two web portals submitted. 8.0/10 QA rating from CrazyGames testers. The inside story of taking a portrait mobile match-3 to 50 million users.</p>
+  <p class="post-excerpt">Eight hours of platform-expansion marathon. Two web portals submitted. 8.0/10 QA rating from CrazyGames testers. The inside story of taking a portrait mobile match-3 to 50 million users. (Spoiler: both portals said no. The web plan is dead — and that turned out fine.)</p>
   <span class="post-readmore">READ_MORE →</span>
 </a>
-    
+
     <a href="2026-05-01-shadow-raid-dev-update-01.html" class="post-card">
       <div class="post-meta">
         <span class="post-date">2026.05.01</span>
@@ -283,7 +279,6 @@
       <p class="post-excerpt">13 hours of solo dev grind. Eight major systems shipped in a single day. One vertical shooter taking shape. Here's what happened.</p>
       <span class="post-readmore">READ_MORE →</span>
     </a>
-
     <a href="2026-04-27-battery-saver.html" class="post-card">
       <div class="post-meta">
         <span class="post-date">2026.04.27</span>
@@ -297,7 +292,6 @@
       <p class="post-excerpt">Adding a quality-of-life feature one day after launch. How I replaced video backgrounds with static sprites without breaking anything, and why I built it as a LIVE toggle instead of a room restart.</p>
       <span class="post-readmore">READ_MORE →</span>
     </a>
-
     <a href="2026-04-26-shadow-blocks-launch.html" class="post-card">
       <div class="post-meta">
         <span class="post-date">2026.04.26</span>
@@ -311,22 +305,17 @@
       <p class="post-excerpt">After a year of nights, weekends, and a lot of coffee — Shadow Blocks went LIVE on Google Play. Here's the full breakdown: what worked, what almost killed the project, and why I'm doing it all over again.</p>
       <span class="post-readmore">READ_MORE →</span>
     </a>
-
   </div>
-
 </div>
-
 <footer>
   <div>© 2026 Alastis Dev. All rights reserved.</div>
   <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
     <a href="/privacy-policy.html">Privacy Policy</a>
     <a href="mailto:alastisdev@gmail.com">Contact</a>
-    <a href="https://buymeacoffee.com/alastis.dev" target="_blank">Coffee ☕</a>
+    <a href="https://ko-fi.com/alastisdev" target="_blank">Coffee ☕</a>
   </div>
 </footer>
-
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
-
 </body>
 </html>
