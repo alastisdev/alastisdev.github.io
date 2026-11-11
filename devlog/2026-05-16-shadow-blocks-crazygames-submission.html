@@ -357,17 +357,21 @@
 }
 </script>
   
+<link rel="stylesheet" href="/studio.css">
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
-  <div class="nav-links">
-    <a href="/#about">ABOUT</a>
-    <a href="/#games">GAMES</a>
-    <a href="/devlog/" class="active">DEVLOG</a>
-    <a href="/#leaderboard">LEADERBOARD</a>
-    <a href="/#tools">TOOLS</a>
+<nav class="studio-nav" aria-label="Main navigation">
+  <div class="studio-nav-inner">
+    <a class="studio-brand" href="/">ALASTIS <span>//</span> DEV</a>
+    <div class="studio-links">
+      <a href="/#games">Games</a>
+      <a href="/devlog/">Devlog</a>
+      <a href="/#about">About</a>
+      <a href="/#roadmap">Roadmap</a>
+      <a href="/#tools">Tools</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </div>
   </div>
 </nav>
 
@@ -501,6 +505,7 @@
 
   <p>Solo indie dev means choosing platforms strategically. Here's where Shadow Blocks lives now, and where it doesn't:</p>
 
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Platform availability in May 2026">
   <table class="stats-table">
     <thead>
       <tr><th>PLATFORM</th><th>STATUS</th><th>REACH POTENTIAL</th></tr>
@@ -513,6 +518,7 @@
       <tr><td>iOS App Store</td><td>Not pursuing</td><td>Low ROI without traction</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p>The strategy: <strong>let the web portals do the discovery work.</strong> Match-3 is a casual genre — players want to play in a browser tab during a coffee break, not download a 30 MB app. The mobile market is brutal without paid acquisition. The web market rewards good gameplay.</p>
 

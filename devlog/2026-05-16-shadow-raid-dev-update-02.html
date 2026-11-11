@@ -21,13 +21,13 @@
 <meta property="og:url" content="https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html">
 <meta property="og:title" content="Shadow Raid Dev Update #2 — Pre-Sprint Status & The 11-Week Path">
 <meta property="og:description" content="Two weeks of progress. Tutorial scripted flow complete. Tank balanced. 11 weeks to launch. Solo indie dev journey continues.">
-<meta property="og:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+<meta property="og:image" content="https://alastis.dev/images/shadow-raid-boss.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shadow Raid Dev Update #2 — Pre-Sprint Status">
 <meta name="twitter:description" content="11 weeks to launch. Tutorial complete. Tank polished. Roadmap public. Indie dev accountability.">
-<meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-hero.jpeg">
+<meta name="twitter:image" content="https://alastis.dev/images/shadow-raid-boss.png">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080a0e'/><text x='50' y='70' font-family='monospace' font-size='70' font-weight='900' fill='%2300d4ff' text-anchor='middle'>A</text></svg>">
@@ -374,7 +374,7 @@
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://alastis.dev/images/shadow-raid-hero.jpeg",
+    "url": "https://alastis.dev/images/shadow-raid-boss.png",
     "width": 1200,
     "height": 630
   },
@@ -395,17 +395,21 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/studio.css">
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">ALASTIS<span> // </span>DEV</a>
-  <div class="nav-links">
-    <a href="/#about">ABOUT</a>
-    <a href="/#games">GAMES</a>
-    <a href="/devlog/" class="active">DEVLOG</a>
-    <a href="/#leaderboard">LEADERBOARD</a>
-    <a href="/#tools">TOOLS</a>
+<nav class="studio-nav" aria-label="Main navigation">
+  <div class="studio-nav-inner">
+    <a class="studio-brand" href="/">ALASTIS <span>//</span> DEV</a>
+    <div class="studio-links">
+      <a href="/#games">Games</a>
+      <a href="/devlog/">Devlog</a>
+      <a href="/#about">About</a>
+      <a href="/#roadmap">Roadmap</a>
+      <a href="/#tools">Tools</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </div>
   </div>
 </nav>
 
@@ -614,6 +618,7 @@
 
   <h2>The State of the Build</h2>
 
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Development status in May 2026">
   <table class="stats-table">
     <thead>
       <tr><th>SYSTEM</th><th>STATUS</th><th>NOTES</th></tr>
@@ -636,6 +641,7 @@
       <tr><td>Play Store launch</td><td class="status-pending">⏳ WEEK 11</td><td>31 July 2026 — HARD DEADLINE</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2>Honest Talk About Eleven Weeks</h2>
 

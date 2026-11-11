@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The first move clears nothing in Shadow Blocks // ALASTIS DEV</title>
+<meta name="description" content="Three amethysts, two moves, and a first move that clears nothing. Room 10 helped me decide when to offer a hint in the Linux edition.">
+<meta name="author" content="Marek Banas / Alastis Dev">
+<meta name="keywords" content="Shadow Blocks, puzzle design, Linux, Godot, Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-11-11-shadow-blocks-room-ten.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alastis Dev">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-11-11-shadow-blocks-room-ten.html">
+<meta property="og:title" content="The first move clears nothing in Shadow Blocks">
+<meta property="og:description" content="Three amethysts, two moves, and a first move that clears nothing. Room 10 helped me decide when to offer a hint in the Linux edition.">
+<meta property="og:image" content="https://alastis.dev/images/devlog/room-ten.webp">
+<meta property="article:published_time" content="2026-11-11">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://alastis.dev/devlog/2026-11-11-shadow-blocks-room-ten.html">
+<meta name="twitter:title" content="The first move clears nothing in Shadow Blocks">
+<meta name="twitter:description" content="Three amethysts, two moves, and a first move that clears nothing. Room 10 helped me decide when to offer a hint in the Linux edition.">
+<meta name="twitter:image" content="https://alastis.dev/images/devlog/room-ten.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&amp;family=Rajdhani:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080a0e; --bg2:#0d1117; --panel:#111820; --border:#1e2d3d;
+  --accent:#00d4ff; --accent2:#ff6b00; --accent3:#7fff00;
+  --text:#c8d6e5; --dim:#4a6278;
+  --mono:'Share Tech Mono',monospace; --display:'Orbitron',sans-serif; --body:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--body);
+  font-size:18px; line-height:1.7; overflow-x:hidden;
+}
+body::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(30,45,61,.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,45,61,.25) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+body::after{
+  content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(0,0,0,.16) 2px 4px);
+}
+.wrap{position:relative;z-index:2}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(8,10,14,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-in{
+  max-width:1100px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{
+  font-family:var(--display);font-weight:900;letter-spacing:2px;
+  color:var(--accent);text-decoration:none;font-size:16px;white-space:nowrap;
+}
+.nav-links{display:flex;gap:20px;flex-wrap:wrap}
+.nav-links a{
+  font-family:var(--mono);font-size:13px;letter-spacing:1px;
+  color:var(--dim);text-decoration:none;transition:color .25s;
+}
+.nav-links a:hover{color:var(--accent)}
+main{max-width:820px;margin:0 auto;padding:120px 24px 80px}
+.back{
+  font-family:var(--mono);font-size:13px;color:var(--dim);
+  text-decoration:none;letter-spacing:1px;transition:color .25s;
+}
+.back:hover{color:var(--accent)}
+.post-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:28px 0 18px}
+.post-date{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.post-tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;
+  color:var(--dim);border:1px solid var(--border);
+  padding:3px 9px;border-radius:3px;
+}
+h1{
+  font-family:var(--display);font-weight:900;font-size:clamp(28px,5vw,44px);
+  line-height:1.15;color:#fff;margin-bottom:22px;
+}
+.lead{
+  font-size:22px;color:var(--accent);border-left:3px solid var(--accent);
+  padding:12px 0 12px 20px;margin-bottom:36px;font-weight:600;
+}
+.post-hero{margin:0 0 44px}
+.post-hero img{
+  display:block;width:100%;height:auto;border:1px solid var(--border);
+  border-radius:4px;background:var(--panel);
+}
+.post-hero figcaption{
+  margin-top:8px;font-family:var(--mono);font-size:12px;
+  line-height:1.5;color:var(--dim);
+}
+h2{
+  font-family:var(--mono);font-size:15px;letter-spacing:2px;
+  color:var(--accent2);margin:52px 0 8px;text-transform:uppercase;
+}
+h2::after{content:'';display:block;height:1px;background:var(--border);margin-top:10px}
+p{margin-bottom:18px}
+strong{color:#fff}
+.note{
+  background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent3);
+  padding:16px 20px;margin:26px 0;font-size:17px;
+}
+.cta{
+  background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+  padding:20px;margin:32px 0;
+}
+.cta a{color:var(--accent);font-weight:700;text-decoration:none}
+.cta a:hover{text-decoration:underline}
+hr{border:0;height:1px;background:var(--border);margin:56px 0}
+footer{
+  border-top:1px solid var(--border);margin-top:60px;padding:32px 0 0;
+  font-family:var(--mono);font-size:13px;color:var(--dim);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+footer a{color:var(--dim);text-decoration:none;transition:color .25s}
+footer a:hover{color:var(--accent)}
+@media (max-width:768px){
+  body{font-size:17px}
+  main{padding:104px 18px 60px}
+  .nav-links{gap:12px}
+  .nav-links a{font-size:11px}
+  .lead{font-size:19px}
+}
+@media (max-width:480px){
+  main{padding-top:190px}
+}
+.room-board img { max-width: 21rem; margin-inline: auto; }
+.room-board figcaption { text-align: center; }
+details.solution { margin: 1.25rem 0; padding: .75rem 1rem; border-left: 2px solid var(--accent3); background: var(--panel); }
+.solution summary { cursor: pointer; color: var(--text); }
+.solution p { margin: .6rem 0 0; }
+</style>
+<link rel="stylesheet" href="/studio.css">
+</head>
+
+<body>
+<div class="wrap">
+
+<nav class="studio-nav" aria-label="Main navigation">
+  <div class="studio-nav-inner">
+    <a class="studio-brand" href="/">ALASTIS <span>//</span> DEV</a>
+    <div class="studio-links">
+      <a href="/#games">Games</a>
+      <a href="/devlog/">Devlog</a>
+      <a href="/#about">About</a>
+      <a href="/#roadmap">Roadmap</a>
+      <a href="/#tools">Tools</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <a href="/devlog/" class="back">&larr; BACK_TO_DEVLOG</a>
+
+  <div class="post-meta">
+    <span class="post-date">2026.11.11</span>
+    <span class="post-tag">SHADOW BLOCKS</span>
+    <span class="post-tag">PUZZLE DESIGN</span>
+  </div>
+
+  <h1>The first move clears nothing in Shadow Blocks</h1>
+  <p class="lead">Room 10 gives you three purple gems, two moves and a little space between them. You can see where the row should end up. The odd bit is spending your first move and watching all three gems stay on the board.</p>
+  <figure class="post-hero room-board">
+    <img src="/images/devlog/room-ten.webp" width="540" height="960" alt="Three purple amethysts spaced apart along the floor of Prison 10. The counter shows two moves and the Hint button is available.">
+    <figcaption>Prison 10 in my Godot test build, before the first move.</figcaption>
+  </figure>
+  <h2>When the instruction gives too much away</h2>
+  <p>In the first four rooms I show the instructions straight away. They teach you how to move a block and what happens when the blocks settle. By the tenth room, though, working out which gap to close is the puzzle. I already had a written clue for it. Showing that clue as soon as the room opened meant you could read the move before you’d even looked at the three gems.</p>
+  <p>I kept the board, the two-move limit and the original clue. What I changed was the moment the clue appears. Rooms 5 through 20 now open with “Clear all blocks.” If you want a nudge, press <strong>Hint</strong>. The blocks stay where you put them and the move counter stays put too.</p>
+  <details class="solution"><summary>Show one solution to Room 10</summary>
+    <p>Slide the right-hand amethyst one space to the left. It now sits beside the middle one. Slide the left-hand amethyst one space to the right to complete the row.</p>
+  </details>
+  <h2>Trying the same room again</h2>
+  <p>On Fedora I tried Room 10 with the clue hidden and with it open. Both times the setup move used one turn and the match used the other. Opening the clue, pausing and coming back still left me looking at the same board. Restarting hid the clue again, so I could have another go on my own.</p>
+  <p>That’s the detail I kept in the Linux release. You get the first look at each of those sixteen puzzles. My clue is there if you ask for it.</p>
+  <div class="cta"><a href="https://www.indiedb.com/games/shadow-blocks-mystical-match/downloads/shadow-blocks-501-linux-x86-64-full-version">Download Shadow Blocks 5.0.1 for Linux on IndieDB →</a></div>
+
+  <footer>
+    <span>&copy; 2026 ALASTIS DEV</span>
+    <span>
+      <a href="/devlog/">ALL_POSTS</a> &nbsp;//&nbsp;
+      <a href="https://ko-fi.com/alastisdev">COFFEE</a> &nbsp;//&nbsp;
+      <a href="mailto:alastisdev@gmail.com">CONTACT</a>
+    </span>
+  </footer>
+</main>
+
+</div>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+</body>
+</html>
