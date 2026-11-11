@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALASTIS DEV // INDUSTRIAL GAME SYSTEMS</title>
+<title>Alastis Dev | Shadow Blocks and Shadow Raid</title>
 <meta name="description" content="Indie game studio from Sunderland, UK. Building dark fantasy games with engineering precision. No ads, no in-app purchases, ever.">
 <!-- SEO -->
 <meta name="keywords" content="indie game dev, mobile games, match-3, vertical shooter, dark fantasy, GameMaker Studio 2, Godot 4, Sunderland UK, Shadow Blocks, Shadow Raid, Alastis Dev, games with no ads">
@@ -13,14 +13,14 @@
 <!-- Open Graph (Facebook, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alastis.dev/">
-<meta property="og:title" content="ALASTIS DEV // INDUSTRIAL GAME SYSTEMS">
+<meta property="og:title" content="Alastis Dev | Shadow Blocks and Shadow Raid">
 <meta property="og:description" content="Solo indie studio. Shadow Blocks 5.0.1 for Linux on IndieDB. No ads, no in-app purchases. Built by one person, line by line.">
 <meta property="og:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
 <meta property="og:site_name" content="Alastis Dev">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://alastis.dev/">
-<meta name="twitter:title" content="ALASTIS DEV // INDUSTRIAL GAME SYSTEMS">
+<meta name="twitter:title" content="Alastis Dev | Shadow Blocks and Shadow Raid">
 <meta name="twitter:description" content="Solo indie studio building dark fantasy games. Play Shadow Blocks 5.0.1 free on Linux. Zero ads.">
 <meta name="twitter:image" content="https://alastis.dev/images/shadow-blocks-hero.jpeg">
 <!-- Favicons - multiple formats for max compatibility -->
@@ -114,12 +114,6 @@
     align-items: center; justify-content: center;
     text-align: center; padding: 80px 40px 60px;
   }
-  .hero-tag {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--accent); letter-spacing: 4px;
-    margin-bottom: 24px;
-    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
-  }
   .hero h1 {
     font-family: var(--display);
     font-size: clamp(32px, 6vw, 80px);
@@ -141,15 +135,6 @@
     margin-bottom: 20px;
     opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
   }
-  /* NO-ADS HOOK */
-  .hero-hook {
-    font-family: var(--mono); font-size: 12px;
-    color: var(--accent3); letter-spacing: 3px;
-    border: 1px solid rgba(127,255,0,0.25);
-    background: rgba(127,255,0,0.04);
-    padding: 8px 18px; margin-bottom: 36px;
-    opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
-  }
   .hero-buttons {
     display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
     opacity: 0; animation: fadeUp 0.8s 1s forwards;
@@ -166,25 +151,6 @@
   .btn-primary:hover { background: #fff; transform: translateY(-2px); }
   .btn-primary.alt { background: var(--accent3); }
   .btn-primary.alt:hover { background: #fff; }
-  .terminal {
-    position: relative; z-index: 1;
-    margin: 32px auto 0; max-width: 480px;
-    background: var(--panel); border: 1px solid var(--border);
-    border-top: 2px solid var(--accent);
-    padding: 20px 24px;
-    font-family: var(--mono); font-size: 11px; color: var(--dim);
-    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
-  }
-  .terminal-header { color: var(--accent); margin-bottom: 12px; font-size: 10px; letter-spacing: 2px; }
-  .terminal-line { margin-bottom: 4px; }
-  .terminal-line .ok { color: var(--accent3); }
-  .terminal-line .val { color: var(--accent2); }
-  .terminal-cursor {
-    display: inline-block; width: 8px; height: 12px;
-    background: var(--accent); animation: blink 1s infinite;
-    vertical-align: middle; margin-left: 4px;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
   section {
     position: relative; z-index: 1;
     max-width: 1200px; margin: 0 auto;
@@ -241,7 +207,7 @@
   /* GAMES GRID */
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 24px;
   }
   .game-card {
@@ -460,116 +426,6 @@
     background: #ff8533; transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(255,107,0,0.3);
   }
-  /* FLOATING COFFEE */
-  .coffee-float {
-    position: fixed; bottom: 24px; right: 24px;
-    z-index: 200;
-    background: var(--accent2); color: #000;
-    font-family: var(--display); font-size: 13px;
-    font-weight: 700; letter-spacing: 2px;
-    padding: 14px 22px; text-decoration: none;
-    border: 2px solid #000;
-    box-shadow: 0 4px 16px rgba(255,107,0,0.4);
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: all 0.2s;
-    animation: coffee-pulse 3s ease-in-out infinite;
-  }
-  .coffee-float:hover {
-    background: #ff8533; transform: scale(1.05);
-    animation: none;
-  }
-  .coffee-float::before {
-    content: '';
-    position: absolute; inset: -4px;
-    border: 2px solid var(--accent2);
-    opacity: 0;
-    animation: coffee-ping 3s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes coffee-pulse {
-    0%,100% { transform: scale(1); }
-    50%     { transform: scale(1.06); }
-  }
-  @keyframes coffee-ping {
-    0%   { opacity: 0.6; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.4); }
-  }
-  /* FLOATING FEEDBACK */
-  .feedback-float {
-    position: fixed; bottom: 24px; left: 24px;
-    z-index: 200;
-    background: var(--accent); color: #000;
-    font-family: var(--display); font-size: 13px;
-    font-weight: 700; letter-spacing: 2px;
-    padding: 14px 22px; text-decoration: none;
-    border: 2px solid #000;
-    box-shadow: 0 4px 16px rgba(0,212,255,0.4);
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: all 0.2s;
-    animation: feedback-pulse 3s ease-in-out infinite;
-  }
-  .feedback-float:hover {
-    background: #4de8ff; transform: scale(1.05);
-    animation: none;
-  }
-  .feedback-float::before {
-    content: '';
-    position: absolute; inset: -4px;
-    border: 2px solid var(--accent);
-    opacity: 0;
-    animation: feedback-ping 3s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes feedback-pulse {
-    0%,100% { transform: scale(1); }
-    50%     { transform: scale(1.06); }
-  }
-  @keyframes feedback-ping {
-    0%   { opacity: 0.6; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.4); }
-  }
-  /* LEADERBOARD */
-  .leaderboard-wrap {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--accent2);
-    overflow: hidden;
-  }
-  .lb-scroll { max-height: 600px; overflow-y: auto; }
-  .lb-scroll::-webkit-scrollbar { width: 8px; }
-  .lb-scroll::-webkit-scrollbar-track { background: var(--bg2); }
-  .lb-scroll::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
-  .lb-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 28px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,107,0,0.05);
-  }
-  .lb-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--accent2); letter-spacing: 2px; }
-  .lb-live { font-family: var(--mono); font-size: 10px; color: var(--accent3); letter-spacing: 2px; }
-  .lb-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; }
-  .lb-table th {
-    text-align: left; padding: 12px 28px;
-    font-size: 10px; letter-spacing: 2px; color: var(--dim);
-    border-bottom: 1px solid var(--border);
-    background: rgba(0,0,0,0.2);
-    position: sticky; top: 0; z-index: 1;
-  }
-  .lb-table td {
-    padding: 16px 28px;
-    border-bottom: 1px solid rgba(30,45,61,0.5);
-    color: var(--text);
-  }
-  .lb-table tr:hover td { background: rgba(0,212,255,0.03); }
-  .lb-table tr:last-child td { border-bottom: none; }
-  .rank-1 { color: #ffd700; }
-  .rank-2 { color: #c0c0c0; }
-  .rank-3 { color: #cd7f32; }
-  .score-val { color: var(--accent2); font-weight: bold; }
-  .lb-loading, .lb-empty {
-    text-align: center; padding: 60px;
-    font-family: var(--mono); font-size: 12px; color: var(--dim);
-  }
   /* TECH/TOOLS GRID */
   .tech-grid, .tools-grid {
     display: grid;
@@ -722,15 +578,10 @@
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .fade-in {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
 /* LATEST DEVLOG - DUAL CARDS */
   .latest-posts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
     gap: 24px;
   }
   .latest-post {
@@ -799,8 +650,6 @@
     .nav-links { gap: 16px; }
     section { padding: 80px 20px; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
-    .coffee-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
-    .feedback-float { bottom: 16px; left: 16px; padding: 12px 18px; font-size: 11px; }
     .coffee-section { padding: 0 20px; }
     .coffee-card { padding: 40px 24px; }
     .roadmap-item { grid-template-columns: 1fr; gap: 8px; }
@@ -873,13 +722,6 @@
   "downloadUrl": "https://www.indiedb.com/games/shadow-blocks-mystical-match/downloads/shadow-blocks-501-linux-x86-64-full-version",
   "inLanguage": ["en", "pl", "de", "es", "fr", "pt"],
   "contentRating": "PEGI 3",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "ratingCount": "5",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "offers": [
     {
       "@type": "Offer",
@@ -913,7 +755,7 @@
   "name": "Shadow Raid",
   "url": "https://alastis.dev/#shadow-raid",
   "image": "https://alastis.dev/images/shadow-raid-boss.png",
-  "description": "Top-down vertical space shooter inspired by River Raid and 1945-style arcade shooters. Your fuel tank carries over between levels, so an act is one continuous run. Five-act campaign with a plot twist. Built in Godot 4. In production.",
+  "description": "Top-down vertical space shooter inspired by River Raid and 1945-style arcade shooters. Your fuel tank carries over between levels, so an act is one continuous run. Five acts planned. Built in Godot 4. In production.",
   "applicationCategory": "GameApplication",
   "operatingSystem": ["Android", "Windows"],
   "gamePlatform": ["Android", "Windows"],
@@ -928,7 +770,6 @@
     "@type": "Person",
     "name": "Marek Banas"
   },
-  "softwareVersion": "0.3.0",
   "releaseNotes": "In production. Ported from GameMaker Studio 2 to Godot 4. Acts I and II are playable in the PC development build. Act II difficulty tuning and Pixel 7a testing are next.",
   "inLanguage": "en"
 }
@@ -974,75 +815,51 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="/studio.css">
 </head>
 <body>
-<nav>
-  <a href="#top" class="nav-logo">ALASTIS<span> // </span>DEV</a>
-  <div class="nav-links">
-    <a href="#about">ABOUT</a>
-    <a href="#games">GAMES</a>
-    <a href="/devlog/">DEVLOG</a>
-    <a href="#leaderboard">LEADERBOARD</a>
-    <a href="#roadmap">ROADMAP</a>
-    <a href="#tools">TOOLS</a>
-    <a href="privacy-policy.html">PRIVACY</a>
+<nav class="studio-nav" aria-label="Main navigation">
+  <div class="studio-nav-inner">
+    <a class="studio-brand" href="/">ALASTIS <span>//</span> DEV</a>
+    <div class="studio-links">
+      <a href="/#games">Games</a>
+      <a href="/devlog/">Devlog</a>
+      <a href="/#about">About</a>
+      <a href="/#roadmap">Roadmap</a>
+      <a href="/#tools">Tools</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </div>
   </div>
 </nav>
-<div class="hero" id="top">
-  <div class="hero-tag"><span class="status-dot"></span>SYSTEM ONLINE</div>
-  <h1>ALASTIS <span class="slash">//</span> DEV</h1>
-  <div class="hero-sub">INDUSTRIAL GAME SYSTEMS</div>
-  <p class="hero-desc">I make games in Sunderland, UK. Play Shadow Blocks 5.0.1 free on Linux, and follow Shadow Raid inside a volcanic planet.</p>
-  <div class="hero-hook">// NO ADS — NO IN-APP PURCHASES — EVER</div>
-  <div class="hero-buttons">
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <h1>Alastis <span class="slash">//</span> Dev</h1>
+    <p class="hero-desc">I’m Marek. I make games in Sunderland, UK. You can play all 80 Shadow Blocks puzzles free on Linux. My next game, Shadow Raid, takes a fighter down into a volcanic planet.</p>
+    <div class="hero-buttons">
     <a href="https://www.indiedb.com/games/shadow-blocks-mystical-match/downloads/shadow-blocks-501-linux-x86-64-full-version" class="btn-primary" target="_blank" rel="noopener">▶ LINUX DOWNLOAD</a>
     <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-primary alt">
       ▶ GOOGLE PLAY
     </a>
   </div>
-  <div class="terminal">
-    <div class="terminal-header">// ALASTIS_DEV CORE_TERMINAL</div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Blocks — <span class="val">LINUX 5.0.1 ON INDIEDB</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Slash — <span class="val">ORIGINAL STORE EDITIONS</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Shadow Raid — <span class="val">ACT II PLAYABLE ON PC</span></div>
-    <div class="terminal-line"><span class="ok">[OK]</span> Operation Shadow — <span class="val">PLANNED</span></div>
-    <div class="terminal-line">ADS: <span class="val">0</span> // IAP: <span class="val">0</span> // STATUS: <span class="val">PRODUCTION</span><span class="terminal-cursor"></span></div>
+    <a class="hero-story" href="/devlog/2026-11-11-shadow-raid-basalt-narrows.html#gameplay">Watch Shadow Raid gameplay &rarr;</a>
   </div>
-</div>
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header">
-    <div class="section-tag">// FOUNDER_PROFILE</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">About the Studio</div>
-  <p class="section-subtitle">SOLO DEVELOPMENT // SUNDERLAND, UK</p>
-  <div class="about-card fade-in">
-    <div class="about-icon">A<span class="slash">/</span>D</div>
-    <div class="about-text">
-      <strong>Alastis Dev</strong> is a one-person indie studio building dark fantasy games with engineering precision. <strong>Founded by Marek Banas</strong> — self-taught developer based in Sunderland, UK. Every game ships with <strong>no ads and no in-app purchases</strong> — you either get it free or you buy it once, and that's the end of it. The mission: prove that <strong>limitations breed creativity</strong>, and that games can respect your attention instead of farming it.
-    </div>
-  </div>
-</section>
+  <a class="hero-art" href="#shadow-blocks" aria-label="Explore Shadow Blocks">
+    <img src="/images/shadow-blocks-hero.jpeg" alt="Shadow Blocks title above a pile of gems in a torchlit dungeon" width="1280" height="720" fetchpriority="high">
+  </a>
+</header>
 <!-- GAMES -->
 <section id="games">
-  <div class="section-header">
-    <div class="section-tag">// ACTIVE_DEPLOYMENTS</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Project Portfolio</div>
-  <p class="section-subtitle">3 ACTIVE PROJECTS // 1 PLANNED HIT</p>
+  <h2 class="section-title">Games</h2>
   <div class="games-grid">
     <!-- SHADOW BLOCKS -->
-    <div class="game-card shadow-blocks fade-in">
+    <div class="game-card shadow-blocks" id="shadow-blocks">
       <div class="card-image">
         <img src="images/shadow-blocks-hero.jpeg" alt="Shadow Blocks"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">◆</div>
       </div>
-      <div class="card-id">// SHADOW_BLOCKS</div>
       <div class="card-status status-live"><span class="status-dot"></span>LINUX 5.0.1 ON INDIEDB</div>
-      <div class="card-title">Shadow Blocks</div>
+      <h3 class="card-title">Shadow Blocks</h3>
       <p class="card-desc">In each of my 80 puzzles, you have a limited number of moves to clear the board. The free Linux x86_64 edition includes all eight biomes and saves your progress locally. I tested version 5.0.1 on Fedora KDE. The Microsoft Store still carries the older Windows edition.</p>
       <div class="card-tags">
         <span class="tag highlight">FREE</span>
@@ -1056,10 +873,6 @@
         <span class="tag">8 BIOMES</span>
         <span class="tag">6 LANGUAGES</span>
       </div>
-      <div class="card-progress">
-        <div class="progress-label"><span>COMPLETION</span><span>100%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-      </div>
      <div class="card-links">
         <a href="https://www.indiedb.com/games/shadow-blocks-mystical-match/downloads/shadow-blocks-501-linux-x86-64-full-version" target="_blank" rel="noopener" class="btn-card primary">▶ LINUX DOWNLOAD</a>
         <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card primary">▶ GOOGLE PLAY</a>
@@ -1067,42 +880,14 @@
         <a href="#biomes" class="btn-card secondary">VIEW BIOMES</a>
       </div>
     </div>
-    <!-- SHADOW SLASH -->
-    <div class="game-card shadow-slash fade-in">
-      <div class="card-image">
-        <img src="images/shadow-slash-hero.jpeg" alt="Shadow Slash"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="card-image-placeholder" style="display:none;">⚡</div>
-      </div>
-      <div class="card-id">// SHADOW_SLASH_v1.0.0</div>
-      <div class="card-status status-slash">⚡ ORIGINAL STORE EDITIONS</div>
-      <div class="card-title">Shadow Slash</div>
-      <p class="card-desc">I built this mini-game for the original Windows and Android store editions of Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the cursed skull — one wrong cut ends your run. Same speed on every device, so the global TOP 100 actually means something.</p>
-      <div class="card-tags">
-        <span class="tag">MINI-GAME</span>
-        <span class="tag">SKILL</span>
-        <span class="tag">LEADERBOARD</span>
-        <span class="tag">GLOBAL</span>
-      </div>
-      <div class="card-progress">
-        <div class="progress-label"><span>STATUS</span><span>LIVE</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-      </div>
-    <div class="card-links">
-        <a href="#leaderboard" class="btn-card primary">⚡ TOP 100</a>
-        <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" target="_blank" class="btn-card secondary">MICROSOFT STORE (LEGACY)</a>
-        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card secondary">GOOGLE PLAY</a>
-      </div>
-    </div>
     <!-- SHADOW RAID -->
-    <div class="game-card shadow-raid fade-in" id="shadow-raid">
+    <div class="game-card shadow-raid" id="shadow-raid">
       <div class="card-image">
         <img src="images/shadow-raid-boss.png" alt="Shadow Raid Boss" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="card-image-placeholder" style="display:none;">🛸</div>
       </div>
-      <div class="card-id">// SHADOW_RAID</div>
       <div class="card-status status-dev"><span class="status-dot"></span>IN PRODUCTION // GODOT 4</div>
-      <div class="card-title">Shadow Raid</div>
+      <h3 class="card-title">Shadow Raid</h3>
       <p class="card-desc">Fuel and hull damage carry into the next mission. In Act II I take the ship below the surface, across lava fields and through a narrow tunnel to the pirate boss. All seven missions are playable in my PC build.</p>
       <div class="card-tags">
         <span class="tag highlight">ZERO ADS</span>
@@ -1111,7 +896,7 @@
         <span class="tag">SCI-FI</span>
         <span class="tag">GODOT 4</span>
         <span class="tag">VERTICAL</span>
-        <span class="tag">5 ACTS</span>
+        <span class="tag">5 ACTS PLANNED</span>
       </div>
       <div class="card-progress">
         <div class="progress-label"><span>ACT II ON PC</span><span>7 / 7 PLAYABLE</span></div>
@@ -1121,17 +906,93 @@
         <a href="/devlog/2026-08-24-shadow-raid-act-1-audit.html" class="btn-card secondary">ACT I PLAYTEST</a>
       </div>
     </div>
+    <!-- SHADOW SLASH -->
+    <div class="game-card shadow-slash">
+      <div class="card-image">
+        <img src="images/shadow-slash-hero.jpeg" alt="Shadow Slash"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="card-image-placeholder" style="display:none;">⚡</div>
+      </div>
+      <div class="card-status status-slash">⚡ ORIGINAL STORE EDITIONS</div>
+      <h3 class="card-title">Shadow Slash</h3>
+      <p class="card-desc">I built this mini-game for the original Windows and Android store editions of Shadow Blocks. Slash falling gem blocks before they hit the ground. Avoid the cursed skull — one wrong cut ends your run.</p>
+      <div class="card-tags">
+        <span class="tag">MINI-GAME</span>
+        <span class="tag">SKILL</span>
+      </div>
+    <div class="card-links">
+        <a href="https://apps.microsoft.com/detail/9NS1ZFCL0J6K" target="_blank" class="btn-card secondary">MICROSOFT STORE (LEGACY)</a>
+        <a href="https://play.google.com/store/apps/details?id=com.wdstudio.shadowblocks" target="_blank" class="btn-card secondary">GOOGLE PLAY</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- LATEST DEVLOG -->
+<section id="latest-devlog">
+  <h2 class="section-title">From the Devlog</h2>
+  <div class="latest-posts-grid">
+  <div class="latest-post shadow-blocks">
+    <a href="/devlog/2026-11-11-shadow-blocks-room-ten.html" class="latest-post-link">
+      <div class="latest-post-meta"><span class="latest-post-date">2026.11.11</span><span class="post-tag">SHADOW BLOCKS</span></div>
+      <h3 class="latest-post-title">The first move clears nothing in Shadow Blocks</h3>
+      <p class="latest-post-excerpt">Three amethysts, two moves, and a first move that clears nothing. Room 10 helped me decide when to offer a hint in the Linux edition.</p>
+      <span class="latest-post-readmore">READ THE DEVLOG →</span>
+    </a>
+  </div>
+<!-- Act II gameplay -->
+  <div class="latest-post shadow-raid">
+    <a href="/devlog/2026-11-11-shadow-raid-basalt-narrows.html" class="latest-post-link">
+      <div class="latest-post-meta">
+        <span class="latest-post-date">2026.11.11</span>
+        <div class="latest-post-tags">
+          <span class="post-tag">SHADOW_RAID</span>
+          <span class="post-tag">GODOT</span>
+          <span class="post-tag">ACT II</span>
+        </div>
+      </div>
+      <h3 class="latest-post-title">Flying the Basalt Narrows in Shadow Raid</h3>
+      <p class="latest-post-excerpt">Seven Act II missions are playable on PC. Watch a 12-second flight through Basalt Narrows, the tunnel that leads to the pirate boss.</p>
+      <span class="latest-post-readmore">READ_FULL_POST →</span>
+    </a>
+  </div>
+<!-- Act I audit -->
+  <div class="latest-post shadow-raid">
+    <a href="/devlog/2026-08-24-shadow-raid-act-1-audit.html" class="latest-post-link">
+      <div class="latest-post-meta">
+        <span class="latest-post-date">2026.08.24</span>
+        <div class="latest-post-tags">
+          <span class="post-tag">SHADOW_RAID</span>
+          <span class="post-tag">GODOT</span>
+          <span class="post-tag">MILESTONE</span>
+        </div>
+      </div>
+      <h3 class="latest-post-title">I Stopped Trusting “Complete” and Replayed All Seven Levels</h3>
+      <p class="latest-post-excerpt">Seven levels existed. That did not mean they were tested, balanced or ready to ship. I replayed every Act 1 mission and fixed what the old status missed.</p>
+      <span class="latest-post-readmore">READ_FULL_POST →</span>
+    </a>
+  </div>
+
+</div>
+  <div style="text-align: center; margin-top: 32px;">
+    <a href="/devlog/" class="btn-card secondary" style="display: inline-flex;">VIEW_ALL_POSTS →</a>
+  </div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About the Studio</h2>
+  <p class="section-subtitle">SOLO DEVELOPMENT // SUNDERLAND, UK</p>
+  <div class="about-card">
+    <div class="about-icon">A<span class="slash">/</span>D</div>
+    <div class="about-text">
+      I’m <strong>Marek Banas</strong>, the developer behind Alastis Dev. Shadow Blocks started in GameMaker. I rebuilt its puzzles in Godot, the engine I also use for Shadow Raid. I share my builds and playtest notes here.
+    </div>
   </div>
 </section>
 <!-- BIOMES GALLERY -->
 <section id="biomes">
-  <div class="section-header">
-    <div class="section-tag">// SHADOW_BLOCKS // WORLD_MAP</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">8 Biomes / 80 Levels</div>
+  <h2 class="section-title">8 Biomes / 80 Levels</h2>
   <p class="section-subtitle">ESCAPE FROM THE CURSED CASTLE // 4K ANIMATED BACKGROUNDS</p>
-  <div class="biome-grid fade-in">
+  <div class="biome-grid">
     <div class="biome-card">
       <img src="images/biomes/prison.jpg" alt="Prison" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="biome-placeholder" style="display:none;">PRISON</div>
@@ -1198,85 +1059,19 @@
     </div>
   </div>
 </section>
-<!-- LATEST DEVLOG -->
-<section id="latest-devlog">
-  <div class="section-header">
-    <div class="section-tag">// LATEST_FROM_BLOG</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">From the Devlog</div>
-  <p class="section-subtitle">BEHIND THE SCENES // SOLO INDIE DEVELOPMENT</p>
-  <div class="latest-posts-grid">
-<!-- Act II gameplay -->
-  <div class="latest-post shadow-raid fade-in">
-    <a href="/devlog/2026-11-11-shadow-raid-basalt-narrows.html" class="latest-post-link">
-      <div class="latest-post-meta">
-        <span class="latest-post-date">2026.11.11</span>
-        <div class="latest-post-tags">
-          <span class="post-tag">SHADOW_RAID</span>
-          <span class="post-tag">GODOT</span>
-          <span class="post-tag">ACT II</span>
-        </div>
-      </div>
-      <h3 class="latest-post-title">Flying the Basalt Narrows in Shadow Raid</h3>
-      <p class="latest-post-excerpt">Seven Act II missions are playable on PC. Watch a 12-second flight through Basalt Narrows, the tunnel that leads to the pirate boss.</p>
-      <span class="latest-post-readmore">READ_FULL_POST →</span>
-    </a>
-  </div>
-<!-- Act I audit -->
-  <div class="latest-post shadow-raid fade-in">
-    <a href="/devlog/2026-08-24-shadow-raid-act-1-audit.html" class="latest-post-link">
-      <div class="latest-post-meta">
-        <span class="latest-post-date">2026.08.24</span>
-        <div class="latest-post-tags">
-          <span class="post-tag">SHADOW_RAID</span>
-          <span class="post-tag">GODOT</span>
-          <span class="post-tag">MILESTONE</span>
-        </div>
-      </div>
-      <h3 class="latest-post-title">I Stopped Trusting “Complete” and Replayed All Seven Levels</h3>
-      <p class="latest-post-excerpt">Seven levels existed. That did not mean they were tested, balanced or ready to ship. I replayed every Act 1 mission and fixed what the old status missed.</p>
-      <span class="latest-post-readmore">READ_FULL_POST →</span>
-    </a>
-  </div>
-  <!-- Porting to Godot -->
-  <div class="latest-post shadow-raid fade-in">
-    <a href="/devlog/2026-08-10-porting-to-godot.html" class="latest-post-link">
-      <div class="latest-post-meta">
-        <span class="latest-post-date">2026.08.10</span>
-        <div class="latest-post-tags">
-          <span class="post-tag">SHADOW_RAID</span>
-          <span class="post-tag">GODOT</span>
-          <span class="post-tag">POSTMORTEM</span>
-        </div>
-      </div>
-      <h3 class="latest-post-title">Porting to Godot Found Three Bugs I'd Never Have Seen</h3>
-      <p class="latest-post-excerpt">Moving Shadow Raid from GameMaker to Godot 4 surfaced three balance bugs that had been hiding in the build for months. None of them crashed anything.</p>
-      <span class="latest-post-readmore">READ_FULL_POST →</span>
-    </a>
-  </div>
 
-</div>
-  <div style="text-align: center; margin-top: 32px;">
-    <a href="/devlog/" class="btn-card secondary" style="display: inline-flex;">VIEW_ALL_POSTS →</a>
-  </div>
-</section>
 <!-- FEEDBACK -->
 <section id="feedback">
-  <div class="section-header">
-    <div class="section-tag">// TRANSMISSION</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Send Feedback</div>
+  <h2 class="section-title">Send Feedback</h2>
   <p class="section-subtitle">BUGS // IDEAS // JUST SAY HI</p>
-  <form class="feedback-form fade-in" action="https://formspree.io/f/mvzyzlby" method="POST">
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+  <form class="feedback-form" action="https://formspree.io/f/mvzyzlby" method="POST">
+    <input aria-label="Your email" autocomplete="email" type="email" name="email" placeholder="Your email" required>
+    <textarea aria-label="Your message" name="message" placeholder="Your message" rows="5" required></textarea>
     <button type="submit" class="btn-primary">▶ SEND TRANSMISSION</button>
   </form>
 </section>
 <!-- COFFEE -->
-<div class="coffee-section fade-in">
+<div class="coffee-section">
   <div class="coffee-card">
     <div class="coffee-warning">⚠ EMERGENCY BROADCAST ⚠</div>
     <h2 class="coffee-title"><span class="red">DEV TRAPPED</span><br>IN CODING HELL</h2>
@@ -1288,33 +1083,10 @@
     </a>
   </div>
 </div>
-<!-- LEADERBOARD -->
-<section id="leaderboard">
-  <div class="section-header">
-    <div class="section-tag">// SHADOW_SLASH_RANKINGS</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Global Leaderboard</div>
-  <p class="section-subtitle">TOP 100 // SHADOW SLASH // ALL TIME</p>
-  <div class="leaderboard-wrap fade-in">
-    <div class="lb-header">
-      <div class="lb-title">⚡ SHADOW SLASH // TOP 100</div>
-      <div class="lb-live"><span class="status-dot"></span>LIVE DATA</div>
-    </div>
-    <div id="lb-content">
-      <div class="lb-loading">// CONNECTING TO DATABASE...</div>
-    </div>
-  </div>
-</section>
 <!-- ROADMAP -->
 <section id="roadmap">
-  <div class="section-header">
-    <div class="section-tag">// PRODUCTION_TIMELINE</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Roadmap</div>
-  <p class="section-subtitle">WHERE WE ARE // WHERE WE'RE GOING</p>
-  <div class="roadmap fade-in">
+  <h2 class="section-title">Roadmap</h2>
+  <div class="roadmap">
     <div class="roadmap-item">
       <div class="roadmap-phase phase-now">NOW</div>
       <div class="roadmap-icon">◆</div>
@@ -1328,7 +1100,7 @@
       <div class="roadmap-icon">⚡</div>
       <div>
         <div class="roadmap-title">Shadow Slash — Mini-game LIVE</div>
-        <div class="roadmap-desc">Skill-based slasher with a global top 100 in the original store editions of Shadow Blocks. Frame-rate independent, so every player competes on equal terms.</div>
+        <div class="roadmap-desc">The original Windows and Android editions include Shadow Slash. In the Linux edition I kept the focus on the puzzle campaign.</div>
       </div>
     </div>
     <div class="roadmap-item">
@@ -1359,13 +1131,8 @@
 </section>
 <!-- TECH -->
 <section id="technology">
-  <div class="section-header">
-    <div class="section-tag">// ENGINEERING_SPECS</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">The Machine Under the Hood</div>
-  <p class="section-subtitle">PRECISION ENGINEERING // MOBILE-FIRST DESIGN</p>
-  <div class="tech-grid fade-in">
+  <h2 class="section-title">The Machine Under the Hood</h2>
+  <div class="tech-grid">
     <div class="tech-item">
       <div class="tech-icon">// ENGINES</div>
       <div class="tech-name">Two Engines, One Studio</div>
@@ -1378,25 +1145,20 @@
     </div>
     <div class="tech-item">
       <div class="tech-icon">// EFFICIENCY</div>
-      <div class="tech-name">Eco-Logic Coding</div>
-      <div class="tech-desc">Subtractive rendering. Minimal thermal output. Maximum battery life. Optimized for OLED.</div>
+      <div class="tech-name">Battery Saver</div>
+      <div class="tech-desc">In the original Shadow Blocks, Battery Saver switches animated backgrounds to still images.</div>
     </div>
     <div class="tech-item">
       <div class="tech-icon">// TIMING</div>
       <div class="tech-name">Frame-Rate Independent</div>
-      <div class="tech-desc">Delta-time movement. Identical speed on a 30 FPS phone and a 165 Hz PC. Fair leaderboards.</div>
+      <div class="tech-desc">I use elapsed time to set movement speed in Shadow Slash. Faster displays can draw more frames between the same two positions.</div>
     </div>
   </div>
 </section>
 <!-- TOOLS -->
 <section id="tools">
-  <div class="section-header">
-    <div class="section-tag">// PRODUCTION_STACK</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Tools I Use</div>
-  <p class="section-subtitle">BATTLE-TESTED // WHAT POWERS ALASTIS DEV</p>
-  <div class="tools-grid fade-in">
+  <h2 class="section-title">Tools I Use</h2>
+  <div class="tools-grid">
     <a href="https://gamemaker.io" target="_blank" class="tool-item">
       <div class="tool-icon">// ENGINE</div>
       <div class="tool-name">GameMaker Studio 2</div>
@@ -1415,7 +1177,7 @@
       <div class="tool-icon">// BACKEND</div>
       <div class="tool-name">Firebase</div>
       <div class="tool-role">Realtime Database</div>
-      <div class="tool-desc">Powers the global leaderboard. Free tier, zero downtime.</div>
+      <div class="tool-desc">I used Realtime Database for scores in the original Shadow Slash mini-game.</div>
       <div class="tool-link">→ firebase.google.com</div>
     </a>
     <a href="https://pages.github.com" target="_blank" class="tool-item">
@@ -1443,13 +1205,8 @@
 </section>
 <!-- CREDITS -->
 <section id="credits">
-  <div class="section-header">
-    <div class="section-tag">// SYSTEM_CREDITS</div>
-    <div class="section-line"></div>
-  </div>
-  <div class="section-title">Credits & Contact</div>
-  <p class="section-subtitle">REACH OUT // FOLLOW THE BUILD</p>
-  <div class="credits-grid fade-in">
+  <h2 class="section-title">Credits & Contact</h2>
+  <div class="credits-grid">
     <div class="credit-card">
       <div class="credit-label">// FOUNDER</div>
       <div class="credit-value">Marek Banas</div>
@@ -1478,7 +1235,7 @@
 </section>
 <!-- DEDICATION -->
 <section class="dedication-section">
-  <div class="dedication-card fade-in">
+  <div class="dedication-card">
     <div class="dedication-tag">// DEDICATED_TO</div>
     <div class="dedication-text">
       For my wife <strong>Judyta</strong> — the steady ground beneath every line of code.<br>
@@ -1491,80 +1248,12 @@
   <div>© 2026 Alastis Dev. All rights reserved.</div>
   <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
     <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="https://bsky.app/profile/alastis.dev">Bluesky</a>
+    <a href="#feedback">Feedback</a>
     <a href="mailto:alastisdev@gmail.com">Contact</a>
     <a href="https://ko-fi.com/alastisdev" target="_blank">Coffee ☕</a>
   </div>
 </footer>
-<a href="https://ko-fi.com/alastisdev" target="_blank" class="coffee-float">
-  ☕ COFFEE?
-</a>
-<a href="#feedback" class="feedback-float">
-  💬 FEEDBACK?
-</a>
-<script>
-  const FIREBASE_URL = "https://alastisdev-shadow-blocks-default-rtdb.europe-west1.firebasedatabase.app/slash_scores.json";
-  function renderTable(data) {
-    const medals = ['🥇','🥈','🥉'];
-    let html = `
-      <div class="lb-scroll">
-      <table class="lb-table">
-        <thead><tr><th>#</th><th>PLAYER</th><th>SCORE</th><th>DATE</th></tr></thead>
-        <tbody>
-    `;
-    data.forEach((row, i) => {
-      const rankClass = i < 3 ? `rank-${i+1}` : '';
-      const rankDisplay = i < 3 ? medals[i] : `${i+1}`;
-      html += `
-        <tr>
-          <td class="${rankClass}">${rankDisplay}</td>
-          <td>${row.name}</td>
-          <td class="score-val">${Math.floor(row.score).toLocaleString()}</td>
-          <td style="color:var(--dim)">${row.date}</td>
-        </tr>
-      `;
-    });
-    html += '</tbody></table></div>';
-    document.getElementById('lb-content').innerHTML = html;
-  }
-  async function loadLeaderboard() {
-    try {
-      const response = await fetch(FIREBASE_URL);
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
-      if (!data || Object.keys(data).length === 0) {
-        document.getElementById('lb-content').innerHTML =
-          '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
-        return;
-      }
-      const scores = Object.values(data);
-      const validScores = scores.filter(s => s && typeof s.score === 'number' && s.name);
-      validScores.sort((a, b) => b.score - a.score);
-      const top100 = validScores.slice(0, 100);
-      if (top100.length === 0) {
-        document.getElementById('lb-content').innerHTML =
-          '<div class="lb-empty">// NO SCORES YET. BE THE FIRST.</div>';
-        return;
-      }
-      renderTable(top100);
-    } catch (error) {
-      console.error('Leaderboard error:', error);
-      document.getElementById('lb-content').innerHTML =
-        '<div class="lb-empty">// CONNECTION ERROR. RETRY LATER.</div>';
-    }
-  }
-  loadLeaderboard();
-  setInterval(loadLeaderboard, 30000);
-</script>
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
 <!-- End Cloudflare Web Analytics -->

@@ -1,0 +1,99 @@
+/* Shared by the home page, devlog archive, individual posts and privacy policy. */
+:root {
+  --dim: #9bafc1;
+  scroll-padding-top: 4.5rem;
+}
+
+nav.studio-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  height: auto;
+  padding: 0;
+  display: block;
+  z-index: 100;
+  background: #0b1017;
+  border-bottom: 1px solid #293b4b;
+}
+
+.studio-nav-inner {
+  max-width: 1200px;
+  min-height: 60px;
+  margin: auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.studio-nav a { text-decoration: none; }
+.studio-nav .studio-brand {
+  font: 700 15px/1.2 var(--display, sans-serif);
+  letter-spacing: 1.5px;
+  color: #ecf4fa;
+  white-space: nowrap;
+}
+.studio-brand span { color: #00d4ff; }
+
+.studio-links { display: flex; gap: clamp(8px, 2vw, 24px); }
+.studio-nav .studio-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #c4d4e2;
+  font: 400 14px/1.2 var(--mono, monospace);
+}
+.studio-links a:hover, .studio-links a[aria-current="page"] { color: #00d4ff; }
+:focus-visible { outline: 2px solid #00d4ff; outline-offset: 3px; }
+.policy-section { opacity: 1; transform: none; }
+
+header.hero {
+  max-width: 1200px;
+  min-height: auto;
+  margin: 0 auto;
+  padding: clamp(110px, 12vw, 172px) 40px clamp(54px, 7vw, 100px);
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  align-items: center;
+  gap: clamp(20px, 5vw, 70px);
+  text-align: left;
+}
+.hero-copy { min-width: 0; }
+.hero-copy h1 {
+  font-size: clamp(32px, 4.7vw, 68px);
+  letter-spacing: -.055em;
+  text-transform: none;
+  margin-bottom: 22px;
+}
+.hero-copy h1, .hero-copy .hero-desc, .hero-copy .hero-buttons { opacity: 1; animation: none; }
+.hero-copy .hero-desc { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; margin: 0 0 25px; }
+.hero-copy .hero-buttons { justify-content: flex-start; gap: 10px; }
+.hero-story { display: inline-block; margin-top: 20px; color: var(--accent); text-underline-offset: 4px; }
+.hero-art { display: block; border: 1px solid #374857; background: #111820; }
+.hero-art img { display: block; width: 100%; height: auto; }
+#about, #games, #latest-devlog { padding-block: clamp(32px, 5vw, 64px); }
+#games .section-title, #latest-devlog .section-title, #roadmap .section-title, #technology .section-title, #tools .section-title, #credits .section-title { margin-bottom: 24px; }
+.card-desc, .latest-post-excerpt { color: #bdcbd7; }
+.feedback-form button { cursor: pointer; }
+
+@media (max-width: 700px) {
+  :root { scroll-padding-top: 5.6rem; }
+  .studio-nav-inner { min-height: 72px; padding: 8px 12px 0; flex-direction: column; justify-content: center; gap: 1px; }
+  .studio-links { width: min(100%, 420px); align-items: center; justify-content: space-between; gap: 0; }
+  .studio-nav .studio-links a { padding: 0 3px; min-height: 40px; font-size: 13px; }
+  header.hero { padding: 106px 20px 40px; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .hero-copy .hero-buttons { flex-direction: row; }
+  .hero-copy .btn-primary { font-size: 11px; padding: 13px 16px; letter-spacing: 1px; }
+  .hero-art { max-width: 520px; }
+  .studio-nav + main, .studio-nav + article { padding-top: 106px; }
+  .games-grid, .latest-posts-grid { grid-template-columns: minmax(0, 1fr); }
+  footer { overflow-wrap: anywhere; }
+  pre { max-width: 100%; overflow-x: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+.table-scroll { max-width: 100%; overflow-x: auto; }

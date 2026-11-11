@@ -22,6 +22,30 @@
 
   <!-- Devlog Posts -->
   <url>
+    <loc>https://alastis.dev/devlog/devlog_2026-07-16-deleting-every-ad.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://alastis.dev/devlog/2026-11-11-shadow-blocks-room-ten.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://alastis.dev/devlog/2026-08-10-porting-to-godot.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://alastis.dev/devlog/2026-06-14-shadow-raid-act1-complete.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://alastis.dev/devlog/2026-06-02-shadow-raid-dev-update-04.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://alastis.dev/devlog/2026-05-22-shadow-raid-dev-update-03.html</loc>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
     <loc>https://alastis.dev/devlog/2026-11-11-shadow-raid-basalt-narrows.html</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -29,7 +53,7 @@
   </url>
   <url>
     <loc>https://alastis.dev/devlog/2026-08-24-shadow-raid-act-1-audit.html</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,35 +61,35 @@
 
   <url>
     <loc>https://alastis.dev/devlog/2026-05-16-shadow-raid-dev-update-02.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://alastis.dev/devlog/2026-05-16-shadow-blocks-crazygames-submission.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://alastis.dev/devlog/2026-05-01-shadow-raid-dev-update-01.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://alastis.dev/devlog/2026-04-27-battery-saver.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://alastis.dev/devlog/2026-04-26-shadow-blocks-launch.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -73,7 +97,7 @@
   <!-- Legal -->
   <url>
     <loc>https://alastis.dev/privacy-policy.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
