@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flying the Basalt Narrows in Shadow Raid // ALASTIS DEV</title>
+<meta name="description" content="Seven Act II missions are playable on PC. Watch a 12-second flight through Basalt Narrows, the tunnel that leads to the pirate boss.">
+<meta name="author" content="Marek Banas / Alastis Dev">
+<meta name="keywords" content="Shadow Raid, Godot 4, indie game dev, solo developer, game testing, Fedora Linux, vertical shooter, Alastis Dev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alastis.dev/devlog/2026-11-11-shadow-raid-basalt-narrows.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alastis Dev">
+<meta property="og:url" content="https://alastis.dev/devlog/2026-11-11-shadow-raid-basalt-narrows.html">
+<meta property="og:title" content="Flying the Basalt Narrows in Shadow Raid">
+<meta property="og:description" content="Seven Act II missions are playable on PC. Watch a 12-second flight through Basalt Narrows, the tunnel that leads to the pirate boss.">
+<meta property="og:image" content="https://alastis.dev/images/basalt-narrows.jpg">
+<meta property="article:published_time" content="2026-11-11">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://alastis.dev/devlog/2026-11-11-shadow-raid-basalt-narrows.html">
+<meta name="twitter:title" content="Flying the Basalt Narrows in Shadow Raid">
+<meta name="twitter:description" content="Seven Act II missions are playable on PC. Watch a 12-second flight through Basalt Narrows, the tunnel that leads to the pirate boss.">
+<meta name="twitter:image" content="https://alastis.dev/images/basalt-narrows.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&amp;family=Rajdhani:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080a0e; --bg2:#0d1117; --panel:#111820; --border:#1e2d3d;
+  --accent:#00d4ff; --accent2:#ff6b00; --accent3:#7fff00;
+  --text:#c8d6e5; --dim:#4a6278;
+  --mono:'Share Tech Mono',monospace; --display:'Orbitron',sans-serif; --body:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--body);
+  font-size:18px; line-height:1.7; overflow-x:hidden;
+}
+body::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(30,45,61,.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,45,61,.25) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+body::after{
+  content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(0,0,0,.16) 2px 4px);
+}
+.wrap{position:relative;z-index:2}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(8,10,14,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-in{
+  max-width:1100px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{
+  font-family:var(--display);font-weight:900;letter-spacing:2px;
+  color:var(--accent);text-decoration:none;font-size:16px;white-space:nowrap;
+}
+.nav-links{display:flex;gap:20px;flex-wrap:wrap}
+.nav-links a{
+  font-family:var(--mono);font-size:13px;letter-spacing:1px;
+  color:var(--dim);text-decoration:none;transition:color .25s;
+}
+.nav-links a:hover{color:var(--accent)}
+main{max-width:820px;margin:0 auto;padding:120px 24px 80px}
+.back{
+  font-family:var(--mono);font-size:13px;color:var(--dim);
+  text-decoration:none;letter-spacing:1px;transition:color .25s;
+}
+.back:hover{color:var(--accent)}
+.post-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:28px 0 18px}
+.post-date{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.post-tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;
+  color:var(--dim);border:1px solid var(--border);
+  padding:3px 9px;border-radius:3px;
+}
+h1{
+  font-family:var(--display);font-weight:900;font-size:clamp(28px,5vw,44px);
+  line-height:1.15;color:#fff;margin-bottom:22px;
+}
+.lead{
+  font-size:22px;color:var(--accent);border-left:3px solid var(--accent);
+  padding:12px 0 12px 20px;margin-bottom:36px;font-weight:600;
+}
+.post-hero{margin:0 0 44px}
+.post-hero img{
+  display:block;width:100%;height:auto;border:1px solid var(--border);
+  border-radius:4px;background:var(--panel);
+}
+.post-hero figcaption{
+  margin-top:8px;font-family:var(--mono);font-size:12px;
+  line-height:1.5;color:var(--dim);
+}
+h2{
+  font-family:var(--mono);font-size:15px;letter-spacing:2px;
+  color:var(--accent2);margin:52px 0 8px;text-transform:uppercase;
+}
+h2::after{content:'';display:block;height:1px;background:var(--border);margin-top:10px}
+p{margin-bottom:18px}
+strong{color:#fff}
+.note{
+  background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent3);
+  padding:16px 20px;margin:26px 0;font-size:17px;
+}
+.cta{
+  background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+  padding:20px;margin:32px 0;
+}
+.cta a{color:var(--accent);font-weight:700;text-decoration:none}
+.cta a:hover{text-decoration:underline}
+hr{border:0;height:1px;background:var(--border);margin:56px 0}
+footer{
+  border-top:1px solid var(--border);margin-top:60px;padding:32px 0 0;
+  font-family:var(--mono);font-size:13px;color:var(--dim);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+footer a{color:var(--dim);text-decoration:none;transition:color .25s}
+footer a:hover{color:var(--accent)}
+@media (max-width:768px){
+  body{font-size:17px}
+  main{padding:104px 18px 60px}
+  .nav-links{gap:12px}
+  .nav-links a{font-size:11px}
+  .lead{font-size:19px}
+}
+@media (max-width:480px){
+  main{padding-top:190px}
+}
+#gameplay { scroll-margin-top: 5rem; text-align: center; }
+#gameplay video { display: block; width: min(100%, 24rem); height: auto; margin: 0 auto; background: var(--bg); }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="brand">ALASTIS // DEV</a>
+    <div class="nav-links">
+      <a href="/#about">ABOUT</a>
+      <a href="/#games">GAMES</a>
+      <a href="/devlog/">DEVLOG</a>
+      <a href="/#leaderboard">LEADERBOARD</a>
+      <a href="/#roadmap">ROADMAP</a>
+      <a href="/#tools">TOOLS</a>
+      <a href="/privacy-policy.html">PRIVACY</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <a href="/devlog/" class="back">&larr; BACK_TO_DEVLOG</a>
+
+  <div class="post-meta">
+    <span class="post-date">2026.11.11</span>
+    <span class="post-tag">SHADOW_RAID</span>
+    <span class="post-tag">GODOT</span>
+    <span class="post-tag">ACT II</span>
+  </div>
+
+  <h1>Flying the Basalt Narrows in Shadow Raid</h1>
+  <p class="lead">The dotted line on the right wall gives me just enough time to pull back. Once the flame dies, I can slip through the gap.</p>
+
+  <figure class="post-hero" id="gameplay">
+    <video controls playsinline preload="none" poster="/images/basalt-narrows.jpg" width="720" height="1280" aria-label="Shadow Raid gameplay in the Basalt Narrows tunnel">
+      <source src="/media/basalt-narrows.mp4" type="video/mp4">
+      <a href="/media/basalt-narrows.mp4">Download the gameplay clip</a>
+    </video>
+    <figcaption>Basalt Narrows, the sixth mission of Act II. A flame jet fires from the right wall. I pull the ship back, wait for the jet to go dark, then fly through the narrowing passage.</figcaption>
+  </figure>
+
+  <h2>Room to retreat</h2>
+  <p>I wanted the tunnel to feel tight on a portrait screen. Most of the time I dodge sideways, but here a rock wall already occupies the space I’d normally use. The warning line lets me trade a little forward progress for a safe opening. The clip shows the whole manoeuvre in twelve seconds.</p>
+
+  <h2>Beyond the tunnel</h2>
+  <p>The first two missions take place between rock walls. Farther down, the ground gives way to lava and small volcanoes throw fireballs up towards the ship. Past the tunnel, the passage opens into a chamber where the pirate boss is waiting.</p>
+  <p>I’ve played through all seven Act II missions on PC. Next I’m taking my Tier 2 ship back to the first mission to tune the difficulty. I still have the Pixel 7a playtest ahead of me.</p>
+
+  <div class="cta"><a href="https://bsky.app/profile/alastis.dev/post/3n22hswvhds2z">Watch or discuss this clip on Bluesky</a></div>
+
+  <footer>
+    <span>&copy; 2026 ALASTIS DEV</span>
+    <span>
+      <a href="/devlog/">ALL_POSTS</a> &nbsp;//&nbsp;
+      <a href="https://ko-fi.com/alastisdev">COFFEE</a> &nbsp;//&nbsp;
+      <a href="mailto:alastisdev@gmail.com">CONTACT</a>
+    </span>
+  </footer>
+</main>
+
+</div>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "89175a06d0f34e2381dce81b8f9b504d"}'></script>
+</body>
+</html>
